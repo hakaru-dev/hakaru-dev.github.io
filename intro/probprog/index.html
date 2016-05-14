@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Hakaru Team">
+        
+        <link rel="shortcut icon" href="../../favicon.ico">
+        
+
+	<title>What is Probabilistic Programming - Hakaru</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link href="../../logo.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">Hakaru</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="../..">Home</a>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Introduction <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li class="active">
+    <a href="./">What is Probabilistic Programming</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../installation/">Installation</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../quickstart/">Quick Example</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Language Guide <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="../../lang/rand/">Random Primitives</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../lang/letbind/">Let and Bind</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../lang/cond/">Conditionals</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../lang/coercions/">Coercions</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../lang/functions/">Functions and Let</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../lang/datatypes/">Datatypes and match</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../lang/arrays/">Arrays</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Transformations <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="../../transforms/expect/">Expect</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../transforms/disintegrate/">Disintegrate</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../transforms/simplify/">Simplify</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Internals <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="../../internals/ast/">AST and Hakaru Datakind</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../internals/abt/">ABT</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../internals/datums/">Datums</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../internals/coercions/">Coercions</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../internals/transforms/">Transformaitons</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../internals/testing/">Testing</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../internals/newfeature/">Adding a Language Feautre</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../../examples/">Examples</a>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                <li >
+                    <a rel="next" href="../..">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../installation/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/hakaru-dev/hakaru">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#what-is-probabilistic-programming">What is Probabilistic Programming?</a></li>
+        
+            <li><a href="#tug-of-war">Tug of War</a></li>
+        
+            <li><a href="#simulation-vs-inference">Simulation vs Inference</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="what-is-probabilistic-programming">What is Probabilistic Programming?</h1>
+<p>Probabilistic programs are programs which represent probability
+distributions. For example, the program <code>poisson(5)</code> represents the
+poisson distribution with a rate of five. Why do we need a
+language for describing probability distributions?</p>
+<p>The world is intrinsically an uncertain place. When we try to predict
+what will happen in the world given some data we have collected, we
+are inherently engaging in some sort of probabilistic modeling. In
+probabilistic modeling, we treat the quantity we wish to predict as a
+parameter, and then describe our data as some noisy function of this
+parameter. This function is called <em>likelihood</em>, and depending on which
+statistical regime you use can be used in predominately two ways.</p>
+<p>For instance, we might want to estimate the average time it takes for
+a bus to arrive at a stop, based on actual arrival times. In this situation,
+the likelihood function would be:</p>
+<p>$$ x \sim \text{Poisson}(\lambda) $$</p>
+<p>where $x$ is the actual arrival time, and $\lambda$ is the quantity we
+wish to predict. In other words, this likelihood says our data is a
+noisy measurement of ther average waiting time which follows a Poisson
+distribution. We can also represent this likelihood function as a
+density function which for a given choice of $\lambda$ returns how
+likely it is for $x$ to be generated under that parameter.</p>
+<p>$$ f(\lambda) = \frac{\lambda^x e^{-\lambda}}{x!} $$</p>
+<p>Under a frequentist regime we perform maximum likelihood, where we find
+the best parameter by finding the $\lambda$ which maximizes $f$.</p>
+<p>Under a Bayesian regime, we place don&rsquo;t estimate a single best value
+for the parameter. Instead we place a prior distribution on the paramters and
+estimate that posterior distribution conditioned on our data.</p>
+<p>In Hakaru, it is possible to use either regime for solving your
+problems.  We will call the distribution or program which describes
+our data the <em>model</em>.</p>
+<h2 id="tug-of-war">Tug of War</h2>
+<p>We demonstrate the value of this problem-solving approach using a
+simplified version of the
+<a href="https://probmods.org/generative-models.html#example-bayesian-tug-of-war">tug of war</a>
+example from probmods.org. For this problem we will take a Bayesian
+approach to prediction.</p>
+<p>For this problem, we have three friends, Alice, Bob and Carol who take
+turns playing a tug of war against each other and we&rsquo;d like to know
+which of them is the strongest. We can pose this problem as a
+probabilistic program. In particular, we will try to predict who will
+win match3 given we have observed who won the first two matches.</p>
+<p>We can start by assuming each player&rsquo;s strength comes from a standard
+normal distribution. Then we assume the strength they pull with some
+normal distribution centered around their true strength, and the
+person who pulled harder wins.</p>
+<pre><code class="nohighlight">def pulls(strength real):
+    normal(strength, 1)
+
+def winner(a real, b real):
+    a_pull &lt;~ pulls(a)
+    b_pull &lt;~ pulls(b)
+    return (a_pull &gt; b_pull)
+
+alice &lt;~ normal(0,1)
+bob   &lt;~ normal(0,1)
+carol &lt;~ normal(0,1)
+
+match1 &lt;~ winner(alice, bob)
+match2 &lt;~ winner(bob, carol)
+match3 &lt;~ winner(alice, carol)
+</code></pre>
+
+<p>We then restrict the set of events to only those where Alice won the
+first match and Bob won the second, and return the results of the
+third match.</p>
+<pre><code class="nohighlight">if match1 &amp;&amp; match2:
+   return match3
+else:
+   reject. measure(bool)
+</code></pre>
+
+<p>We can then run the above model using hakaru, which shows that Alice
+is likely to win her match against Carol.</p>
+<pre><code class="bash">hakaru tugofwar.hk | head -n 10000 | sort | uniq -c
+   3060 false
+   6940 true
+</code></pre>
+
+<h2 id="simulation-vs-inference">Simulation vs Inference</h2>
+<p>Of course, in the above program we performed inference, by taking
+our model and throwing out all events that didn&rsquo;t agree with
+the data we had. How well would this work if we changed our
+model slightly? Suppose our data wasn&rsquo;t boolean values, but instead
+the difference of strengths, and we want to not just whether Alice
+will win, but by how much.</p>
+<p>As we pose more complex questions, posing our models as rejection
+samplers because increasing inefficient.</p>
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h4 class="panel-title">TODO</h4>
+    </div>
+    <div class="panel-body">
+        Explain simply and mh
+    </div>
+</div></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        <script src="../../js/mathjaxhelper.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

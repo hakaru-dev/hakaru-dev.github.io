@@ -278,20 +278,22 @@ ones which can be built out of simpler types.</p>
 <li>int is the integer type.</li>
 <li>prob is the type for positive real number. This includes zero.</li>
 <li>real is the type for real numbers.</li>
+<li>array(x) is the type for arrays where each element is type x</li>
+<li>measure(x) is the type for probability distributions whose
+  sample space is type x</li>
 </ul>
 <h2 id="coercions">Coercions</h2>
+<p>For the primitive numeric types we also offer coercion functions.</p>
 <ul>
 <li>prob2real</li>
 <li>int2real</li>
-<li>
-<p>nat2int</p>
-</li>
-<li>
-<p>real2prob</p>
-</li>
+<li>nat2int</li>
+<li>real2prob</li>
 <li>real2int</li>
 <li>int2nat</li>
-</ul></div>
+</ul>
+<p>For the ones which are always safe to apply such as <code>nat2int</code> we will
+automatically insert them if it is required for the program to typecheck.</p></div>
         </div>
 
         <footer class="col-md-12">

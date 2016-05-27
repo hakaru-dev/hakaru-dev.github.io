@@ -304,11 +304,11 @@ echo libname := &quot;C:\\&lt;path to hakaru&gt;\\hakaru\\maple&quot;,libname: &
 </code></pre>
 
 <p>If the Maple extension has been properly installed running</p>
-<pre><code class="bash">echo &quot;normal(0,1)&quot; | simplify
+<pre><code class="bash">echo &quot;normal(0,1)&quot; | simplify -
 </code></pre>
 
 <p>should return</p>
-<pre><code class="bash">normal(nat2real(0), nat2prob(1))
+<pre><code class="bash">normal(0, 1)
 </code></pre>
 
 <p>If the <code>LOCAL_MAPLE</code> environment variable is not set, then <code>simplify</code>

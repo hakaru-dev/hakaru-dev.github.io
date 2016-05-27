@@ -107,7 +107,7 @@
         }, 
         {
             "location": "/intro/installation/", 
-            "text": "Installation\n\n\nInstall Hakaru by cloning the latest version from our Github repo\n\n\ngit clone https://github.com/hakaru-dev/hakaru\ncd hakaru\n\n\n\n\nHakaru can then be installed either with \ncabal install\n or \nstack install\n\n\nInstalling on Windows\n\n\nDue to a \nghc bug\n, until ghc 8.0\nis released Windows machines need to install the logfloat library separately\n\n\ncabal install -j logfloat -f -useffi\ncd hakaru\ncabal install\n\n\n\n\nMaple extension\n\n\nWithin Hakaru, we use \nMaple\n to perform\ncomputer-algebra guided optimizations. To get access to these optimizations\nyou must have a licensed copy of Maple installed.\n\n\nIn addition to this, we must autoload some Maple libraries that come\nwith the system to access this functionality\n\n\nexport LOCAL_MAPLE=\n`which maple`\n\ncd hakaru/maple\nmaple update-archive.mpl\necho 'libname := \n/path-to-hakaru/hakaru/maple\n,libname:' \n~/.mapleinit\n\n\n\n\nUnder Windows the instructions become\n\n\nSETX LOCAL_MAPLE \npath to Maple bin directory\n\\cmaple.exe\n\ncd hakaru\\maple \ncmaple update-archive.mpl\necho libname := \nC:\\\\\npath to hakaru\n\\\\hakaru\\\\maple\n,libname: \n \nC:\\\npath to maple\n\\lib\\maple.ini\n\n\n\n\n\nIf the Maple extension has been properly installed running\n\n\necho \nnormal(0,1)\n | simplify\n\n\n\n\nshould return\n\n\nnormal(nat2real(0), nat2prob(1))\n\n\n\n\nIf the \nLOCAL_MAPLE\n environment variable is not set, then \nsimplify\n\ndefaults to invoking \nssh\n to access a remote installation of Maple.\nThe invocation is\n\n\n$MAPLE_SSH\n -l \n$MAPLE_USER\n \n$MAPLE_SERVER\n \n$MAPLE_COMMAND -q -t\n\n\n\n\n\nand defaults to\n\n\n/usr/bin/ssh -l ppaml karst.uits.iu.edu \nmaple -q -t", 
+            "text": "Installation\n\n\nInstall Hakaru by cloning the latest version from our Github repo\n\n\ngit clone https://github.com/hakaru-dev/hakaru\ncd hakaru\n\n\n\n\nHakaru can then be installed either with \ncabal install\n or \nstack install\n\n\nInstalling on Windows\n\n\nDue to a \nghc bug\n, until ghc 8.0\nis released Windows machines need to install the logfloat library separately\n\n\ncabal install -j logfloat -f -useffi\ncd hakaru\ncabal install\n\n\n\n\nMaple extension\n\n\nWithin Hakaru, we use \nMaple\n to perform\ncomputer-algebra guided optimizations. To get access to these optimizations\nyou must have a licensed copy of Maple installed.\n\n\nIn addition to this, we must autoload some Maple libraries that come\nwith the system to access this functionality\n\n\nexport LOCAL_MAPLE=\n`which maple`\n\ncd hakaru/maple\nmaple update-archive.mpl\necho 'libname := \n/path-to-hakaru/hakaru/maple\n,libname:' \n~/.mapleinit\n\n\n\n\nUnder Windows the instructions become\n\n\nSETX LOCAL_MAPLE \npath to Maple bin directory\n\\cmaple.exe\n\ncd hakaru\\maple \ncmaple update-archive.mpl\necho libname := \nC:\\\\\npath to hakaru\n\\\\hakaru\\\\maple\n,libname: \n \nC:\\\npath to maple\n\\lib\\maple.ini\n\n\n\n\n\nIf the Maple extension has been properly installed running\n\n\necho \nnormal(0,1)\n | simplify -\n\n\n\n\nshould return\n\n\nnormal(0, 1)\n\n\n\n\nIf the \nLOCAL_MAPLE\n environment variable is not set, then \nsimplify\n\ndefaults to invoking \nssh\n to access a remote installation of Maple.\nThe invocation is\n\n\n$MAPLE_SSH\n -l \n$MAPLE_USER\n \n$MAPLE_SERVER\n \n$MAPLE_COMMAND -q -t\n\n\n\n\n\nand defaults to\n\n\n/usr/bin/ssh -l ppaml karst.uits.iu.edu \nmaple -q -t", 
             "title": "Installation"
         }, 
         {
@@ -122,7 +122,7 @@
         }, 
         {
             "location": "/intro/installation/#maple-extension", 
-            "text": "Within Hakaru, we use  Maple  to perform\ncomputer-algebra guided optimizations. To get access to these optimizations\nyou must have a licensed copy of Maple installed.  In addition to this, we must autoload some Maple libraries that come\nwith the system to access this functionality  export LOCAL_MAPLE= `which maple` \ncd hakaru/maple\nmaple update-archive.mpl\necho 'libname :=  /path-to-hakaru/hakaru/maple ,libname:'  ~/.mapleinit  Under Windows the instructions become  SETX LOCAL_MAPLE  path to Maple bin directory \\cmaple.exe \ncd hakaru\\maple \ncmaple update-archive.mpl\necho libname :=  C:\\\\ path to hakaru \\\\hakaru\\\\maple ,libname:    C:\\ path to maple \\lib\\maple.ini   If the Maple extension has been properly installed running  echo  normal(0,1)  | simplify  should return  normal(nat2real(0), nat2prob(1))  If the  LOCAL_MAPLE  environment variable is not set, then  simplify \ndefaults to invoking  ssh  to access a remote installation of Maple.\nThe invocation is  $MAPLE_SSH  -l  $MAPLE_USER   $MAPLE_SERVER   $MAPLE_COMMAND -q -t   and defaults to  /usr/bin/ssh -l ppaml karst.uits.iu.edu  maple -q -t", 
+            "text": "Within Hakaru, we use  Maple  to perform\ncomputer-algebra guided optimizations. To get access to these optimizations\nyou must have a licensed copy of Maple installed.  In addition to this, we must autoload some Maple libraries that come\nwith the system to access this functionality  export LOCAL_MAPLE= `which maple` \ncd hakaru/maple\nmaple update-archive.mpl\necho 'libname :=  /path-to-hakaru/hakaru/maple ,libname:'  ~/.mapleinit  Under Windows the instructions become  SETX LOCAL_MAPLE  path to Maple bin directory \\cmaple.exe \ncd hakaru\\maple \ncmaple update-archive.mpl\necho libname :=  C:\\\\ path to hakaru \\\\hakaru\\\\maple ,libname:    C:\\ path to maple \\lib\\maple.ini   If the Maple extension has been properly installed running  echo  normal(0,1)  | simplify -  should return  normal(0, 1)  If the  LOCAL_MAPLE  environment variable is not set, then  simplify \ndefaults to invoking  ssh  to access a remote installation of Maple.\nThe invocation is  $MAPLE_SSH  -l  $MAPLE_USER   $MAPLE_SERVER   $MAPLE_COMMAND -q -t   and defaults to  /usr/bin/ssh -l ppaml karst.uits.iu.edu  maple -q -t", 
             "title": "Maple extension"
         }, 
         {
@@ -172,7 +172,7 @@
         }, 
         {
             "location": "/lang/coercions/", 
-            "text": "Types and Coercions\n\n\nHakaru is a simply-typed language which has\na few basic types and some more complicated\nones which can be built out of simpler types.\n\n\nTypes\n\n\n\n\nnat is the type for natural numbers. This includes zero.\n\n\nint is the integer type.\n\n\nprob is the type for positive real number. This includes zero.\n\n\nreal is the type for real numbers.\n\n\n\n\nCoercions\n\n\n\n\nprob2real\n\n\nint2real\n\n\n\n\nnat2int\n\n\n\n\n\n\nreal2prob\n\n\n\n\nreal2int\n\n\nint2nat", 
+            "text": "Types and Coercions\n\n\nHakaru is a simply-typed language which has\na few basic types and some more complicated\nones which can be built out of simpler types.\n\n\nTypes\n\n\n\n\nnat is the type for natural numbers. This includes zero.\n\n\nint is the integer type.\n\n\nprob is the type for positive real number. This includes zero.\n\n\nreal is the type for real numbers.\n\n\narray(x) is the type for arrays where each element is type x\n\n\nmeasure(x) is the type for probability distributions whose\n  sample space is type x\n\n\n\n\nCoercions\n\n\nFor the primitive numeric types we also offer coercion functions.\n\n\n\n\nprob2real\n\n\nint2real\n\n\nnat2int\n\n\nreal2prob\n\n\nreal2int\n\n\nint2nat\n\n\n\n\nFor the ones which are always safe to apply such as \nnat2int\n we will\nautomatically insert them if it is required for the program to typecheck.", 
             "title": "Coercions"
         }, 
         {
@@ -182,12 +182,12 @@
         }, 
         {
             "location": "/lang/coercions/#types", 
-            "text": "nat is the type for natural numbers. This includes zero.  int is the integer type.  prob is the type for positive real number. This includes zero.  real is the type for real numbers.", 
+            "text": "nat is the type for natural numbers. This includes zero.  int is the integer type.  prob is the type for positive real number. This includes zero.  real is the type for real numbers.  array(x) is the type for arrays where each element is type x  measure(x) is the type for probability distributions whose\n  sample space is type x", 
             "title": "Types"
         }, 
         {
             "location": "/lang/coercions/#coercions", 
-            "text": "prob2real  int2real   nat2int    real2prob   real2int  int2nat", 
+            "text": "For the primitive numeric types we also offer coercion functions.   prob2real  int2real  nat2int  real2prob  real2int  int2nat   For the ones which are always safe to apply such as  nat2int  we will\nautomatically insert them if it is required for the program to typecheck.", 
             "title": "Coercions"
         }, 
         {
@@ -207,7 +207,7 @@
         }, 
         {
             "location": "/lang/datatypes/", 
-            "text": "Data types and Match\n\n\nHakaru with several built-in data types.\n\n\n\n\nPair\n\n\nUnit\n\n\nEither\n\n\nBool\n\n\n\n\nMatch", 
+            "text": "Data types and Match\n\n\nHakaru with several built-in data types.\n\n\n\n\nPair\n\n\nUnit\n\n\nEither\n\n\nBool\n\n\n\n\nMatch\n\n\nWe use \nmatch\n to deconstruct out data types\nand access their elements.\n\n\nmatch (1,2):\n  (x,y): x + y", 
             "title": "Datatypes and match"
         }, 
         {
@@ -217,12 +217,12 @@
         }, 
         {
             "location": "/lang/datatypes/#match", 
-            "text": "", 
+            "text": "We use  match  to deconstruct out data types\nand access their elements.  match (1,2):\n  (x,y): x + y", 
             "title": "Match"
         }, 
         {
             "location": "/lang/arrays/", 
-            "text": "Arrays and Plate\n\n\nHakaru provides special syntax for arrays, which\nis distinct from the other data types.\n\n\nArray\n\n\nArray Literals\n\n\nPlate", 
+            "text": "Arrays and Plate\n\n\nHakaru provides special syntax for arrays, which\nis distinct from the other data types.\n\n\nArray\n\n\nTo construct arrays, we provide an index variable, size argument, and\nan expression body. This body is evaluated for each index of the\narray. For example, to construct the array \n[0,1,2,3]\n:\n\n\narray i of 4: i\n\n\n\n\nArray Literals\n\n\nWe can also create arrays using the literal syntax a comma delimited\nlist surrounded by brackets: \n[0,1,2,3]\n\n\nPlate\n\n\nBeyond, arrays Hakaru includes special syntax for describing measures\nover arrays called \nplate\n. Plate using the same syntax as \narray\n but\nthe body must have a measure type. It returns a measure over arrays.\nFor example, if we wish to have a distribution over three independent\nnormal distributions we would do so as follows:\n\n\nplate _ of 3: normal(0,1)", 
             "title": "Arrays"
         }, 
         {
@@ -232,27 +232,27 @@
         }, 
         {
             "location": "/lang/arrays/#array", 
-            "text": "", 
+            "text": "To construct arrays, we provide an index variable, size argument, and\nan expression body. This body is evaluated for each index of the\narray. For example, to construct the array  [0,1,2,3] :  array i of 4: i", 
             "title": "Array"
         }, 
         {
             "location": "/lang/arrays/#array-literals", 
-            "text": "", 
+            "text": "We can also create arrays using the literal syntax a comma delimited\nlist surrounded by brackets:  [0,1,2,3]", 
             "title": "Array Literals"
         }, 
         {
             "location": "/lang/arrays/#plate", 
-            "text": "", 
+            "text": "Beyond, arrays Hakaru includes special syntax for describing measures\nover arrays called  plate . Plate using the same syntax as  array  but\nthe body must have a measure type. It returns a measure over arrays.\nFor example, if we wish to have a distribution over three independent\nnormal distributions we would do so as follows:  plate _ of 3: normal(0,1)", 
             "title": "Plate"
         }, 
         {
             "location": "/transforms/expect/", 
-            "text": "Expectation transformation\n\n\nExpect\n\n\nNormalize", 
+            "text": "Expectation transformation\n\n\nThe expectation transformation takes a program representing a measure,\nand a function over the sample space, and returns a program computing\nthe expectation over that measure with respect to the given function.\n\n\nExpect\n\n\nNormalize\n\n\nWe also provide a \nnormalize\n command. This command takes as input a\nprogram representing any measure and reweights it into a program\nrepresenting a probability distribution.", 
             "title": "Expect"
         }, 
         {
             "location": "/transforms/expect/#expectation-transformation", 
-            "text": "", 
+            "text": "The expectation transformation takes a program representing a measure,\nand a function over the sample space, and returns a program computing\nthe expectation over that measure with respect to the given function.", 
             "title": "Expectation transformation"
         }, 
         {
@@ -262,7 +262,7 @@
         }, 
         {
             "location": "/transforms/expect/#normalize", 
-            "text": "", 
+            "text": "We also provide a  normalize  command. This command takes as input a\nprogram representing any measure and reweights it into a program\nrepresenting a probability distribution.", 
             "title": "Normalize"
         }, 
         {
@@ -287,8 +287,13 @@
         }, 
         {
             "location": "/transforms/simplify/", 
-            "text": "", 
+            "text": "Simplify transformation\n\n\nThe simplify transformation provides a way to \nautomaticaly improve our programs.", 
             "title": "Simplify"
+        }, 
+        {
+            "location": "/transforms/simplify/#simplify-transformation", 
+            "text": "The simplify transformation provides a way to \nautomaticaly improve our programs.", 
+            "title": "Simplify transformation"
         }, 
         {
             "location": "/internals/ast/", 

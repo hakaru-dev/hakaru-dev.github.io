@@ -273,10 +273,27 @@
 and a function over the sample space, and returns a program computing
 the expectation over that measure with respect to the given function.</p>
 <h2 id="expect">Expect</h2>
+<p>Expect can be used inside programs with the <code>expect</code> keyword.</p>
+<pre><code class="nohighlight">expect x uniform(1,3):
+    real2prob(2*x + 1)
+</code></pre>
+
+<p>This program computes the expectation of <code>uniform(1,3)</code> using the
+function <code>2*x + 1</code>. This program expands to the following:</p>
+<pre><code>integrate x from 1 to 3: 
+ recip(real2prob(3 - 1)) * real2prob(2*x + 1)
+</code></pre>
+
+<p>This can be optimized by <code>simplify</code> into <code>5</code>.</p>
 <h2 id="normalize">Normalize</h2>
 <p>We also provide a <code>normalize</code> command. This command takes as input a
 program representing any measure and reweights it into a program
-representing a probability distribution.</p></div>
+representing a probability distribution.</p>
+<p>For example in a slightly contrived example, we can weight a normal
+distribution by two. Normalizing it will then remove this weight.</p>
+<pre><code>&gt; echo &quot;weight(2, normal(0,1))&quot; | normalize | simplify -
+normal(0, 1)
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">

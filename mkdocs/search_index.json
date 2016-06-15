@@ -107,7 +107,7 @@
         }, 
         {
             "location": "/intro/installation/", 
-            "text": "Installation\n\n\nInstall Hakaru by cloning the latest version from our Github repo\n\n\ngit clone https://github.com/hakaru-dev/hakaru\ncd hakaru\n\n\n\n\nHakaru can then be installed either with \ncabal install\n or \nstack install\n\n\nInstalling on Windows\n\n\nDue to a \nghc bug\n, until ghc 8.0\nis released Windows machines need to install the logfloat library separately\n\n\ncabal install -j logfloat -f -useffi\ncd hakaru\ncabal install\n\n\n\n\nMaple extension\n\n\nWithin Hakaru, we use \nMaple\n to perform\ncomputer-algebra guided optimizations. To get access to these optimizations\nyou must have a licensed copy of Maple installed.\n\n\nIn addition to this, we must autoload some Maple libraries that come\nwith the system to access this functionality\n\n\nexport LOCAL_MAPLE=\n`which maple`\n\ncd hakaru/maple\nmaple update-archive.mpl\necho 'libname := \n/path-to-hakaru/hakaru/maple\n,libname:' \n~/.mapleinit\n\n\n\n\nUnder Windows the instructions become\n\n\nSETX LOCAL_MAPLE \npath to Maple bin directory\n\\cmaple.exe\n\ncd hakaru\\maple \ncmaple update-archive.mpl\necho libname := \nC:\\\\\npath to hakaru\n\\\\hakaru\\\\maple\n,libname: \n \nC:\\\npath to maple\n\\lib\\maple.ini\n\n\n\n\n\nIf the Maple extension has been properly installed running\n\n\necho \nnormal(0,1)\n | simplify -\n\n\n\n\nshould return\n\n\nnormal(0, 1)\n\n\n\n\nIf the \nLOCAL_MAPLE\n environment variable is not set, then \nsimplify\n\ndefaults to invoking \nssh\n to access a remote installation of Maple.\nThe invocation is\n\n\n$MAPLE_SSH\n -l \n$MAPLE_USER\n \n$MAPLE_SERVER\n \n$MAPLE_COMMAND -q -t\n\n\n\n\n\nand defaults to\n\n\n/usr/bin/ssh -l ppaml karst.uits.iu.edu \nmaple -q -t", 
+            "text": "Installation\n\n\nInstall Hakaru by cloning the latest version from our Github repo\n\n\ngit clone https://github.com/hakaru-dev/hakaru\ncd hakaru\n\n\n\n\nHakaru can then be installed either with \ncabal install\n or \nstack install\n\n\nInstalling on Windows\n\n\nDue to a \nghc bug\n, until ghc 8.0\nis released Windows machines need to install the logfloat library separately\n\n\ncabal install -j logfloat -f -useffi\ncd hakaru\ncabal install\n\n\n\n\nMaple extension\n\n\nWithin Hakaru, we use \nMaple\n to perform\ncomputer-algebra guided optimizations. To get access to these optimizations\nyou must have a licensed copy of Maple installed.\n\n\nIn addition to this, we must autoload some Maple libraries that come\nwith the system to access this functionality\n\n\nexport LOCAL_MAPLE=\n`which maple`\n\ncd hakaru/maple\nmaple update-archive.mpl\necho 'libname := \n/path-to-hakaru/hakaru/maple\n,libname:' \n ~/.mapleinit\n\n\n\n\nUnder Windows the instructions become\n\n\nSETX LOCAL_MAPLE \npath to Maple bin directory\n\\cmaple.exe\n\ncd hakaru\\maple \ncmaple update-archive.mpl\necho 'libname := \nC:\\\\\npath to hakaru\n\\\\hakaru\\\\maple\n,libname:' \n \nC:\\\npath to maple\n\\lib\\maple.ini\n\n\n\n\n\nIf the Maple extension has been properly installed running\n\n\necho \nnormal(0,1)\n | simplify -\n\n\n\n\nshould return\n\n\nnormal(0, 1)\n\n\n\n\nIf the \nLOCAL_MAPLE\n environment variable is not set, then \nsimplify\n\ndefaults to invoking \nssh\n to access a remote installation of Maple.\nThe invocation is\n\n\n$MAPLE_SSH\n -l \n$MAPLE_USER\n \n$MAPLE_SERVER\n \n$MAPLE_COMMAND -q -t\n\n\n\n\n\nand defaults to\n\n\n/usr/bin/ssh -l ppaml karst.uits.iu.edu \nmaple -q -t", 
             "title": "Installation"
         }, 
         {
@@ -122,7 +122,7 @@
         }, 
         {
             "location": "/intro/installation/#maple-extension", 
-            "text": "Within Hakaru, we use  Maple  to perform\ncomputer-algebra guided optimizations. To get access to these optimizations\nyou must have a licensed copy of Maple installed.  In addition to this, we must autoload some Maple libraries that come\nwith the system to access this functionality  export LOCAL_MAPLE= `which maple` \ncd hakaru/maple\nmaple update-archive.mpl\necho 'libname :=  /path-to-hakaru/hakaru/maple ,libname:'  ~/.mapleinit  Under Windows the instructions become  SETX LOCAL_MAPLE  path to Maple bin directory \\cmaple.exe \ncd hakaru\\maple \ncmaple update-archive.mpl\necho libname :=  C:\\\\ path to hakaru \\\\hakaru\\\\maple ,libname:    C:\\ path to maple \\lib\\maple.ini   If the Maple extension has been properly installed running  echo  normal(0,1)  | simplify -  should return  normal(0, 1)  If the  LOCAL_MAPLE  environment variable is not set, then  simplify \ndefaults to invoking  ssh  to access a remote installation of Maple.\nThe invocation is  $MAPLE_SSH  -l  $MAPLE_USER   $MAPLE_SERVER   $MAPLE_COMMAND -q -t   and defaults to  /usr/bin/ssh -l ppaml karst.uits.iu.edu  maple -q -t", 
+            "text": "Within Hakaru, we use  Maple  to perform\ncomputer-algebra guided optimizations. To get access to these optimizations\nyou must have a licensed copy of Maple installed.  In addition to this, we must autoload some Maple libraries that come\nwith the system to access this functionality  export LOCAL_MAPLE= `which maple` \ncd hakaru/maple\nmaple update-archive.mpl\necho 'libname :=  /path-to-hakaru/hakaru/maple ,libname:'   ~/.mapleinit  Under Windows the instructions become  SETX LOCAL_MAPLE  path to Maple bin directory \\cmaple.exe \ncd hakaru\\maple \ncmaple update-archive.mpl\necho 'libname :=  C:\\\\ path to hakaru \\\\hakaru\\\\maple ,libname:'    C:\\ path to maple \\lib\\maple.ini   If the Maple extension has been properly installed running  echo  normal(0,1)  | simplify -  should return  normal(0, 1)  If the  LOCAL_MAPLE  environment variable is not set, then  simplify \ndefaults to invoking  ssh  to access a remote installation of Maple.\nThe invocation is  $MAPLE_SSH  -l  $MAPLE_USER   $MAPLE_SERVER   $MAPLE_COMMAND -q -t   and defaults to  /usr/bin/ssh -l ppaml karst.uits.iu.edu  maple -q -t", 
             "title": "Maple extension"
         }, 
         {
@@ -267,22 +267,22 @@
         }, 
         {
             "location": "/transforms/disintegrate/", 
-            "text": "Disintegrations transformation\n\n\nDisintegrate\n\n\nDensity", 
+            "text": "Disintegrations transformation\n\n\nThe disintegration transformation takes as input a program\nrepresenting a joint probability distribution, and returns\na program which represents an posterior distribution.\n\n\nDisintegrate\n\n\nDisintegrate can be accessed using the \ndisintegrate\n command.\n\n\nDensity\n\n\nFind the density of a probability distribution at a particular\npoint is actually a special-case of disintegrate and is\ndefined in terms of it.", 
             "title": "Disintegrate"
         }, 
         {
             "location": "/transforms/disintegrate/#disintegrations-transformation", 
-            "text": "", 
+            "text": "The disintegration transformation takes as input a program\nrepresenting a joint probability distribution, and returns\na program which represents an posterior distribution.", 
             "title": "Disintegrations transformation"
         }, 
         {
             "location": "/transforms/disintegrate/#disintegrate", 
-            "text": "", 
+            "text": "Disintegrate can be accessed using the  disintegrate  command.", 
             "title": "Disintegrate"
         }, 
         {
             "location": "/transforms/disintegrate/#density", 
-            "text": "", 
+            "text": "Find the density of a probability distribution at a particular\npoint is actually a special-case of disintegrate and is\ndefined in terms of it.", 
             "title": "Density"
         }, 
         {

@@ -293,14 +293,14 @@ with the system to access this functionality</p>
 <pre><code class="bash">export LOCAL_MAPLE=&quot;`which maple`&quot;
 cd hakaru/maple
 maple update-archive.mpl
-echo 'libname := &quot;/path-to-hakaru/hakaru/maple&quot;,libname:' &gt;~/.mapleinit
+echo 'libname := &quot;/path-to-hakaru/hakaru/maple&quot;,libname:' &gt;&gt; ~/.mapleinit
 </code></pre>
 
 <p>Under Windows the instructions become</p>
 <pre><code class="bash">SETX LOCAL_MAPLE &quot;&lt;path to Maple bin directory&gt;\cmaple.exe&quot;
 cd hakaru\maple 
 cmaple update-archive.mpl
-echo libname := &quot;C:\\&lt;path to hakaru&gt;\\hakaru\\maple&quot;,libname: &gt; &quot;C:\&lt;path to maple&gt;\lib\maple.ini&quot;
+echo 'libname := &quot;C:\\&lt;path to hakaru&gt;\\hakaru\\maple&quot;,libname:' &gt;&gt; &quot;C:\&lt;path to maple&gt;\lib\maple.ini&quot;
 </code></pre>
 
 <p>If the Maple extension has been properly installed running</p>

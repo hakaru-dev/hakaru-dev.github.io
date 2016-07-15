@@ -259,8 +259,6 @@
     
         <li class="main active"><a href="#disintegrations-transformation">Disintegrations transformation</a></li>
         
-            <li><a href="#disintegrate">Disintegrate</a></li>
-        
             <li><a href="#density">Density</a></li>
         
     
@@ -272,8 +270,26 @@
 <p>The disintegration transformation takes as input a program
 representing a joint probability distribution, and returns
 a program which represents an posterior distribution.</p>
-<h2 id="disintegrate">Disintegrate</h2>
-<p>Disintegrate can be accessed using the <code>disintegrate</code> command.</p>
+<p>For example, if we have the following joint distribution <code>hello.hk</code></p>
+<pre><code>θ &lt;~ normal(0,1)
+x &lt;~ normal(θ,1)
+return (x,θ)
+</code></pre>
+
+<p>When we call <code>disintegrate hello.hk</code> we obtain:</p>
+<pre><code>fn x2 real: 
+ θ &lt;~ normal(0, 1)
+ x7 &lt;~ weight((exp((negate(((x2 - θ) ^ 2)) / 2))
+                / 
+               1
+                / 
+               sqrt((2 * pi))),
+              return ())
+ return θ
+</code></pre>
+
+<p>This represents the posterior on <code>θ</code> given a value of <code>x</code> which
+has been renamed <code>x2</code>.</p>
 <h2 id="density">Density</h2>
 <p>Find the density of a probability distribution at a particular
 point is actually a special-case of disintegrate and is

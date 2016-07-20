@@ -269,14 +269,20 @@
 <h1 id="data-types-and-match">Data types and Match</h1>
 <p>Hakaru with several built-in data types.</p>
 <ul>
-<li>Pair</li>
-<li>Unit</li>
-<li>Either</li>
-<li>Bool</li>
+<li>pair</li>
+<li>unit</li>
+<li>either</li>
+<li>bool</li>
 </ul>
 <h2 id="match">Match</h2>
 <p>We use <code>match</code> to deconstruct out data types
 and access their elements.</p>
+<pre><code class="nohighlight">match left(3). either(int,bool):
+  left(x) : 1
+  right(x): 2
+</code></pre>
+
+<p>We do include special syntax for pairs</p>
 <pre><code class="nohighlight">match (1,2):
   (x,y): x + y
 </code></pre></div>

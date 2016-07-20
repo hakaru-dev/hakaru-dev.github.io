@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Hakaru\n\n\n\n\n\nHakaru is a probabilistic programming language. A probabilistic programming\nlanguage is a language specifically designed for manipulating probability\ndistributions. These sorts of languages are great for machine learning and\nstochastic modeling.\n\n\nOverview\n\n\nThis manual provides a guide for how to use Hakaru.\n\n\nIntroduction\n\n\nWhat is Probabilistic Programming\n\n\nProbabilistic programming systems allow us to write programs which\ndescribe probability distributions, and provide mechanisms to\nsample and condition the distributions they represent on data. In\nthis page, we give a sense of the sorts of problems Hakaru is\ngreat at solving, and how you would describe them in Hakaru.\n\n\nInstallation\n\n\nLearn how to install Hakaru\n\n\nQuickstart\n\n\nGet started with this quickstart page. Where we show\nhow to sample and condition from a small Hakaru program.\n\n\nExamples\n\n\nHere we go through several more involved examples of the kinds of\nproblems Hakaru is uniquely well-suited to solve.\n\n\nIn particular, we describe a model for Gaussian Mixture Models and\nusing a form of Bayesian Naives Bayes as applied to document\nclassification.\n\n\nLanguage Guide\n\n\nThe language section provides an overview of the syntax of Hakaru as\nwell as some of the primitives in the language.\n\n\nRandom Primitives\n\n\nThese are the built-in probability distributions.\n\n\nLet and Bind\n\n\nThis is how we can give names to subexpressions and a\ndraw from a probability distribution.\n\n\nConditionals\n\n\nHakaru supports a restricted \nif\n expression\n\n\nTypes and Coercions\n\n\nHakaru is a simply-typed language. This section\ndescribes the types available and functions for\nmoving between them.\n\n\nFunctions\n\n\nDefining and using functions\n\n\nDatatypes and match\n\n\nHakaru supports a few built-in datatypes, and offers functionality for\ntaking them apart and reconstructing them.\n\n\nArrays\n\n\nWe offer special support for arrays, and for probability\ndistributions over arrays.\n\n\nTransformations\n\n\nHakaru implements its inference algorithms predominately as\nprogram transformations. The following are the major ones\nour system provides.\n\n\nExpect\n\n\nDisintegrate\n\n\nSimplify\n\n\nMetropolis Hastings\n\n\nInternals\n\n\nThe internals section of the manual provides some insight into how\nHakaru is implemented and offers guidance into how the system can\nbe extended.\n\n\nAST\n\n\nABT\n\n\nDatums\n\n\nCoercions\n\n\nTransformations\n\n\nTesting\n\n\nAdding a Language Feature", 
+            "text": "Hakaru\n\n\n\n\n\nHakaru is a probabilistic programming language. A probabilistic programming\nlanguage is a language specifically designed for manipulating probability\ndistributions. These sorts of languages are great for machine learning and\nstochastic modeling.\n\n\nOverview\n\n\nThis manual provides a guide for how to use Hakaru.\n\n\nIntroduction\n\n\nWhat is Probabilistic Programming\n\n\nProbabilistic programming systems allow us to write programs which\ndescribe probability distributions, and provide mechanisms to\nsample and condition the distributions they represent on data. In\nthis page, we give a sense of the sorts of problems Hakaru is\ngreat at solving, and how you would describe them in Hakaru.\n\n\nInstallation\n\n\nLearn how to install Hakaru\n\n\nQuickstart\n\n\nGet started with this quickstart page. Where we show\nhow to sample and condition from a small Hakaru program.\n\n\nExamples\n\n\nHere we go through several more involved examples of the kinds of\nproblems Hakaru is uniquely well-suited to solve.\n\n\nIn particular, we describe a model for Gaussian Mixture Models and\nusing a form of Bayesian Naives Bayes as applied to document\nclassification.\n\n\nLanguage Guide\n\n\nThe language section provides an overview of the syntax of Hakaru as\nwell as some of the primitives in the language.\n\n\nRandom Primitives\n\n\nThese are the built-in probability distributions.\n\n\nLet and Bind\n\n\nThis is how we can give names to subexpressions and a\ndraw from a probability distribution.\n\n\nConditionals\n\n\nHakaru supports a restricted \nif\n expression\n\n\nTypes and Coercions\n\n\nHakaru is a simply-typed language. This section\ndescribes the types available and functions for\nmoving between them.\n\n\nFunctions\n\n\nDefining and using functions\n\n\nDatatypes and match\n\n\nHakaru supports a few built-in datatypes, and offers functionality for\ntaking them apart and reconstructing them.\n\n\nArrays and loops\n\n\nWe offer special support for arrays, and for probability\ndistributions over arrays.\nWe also express loops that compute sums and products.\n\n\nTransformations\n\n\nHakaru implements its inference algorithms predominately as\nprogram transformations. The following are the major ones\nour system provides.\n\n\nExpect\n\n\nDisintegrate\n\n\nSimplify\n\n\nMetropolis Hastings\n\n\nInternals\n\n\nThe internals section of the manual provides some insight into how\nHakaru is implemented and offers guidance into how the system can\nbe extended.\n\n\nAST\n\n\nABT\n\n\nDatums\n\n\nCoercions\n\n\nTransformations\n\n\nTesting\n\n\nAdding a Language Feature", 
             "title": "Home"
         }, 
         {
@@ -71,9 +71,9 @@
             "title": "Datatypes and match"
         }, 
         {
-            "location": "/#arrays", 
-            "text": "We offer special support for arrays, and for probability\ndistributions over arrays.", 
-            "title": "Arrays"
+            "location": "/#arrays-and-loops", 
+            "text": "We offer special support for arrays, and for probability\ndistributions over arrays.\nWe also express loops that compute sums and products.", 
+            "title": "Arrays and loops"
         }, 
         {
             "location": "/#transformations", 
@@ -207,22 +207,22 @@
         }, 
         {
             "location": "/lang/datatypes/", 
-            "text": "Data types and Match\n\n\nHakaru with several built-in data types.\n\n\n\n\nPair\n\n\nUnit\n\n\nEither\n\n\nBool\n\n\n\n\nMatch\n\n\nWe use \nmatch\n to deconstruct out data types\nand access their elements.\n\n\nmatch (1,2):\n  (x,y): x + y", 
+            "text": "Data types and Match\n\n\nHakaru with several built-in data types.\n\n\n\n\npair\n\n\nunit\n\n\neither\n\n\nbool\n\n\n\n\nMatch\n\n\nWe use \nmatch\n to deconstruct out data types\nand access their elements.\n\n\nmatch left(3). either(int,bool):\n  left(x) : 1\n  right(x): 2\n\n\n\n\nWe do include special syntax for pairs\n\n\nmatch (1,2):\n  (x,y): x + y", 
             "title": "Datatypes and match"
         }, 
         {
             "location": "/lang/datatypes/#data-types-and-match", 
-            "text": "Hakaru with several built-in data types.   Pair  Unit  Either  Bool", 
+            "text": "Hakaru with several built-in data types.   pair  unit  either  bool", 
             "title": "Data types and Match"
         }, 
         {
             "location": "/lang/datatypes/#match", 
-            "text": "We use  match  to deconstruct out data types\nand access their elements.  match (1,2):\n  (x,y): x + y", 
+            "text": "We use  match  to deconstruct out data types\nand access their elements.  match left(3). either(int,bool):\n  left(x) : 1\n  right(x): 2  We do include special syntax for pairs  match (1,2):\n  (x,y): x + y", 
             "title": "Match"
         }, 
         {
             "location": "/lang/arrays/", 
-            "text": "Arrays and Plate\n\n\nHakaru provides special syntax for arrays, which\nis distinct from the other data types.\n\n\nArray\n\n\nTo construct arrays, we provide an index variable, size argument, and\nan expression body. This body is evaluated for each index of the\narray. For example, to construct the array \n[0,1,2,3]\n:\n\n\narray i of 4: i\n\n\n\n\nArray Literals\n\n\nWe can also create arrays using the literal syntax a comma delimited\nlist surrounded by brackets: \n[0,1,2,3]\n\n\nPlate\n\n\nBeyond, arrays Hakaru includes special syntax for describing measures\nover arrays called \nplate\n. Plate using the same syntax as \narray\n but\nthe body must have a measure type. It returns a measure over arrays.\nFor example, if we wish to have a distribution over three independent\nnormal distributions we would do so as follows:\n\n\nplate _ of 3: normal(0,1)", 
+            "text": "Arrays and Plate\n\n\nHakaru provides special syntax for arrays, which\nis distinct from the other data types.\n\n\nArrays\n\n\nTo construct arrays, we provide an index variable, size argument, and\nan expression body. This body is evaluated for each index of the\narray. For example, to construct the array \n[0,1,2,3]\n:\n\n\narray i of 4: i\n\n\n\n\nArray Literals\n\n\nWe can also create arrays using the literal syntax a comma delimited\nlist surrounded by brackets: \n[0,1,2,3]\n\n\nPlate\n\n\nBeyond, arrays Hakaru includes special syntax for describing measures\nover arrays called \nplate\n. Plate using the same syntax as \narray\n but\nthe body must have a measure type. It returns a measure over arrays.\nFor example, if we wish to have a distribution over three independent\nnormal distributions we would do so as follows:\n\n\nplate _ of 3: normal(0,1)\n\n\n\n\nArray size and indexing\n\n\nIf \na\n is an array, then \nsize(a)\n is its number of elements, which is a \nnat\n.\nIf \ni\n is a \nnat\n then \na[i]\n is the element of \na\n at index \ni\n.\nIndices start at zero, so the maximum valid value of \ni\n is \nsize(a)-1\n.\n\n\nLoops\n\n\nWe also express loops that compute sums (\nsummate\n) and products (\nproduct\n).\nThe syntax of these loops begins by declaring an \ninclusive\n lower bound and\nan \nexclusive\n upper bound.  For example, the factorial of \nn\n is not\n\nproduct i from 0 to n: i\n but rather \nproduct i from 0 to n+1: i\n.\nThis convention takes some getting used to but it makes it easy to deal\nwith arrays.  For example, if \na\n is an array of numbers then their sum is\n\nsummate i from 0 to size(a): a[i]\n.", 
             "title": "Arrays"
         }, 
         {
@@ -231,9 +231,9 @@
             "title": "Arrays and Plate"
         }, 
         {
-            "location": "/lang/arrays/#array", 
+            "location": "/lang/arrays/#arrays", 
             "text": "To construct arrays, we provide an index variable, size argument, and\nan expression body. This body is evaluated for each index of the\narray. For example, to construct the array  [0,1,2,3] :  array i of 4: i", 
-            "title": "Array"
+            "title": "Arrays"
         }, 
         {
             "location": "/lang/arrays/#array-literals", 
@@ -244,6 +244,16 @@
             "location": "/lang/arrays/#plate", 
             "text": "Beyond, arrays Hakaru includes special syntax for describing measures\nover arrays called  plate . Plate using the same syntax as  array  but\nthe body must have a measure type. It returns a measure over arrays.\nFor example, if we wish to have a distribution over three independent\nnormal distributions we would do so as follows:  plate _ of 3: normal(0,1)", 
             "title": "Plate"
+        }, 
+        {
+            "location": "/lang/arrays/#array-size-and-indexing", 
+            "text": "If  a  is an array, then  size(a)  is its number of elements, which is a  nat .\nIf  i  is a  nat  then  a[i]  is the element of  a  at index  i .\nIndices start at zero, so the maximum valid value of  i  is  size(a)-1 .", 
+            "title": "Array size and indexing"
+        }, 
+        {
+            "location": "/lang/arrays/#loops", 
+            "text": "We also express loops that compute sums ( summate ) and products ( product ).\nThe syntax of these loops begins by declaring an  inclusive  lower bound and\nan  exclusive  upper bound.  For example, the factorial of  n  is not product i from 0 to n: i  but rather  product i from 0 to n+1: i .\nThis convention takes some getting used to but it makes it easy to deal\nwith arrays.  For example, if  a  is an array of numbers then their sum is summate i from 0 to size(a): a[i] .", 
+            "title": "Loops"
         }, 
         {
             "location": "/transforms/expect/", 
@@ -282,12 +292,12 @@
         }, 
         {
             "location": "/transforms/simplify/", 
-            "text": "Simplify transformation\n\n\nThe simplify transformation provides a way to \nautomaticaly improve our programs.", 
+            "text": "Simplify transformation\n\n\nThe simplify transformation provides a way to automaticaly improve our\nprograms. Simplify works by turning our programs into their expectation\nrepresentation and sending to Maple to be algebraically-simplified.\n\n\nFor example, the following represents a program from values of type\n\nprob\n to a measure of real numbers.\n\n\nfn a prob:\n  x \n~ normal(a,1)\n  y \n~ normal(x,1)\n  z \n~ normal(y,1)\n  return z\n\n\n\n\nAnd it will simplify to the following equivalent program.\n\n\nfn a prob: normal(prob2real(a), sqrt(3))", 
             "title": "Simplify"
         }, 
         {
             "location": "/transforms/simplify/#simplify-transformation", 
-            "text": "The simplify transformation provides a way to \nautomaticaly improve our programs.", 
+            "text": "The simplify transformation provides a way to automaticaly improve our\nprograms. Simplify works by turning our programs into their expectation\nrepresentation and sending to Maple to be algebraically-simplified.  For example, the following represents a program from values of type prob  to a measure of real numbers.  fn a prob:\n  x  ~ normal(a,1)\n  y  ~ normal(x,1)\n  z  ~ normal(y,1)\n  return z  And it will simplify to the following equivalent program.  fn a prob: normal(prob2real(a), sqrt(3))", 
             "title": "Simplify transformation"
         }, 
         {
@@ -332,8 +342,13 @@
         }, 
         {
             "location": "/internals/abt/", 
-            "text": "", 
+            "text": "Abstract Binding Trees\n\n\nHakaru makes use of many program transformations in its codebase.\nBecause of this, a special mechanism is included for handing\nvariable bindings and substitutions. We abstract this into its\nown typeclass called \nABT\n.\n\n\nBelow is an excerpt of this typeclass\n\n\nclass ABT (syn :: ([k] -\n k -\n *) -\n k -\n *) (abt :: [k] -\n k -\n *) | abt -\n syn where\n    -- Smart constructors for building a 'View' and then injecting it into the @abt@.\n    syn  :: syn abt  a -\n abt '[] a\n    var  :: Variable a -\n abt '[] a\n    bind :: Variable a -\n abt xs b -\n abt (a ': xs) b\n    caseBind :: abt (x ': xs) a -\n (Variable x -\n abt xs a -\n r) -\n r\n    ...", 
             "title": "ABT"
+        }, 
+        {
+            "location": "/internals/abt/#abstract-binding-trees", 
+            "text": "Hakaru makes use of many program transformations in its codebase.\nBecause of this, a special mechanism is included for handing\nvariable bindings and substitutions. We abstract this into its\nown typeclass called  ABT .  Below is an excerpt of this typeclass  class ABT (syn :: ([k] -  k -  *) -  k -  *) (abt :: [k] -  k -  *) | abt -  syn where\n    -- Smart constructors for building a 'View' and then injecting it into the @abt@.\n    syn  :: syn abt  a -  abt '[] a\n    var  :: Variable a -  abt '[] a\n    bind :: Variable a -  abt xs b -  abt (a ': xs) b\n    caseBind :: abt (x ': xs) a -  (Variable x -  abt xs a -  r) -  r\n    ...", 
+            "title": "Abstract Binding Trees"
         }, 
         {
             "location": "/internals/datums/", 
@@ -357,12 +372,17 @@
         }, 
         {
             "location": "/internals/newfeature/", 
-            "text": "", 
+            "text": "Adding a feature to the Hakaru language\n\n\nTo add a feature to the Hakaru language you must\n\n\n\n\nAdd an entry to the AST\n\n\nUpdate symbol resolution and optionally the parser to recognize this construct\n\n\nUpdate the pretty printers if this is something exposed to users\n\n\nUpdate the typechecker to handle it\n\n\nUpdate all the program transformations (Expect, Disintegrate, Simplify, etc) to handle it\n\n\nUpdate the sampler if this primitive is intended to exist at runtime\n\n\nUpdate the compilers to emit the right code for this symbol\n\n\n\n\nWe give an example of what this looks like by adding \ndouble\n to the language.", 
             "title": "Adding a Language Feautre"
         }, 
         {
+            "location": "/internals/newfeature/#adding-a-feature-to-the-hakaru-language", 
+            "text": "To add a feature to the Hakaru language you must   Add an entry to the AST  Update symbol resolution and optionally the parser to recognize this construct  Update the pretty printers if this is something exposed to users  Update the typechecker to handle it  Update all the program transformations (Expect, Disintegrate, Simplify, etc) to handle it  Update the sampler if this primitive is intended to exist at runtime  Update the compilers to emit the right code for this symbol   We give an example of what this looks like by adding  double  to the language.", 
+            "title": "Adding a feature to the Hakaru language"
+        }, 
+        {
             "location": "/examples/", 
-            "text": "Examples\n\n\nGaussian Mixture Model\n\n\nBelow is a model for a Gaussian Mixture model. This can be seen\nas a Bayesian version of K-means clustering.\n\n\n# Prelude to define dirichlet\ndef add(a prob, b prob):\n    a + b\n\ndef sum(a array(prob)):\n    reduce(add, 0, a)\n\ndef normalize(x array(prob)):\n    total = sum(x)\n    array i of size(x):\n       x[i] / total\n\ndef dirichlet(as array(prob)):\n    xs \n~ plate i of int2nat(size(as)-1):\n            beta(summate j from 0 to i:\n                   as[j], as[i+1])\n    return array i of size(as):\n             x = product j from i to int2nat(size(as)-2): xs[j]\n             x * if i==0: 1 else: real2prob(1-xs[int2nat(i-1)])\n\n\n# num of clusters\nK = 5\n# num of points\nN = 20\n\n# prior probability of picking cluster K\npi  \n~ dirichlet(array _ of K: 1)\n# prior on mean and precision\nmu  \n~ plate _ of K:\n         normal(0, 5e-9)\ntau \n~ plate _ of K:\n         gamma(2, 0.05)\n# observed data\nx   \n~ plate _ of N:\n         i \n~ categorical(pi)\n         normal(mu[i], tau[i])\n\nreturn (x, mu). pair(array(real), array(real))\n\n\n\n\nLatent Dirichlet Allocation\n\n\nBelow is the LDA topic model.\n\n\nK = 2 # number of topics\nM = 3 # number of docs\nV = 7 # size of vocabulary\n\n# number of words in each document\ndoc = [4, 5, 3]\n\ntopic_prior = array _ of K: 1.0\nword_prior  = array _ of V: 1.0\n\nphi \n~ plate _ of K:     # word dist for topic k\n         dirichlet(word_prior)\n\n# likelihood\nz   \n~ plate m of M:\n         theta \n~ dirichlet(topic_prior)\n         plate _ of doc[m]: # topic marker for word n in doc m\n           categorical(theta)\n\nw   \n~ plate m of M: # for doc m\n         plate n of doc[m]: # for word n in doc m\n           categorical(phi[z[m][n]])\n\nreturn (w, z)", 
+            "text": "Examples\n\n\nGaussian Mixture Model\n\n\nBelow is a model for a Gaussian Mixture model. This can be seen\nas a Bayesian version of K-means clustering.\n\n\n# Prelude to define dirichlet\ndef add(a prob, b prob):\n    a + b\n\ndef sum(a array(prob)):\n    reduce(add, 0, a)\n\ndef normalize(x array(prob)):\n    total = sum(x)\n    array i of size(x):\n       x[i] / total\n\ndef dirichlet(as array(prob)):\n    xs \n~ plate i of int2nat(size(as)-1):\n            beta(summate j from i+1 to size(as): as[j],\n                 as[i])\n    return array i of size(as):\n             x = product j from 0 to i: xs[j]\n             x * if i+1==size(as): 1 else: real2prob(1-xs[i])\n\n\n# num of clusters\nK = 5\n# num of points\nN = 20\n\n# prior probability of picking cluster K\npi  \n~ dirichlet(array _ of K: 1)\n# prior on mean and precision\nmu  \n~ plate _ of K:\n         normal(0, 5e-9)\ntau \n~ plate _ of K:\n         gamma(2, 0.05)\n# observed data\nx   \n~ plate _ of N:\n         i \n~ categorical(pi)\n         normal(mu[i], tau[i])\n\nreturn (x, mu). pair(array(real), array(real))\n\n\n\n\nLatent Dirichlet Allocation\n\n\nBelow is the LDA topic model.\n\n\nK = 2 # number of topics\nM = 3 # number of docs\nV = 7 # size of vocabulary\n\n# number of words in each document\ndoc = [4, 5, 3]\n\ntopic_prior = array _ of K: 1.0\nword_prior  = array _ of V: 1.0\n\nphi \n~ plate _ of K:     # word dist for topic k\n         dirichlet(word_prior)\n\n# likelihood\nz   \n~ plate m of M:\n         theta \n~ dirichlet(topic_prior)\n         plate _ of doc[m]: # topic marker for word n in doc m\n           categorical(theta)\n\nw   \n~ plate m of M: # for doc m\n         plate n of doc[m]: # for word n in doc m\n           categorical(phi[z[m][n]])\n\nreturn (w, z)", 
             "title": "Examples"
         }, 
         {
@@ -372,7 +392,7 @@
         }, 
         {
             "location": "/examples/#gaussian-mixture-model", 
-            "text": "Below is a model for a Gaussian Mixture model. This can be seen\nas a Bayesian version of K-means clustering.  # Prelude to define dirichlet\ndef add(a prob, b prob):\n    a + b\n\ndef sum(a array(prob)):\n    reduce(add, 0, a)\n\ndef normalize(x array(prob)):\n    total = sum(x)\n    array i of size(x):\n       x[i] / total\n\ndef dirichlet(as array(prob)):\n    xs  ~ plate i of int2nat(size(as)-1):\n            beta(summate j from 0 to i:\n                   as[j], as[i+1])\n    return array i of size(as):\n             x = product j from i to int2nat(size(as)-2): xs[j]\n             x * if i==0: 1 else: real2prob(1-xs[int2nat(i-1)])\n\n\n# num of clusters\nK = 5\n# num of points\nN = 20\n\n# prior probability of picking cluster K\npi   ~ dirichlet(array _ of K: 1)\n# prior on mean and precision\nmu   ~ plate _ of K:\n         normal(0, 5e-9)\ntau  ~ plate _ of K:\n         gamma(2, 0.05)\n# observed data\nx    ~ plate _ of N:\n         i  ~ categorical(pi)\n         normal(mu[i], tau[i])\n\nreturn (x, mu). pair(array(real), array(real))", 
+            "text": "Below is a model for a Gaussian Mixture model. This can be seen\nas a Bayesian version of K-means clustering.  # Prelude to define dirichlet\ndef add(a prob, b prob):\n    a + b\n\ndef sum(a array(prob)):\n    reduce(add, 0, a)\n\ndef normalize(x array(prob)):\n    total = sum(x)\n    array i of size(x):\n       x[i] / total\n\ndef dirichlet(as array(prob)):\n    xs  ~ plate i of int2nat(size(as)-1):\n            beta(summate j from i+1 to size(as): as[j],\n                 as[i])\n    return array i of size(as):\n             x = product j from 0 to i: xs[j]\n             x * if i+1==size(as): 1 else: real2prob(1-xs[i])\n\n\n# num of clusters\nK = 5\n# num of points\nN = 20\n\n# prior probability of picking cluster K\npi   ~ dirichlet(array _ of K: 1)\n# prior on mean and precision\nmu   ~ plate _ of K:\n         normal(0, 5e-9)\ntau  ~ plate _ of K:\n         gamma(2, 0.05)\n# observed data\nx    ~ plate _ of N:\n         i  ~ categorical(pi)\n         normal(mu[i], tau[i])\n\nreturn (x, mu). pair(array(real), array(real))", 
             "title": "Gaussian Mixture Model"
         }, 
         {

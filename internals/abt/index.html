@@ -257,11 +257,27 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
+        <li class="main active"><a href="#abstract-binding-trees">Abstract Binding Trees</a></li>
+        
+    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-</div>
+<h1 id="abstract-binding-trees">Abstract Binding Trees</h1>
+<p>Hakaru makes use of many program transformations in its codebase.
+Because of this, a special mechanism is included for handing
+variable bindings and substitutions. We abstract this into its
+own typeclass called <code>ABT</code>.</p>
+<p>Below is an excerpt of this typeclass</p>
+<pre><code class="haskell">class ABT (syn :: ([k] -&gt; k -&gt; *) -&gt; k -&gt; *) (abt :: [k] -&gt; k -&gt; *) | abt -&gt; syn where
+    -- Smart constructors for building a 'View' and then injecting it into the @abt@.
+    syn  :: syn abt  a -&gt; abt '[] a
+    var  :: Variable a -&gt; abt '[] a
+    bind :: Variable a -&gt; abt xs b -&gt; abt (a ': xs) b
+    caseBind :: abt (x ': xs) a -&gt; (Variable x -&gt; abt xs a -&gt; r) -&gt; r
+    ...
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">

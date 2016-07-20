@@ -259,11 +259,16 @@
     
         <li class="main active"><a href="#arrays-and-plate">Arrays and Plate</a></li>
         
-            <li><a href="#array">Array</a></li>
+            <li><a href="#arrays">Arrays</a></li>
         
             <li><a href="#array-literals">Array Literals</a></li>
         
             <li><a href="#plate">Plate</a></li>
+        
+            <li><a href="#array-size-and-indexing">Array size and indexing</a></li>
+        
+    
+        <li class="main "><a href="#loops">Loops</a></li>
         
     
     </ul>
@@ -273,7 +278,7 @@
 <h1 id="arrays-and-plate">Arrays and Plate</h1>
 <p>Hakaru provides special syntax for arrays, which
 is distinct from the other data types.</p>
-<h2 id="array">Array</h2>
+<h2 id="arrays">Arrays</h2>
 <p>To construct arrays, we provide an index variable, size argument, and
 an expression body. This body is evaluated for each index of the
 array. For example, to construct the array <code>[0,1,2,3]</code>:</p>
@@ -290,7 +295,20 @@ the body must have a measure type. It returns a measure over arrays.
 For example, if we wish to have a distribution over three independent
 normal distributions we would do so as follows:</p>
 <pre><code class="nohighlight">plate _ of 3: normal(0,1)
-</code></pre></div>
+</code></pre>
+
+<h2 id="array-size-and-indexing">Array size and indexing</h2>
+<p>If <code>a</code> is an array, then <code>size(a)</code> is its number of elements, which is a <code>nat</code>.
+If <code>i</code> is a <code>nat</code> then <code>a[i]</code> is the element of <code>a</code> at index <code>i</code>.
+Indices start at zero, so the maximum valid value of <code>i</code> is <code>size(a)-1</code>.</p>
+<h1 id="loops">Loops</h1>
+<p>We also express loops that compute sums (<code>summate</code>) and products (<code>product</code>).
+The syntax of these loops begins by declaring an <strong>inclusive</strong> lower bound and
+an <strong>exclusive</strong> upper bound.  For example, the factorial of <code>n</code> is not
+<code>product i from 0 to n: i</code> but rather <code>product i from 0 to n+1: i</code>.
+This convention takes some getting used to but it makes it easy to deal
+with arrays.  For example, if <code>a</code> is an array of numbers then their sum is
+<code>summate i from 0 to size(a): a[i]</code>.</p></div>
         </div>
 
         <footer class="col-md-12">

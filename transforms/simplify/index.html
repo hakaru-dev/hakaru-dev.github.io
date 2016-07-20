@@ -265,8 +265,21 @@
             <div class="col-md-9" role="main">
 
 <h1 id="simplify-transformation">Simplify transformation</h1>
-<p>The simplify transformation provides a way to 
-automaticaly improve our programs.</p></div>
+<p>The simplify transformation provides a way to automaticaly improve our
+programs. Simplify works by turning our programs into their expectation
+representation and sending to Maple to be algebraically-simplified.</p>
+<p>For example, the following represents a program from values of type
+<code>prob</code> to a measure of real numbers.</p>
+<pre><code>fn a prob:
+  x &lt;~ normal(a,1)
+  y &lt;~ normal(x,1)
+  z &lt;~ normal(y,1)
+  return z
+</code></pre>
+
+<p>And it will simplify to the following equivalent program.</p>
+<pre><code>fn a prob: normal(prob2real(a), sqrt(3))
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">

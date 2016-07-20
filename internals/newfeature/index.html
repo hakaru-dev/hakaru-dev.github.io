@@ -257,11 +257,25 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
+        <li class="main active"><a href="#adding-a-feature-to-the-hakaru-language">Adding a feature to the Hakaru language</a></li>
+        
+    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-</div>
+<h1 id="adding-a-feature-to-the-hakaru-language">Adding a feature to the Hakaru language</h1>
+<p>To add a feature to the Hakaru language you must</p>
+<ul>
+<li>Add an entry to the AST</li>
+<li>Update symbol resolution and optionally the parser to recognize this construct</li>
+<li>Update the pretty printers if this is something exposed to users</li>
+<li>Update the typechecker to handle it</li>
+<li>Update all the program transformations (Expect, Disintegrate, Simplify, etc) to handle it</li>
+<li>Update the sampler if this primitive is intended to exist at runtime</li>
+<li>Update the compilers to emit the right code for this symbol</li>
+</ul>
+<p>We give an example of what this looks like by adding <code>double</code> to the language.</p></div>
         </div>
 
         <footer class="col-md-12">

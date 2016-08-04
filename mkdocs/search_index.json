@@ -222,7 +222,7 @@
         }, 
         {
             "location": "/lang/arrays/", 
-            "text": "Arrays and Plate\n\n\nHakaru provides special syntax for arrays, which\nis distinct from the other data types.\n\n\nArrays\n\n\nTo construct arrays, we provide an index variable, size argument, and\nan expression body. This body is evaluated for each index of the\narray. For example, to construct the array \n[0,1,2,3]\n:\n\n\narray i of 4: i\n\n\n\n\nArray Literals\n\n\nWe can also create arrays using the literal syntax a comma delimited\nlist surrounded by brackets: \n[0,1,2,3]\n\n\nPlate\n\n\nBeyond, arrays Hakaru includes special syntax for describing measures\nover arrays called \nplate\n. Plate using the same syntax as \narray\n but\nthe body must have a measure type. It returns a measure over arrays.\nFor example, if we wish to have a distribution over three independent\nnormal distributions we would do so as follows:\n\n\nplate _ of 3: normal(0,1)\n\n\n\n\nArray size and indexing\n\n\nIf \na\n is an array, then \nsize(a)\n is its number of elements, which is a \nnat\n.\nIf \ni\n is a \nnat\n then \na[i]\n is the element of \na\n at index \ni\n.\nIndices start at zero, so the maximum valid value of \ni\n is \nsize(a)-1\n.\n\n\nLoops\n\n\nWe also express loops that compute sums (\nsummate\n) and products (\nproduct\n).\nThe syntax of these loops begins by declaring an \ninclusive\n lower bound and\nan \nexclusive\n upper bound.  For example, the factorial of \nn\n is not\n\nproduct i from 0 to n: i\n but rather \nproduct i from 0 to n+1: i\n.\nThis convention takes some getting used to but it makes it easy to deal\nwith arrays.  For example, if \na\n is an array of numbers then their sum is\n\nsummate i from 0 to size(a): a[i]\n.", 
+            "text": "Arrays and Plate\n\n\nHakaru provides special syntax for arrays, which\nis distinct from the other data types.\n\n\nArrays\n\n\nTo construct arrays, we provide an index variable, size argument, and\nan expression body. This body is evaluated for each index of the\narray. For example, to construct the array \n[0,1,2,3]\n:\n\n\narray i of 4: i\n\n\n\n\nArray Literals\n\n\nWe can also create arrays using the literal syntax a comma delimited\nlist surrounded by brackets: \n[0,1,2,3]\n\n\nPlate\n\n\nBeyond, arrays Hakaru includes special syntax for describing measures\nover arrays called \nplate\n. Plate using the same syntax as \narray\n but\nthe body must have a measure type. It returns a measure over arrays.\nFor example, if we wish to have a distribution over three independent\nnormal distributions we would do so as follows:\n\n\nplate _ of 3: normal(0,1)\n\n\n\n\nArray size and indexing\n\n\nIf \na\n is an array, then \nsize(a)\n is its number of elements, which is a \nnat\n.\nIf \ni\n is a \nnat\n then \na[i]\n is the element of \na\n at index \ni\n.\nIndices start at zero, so the maximum valid value of \ni\n is \nsize(a)-1\n.\n\n\nLoops\n\n\nWe also express loops that compute sums (\nsummate\n) and products (\nproduct\n).\nThe syntax of these loops begins by declaring an \ninclusive\n lower bound and\nan \nexclusive\n upper bound.  For example, the factorial of \nn\n is not\n\nproduct i from 1 to n: i\n but rather \nproduct i from 1 to n+1: i\n.\nThis convention takes some getting used to but it makes it easy to deal\nwith arrays.  For example, if \na\n is an array of numbers then their sum is\n\nsummate i from 0 to size(a): a[i]\n.", 
             "title": "Arrays"
         }, 
         {
@@ -252,7 +252,7 @@
         }, 
         {
             "location": "/lang/arrays/#loops", 
-            "text": "We also express loops that compute sums ( summate ) and products ( product ).\nThe syntax of these loops begins by declaring an  inclusive  lower bound and\nan  exclusive  upper bound.  For example, the factorial of  n  is not product i from 0 to n: i  but rather  product i from 0 to n+1: i .\nThis convention takes some getting used to but it makes it easy to deal\nwith arrays.  For example, if  a  is an array of numbers then their sum is summate i from 0 to size(a): a[i] .", 
+            "text": "We also express loops that compute sums ( summate ) and products ( product ).\nThe syntax of these loops begins by declaring an  inclusive  lower bound and\nan  exclusive  upper bound.  For example, the factorial of  n  is not product i from 1 to n: i  but rather  product i from 1 to n+1: i .\nThis convention takes some getting used to but it makes it easy to deal\nwith arrays.  For example, if  a  is an array of numbers then their sum is summate i from 0 to size(a): a[i] .", 
             "title": "Loops"
         }, 
         {
@@ -277,7 +277,7 @@
         }, 
         {
             "location": "/transforms/disintegrate/", 
-            "text": "Disintegrations transformation\n\n\nThe disintegration transformation takes as input a program\nrepresenting a joint probability distribution, and returns\na program which represents an posterior distribution.\n\n\nFor example, if we have the following joint distribution \nhello.hk\n\n\n\u03b8 \n~ normal(0,1)\nx \n~ normal(\u03b8,1)\nreturn (x,\u03b8)\n\n\n\n\nWhen we call \ndisintegrate hello.hk\n we obtain:\n\n\nfn x2 real: \n \u03b8 \n~ normal(0, 1)\n x7 \n~ weight((exp((negate(((x2 - \u03b8) ^ 2)) / 2))\n                / \n               1\n                / \n               sqrt((2 * pi))),\n              return ())\n return \u03b8\n\n\n\n\nThis represents the posterior on \n\u03b8\n given a value of \nx\n which\nhas been renamed \nx2\n.\n\n\nDensity\n\n\nFind the density of a probability distribution at a particular\npoint is actually a special-case of disintegrate and is\ndefined in terms of it.", 
+            "text": "Disintegrations transformation\n\n\nThe disintegration transformation takes as input a program\nrepresenting a joint probability distribution, and returns\na program which represents an posterior distribution.\n\n\nFor example, if we have the following joint distribution \nhello.hk\n\n\n\u03b8 \n~ normal(0,1)\nx \n~ normal(\u03b8,1)\nreturn (x,\u03b8)\n\n\n\n\nWhen we call \ndisintegrate hello.hk\n we obtain:\n\n\nfn x2 real: \n \u03b8 \n~ normal(0, 1)\n x7 \n~ weight((exp((negate(((x2 - \u03b8) ^ 2)) / 2))\n                / \n               1\n                / \n               sqrt((2 * pi))),\n              return ())\n return \u03b8\n\n\n\n\nThis represents the posterior on \n\u03b8\n given a value of \nx\n which\nhas been renamed \nx2\n.\n\n\nDensity\n\n\nFinding the density of a probability distribution at a particular\npoint is actually a special-case of disintegrate and is\ndefined in terms of it and the expectation transformation.", 
             "title": "Disintegrate"
         }, 
         {
@@ -287,7 +287,7 @@
         }, 
         {
             "location": "/transforms/disintegrate/#density", 
-            "text": "Find the density of a probability distribution at a particular\npoint is actually a special-case of disintegrate and is\ndefined in terms of it.", 
+            "text": "Finding the density of a probability distribution at a particular\npoint is actually a special-case of disintegrate and is\ndefined in terms of it and the expectation transformation.", 
             "title": "Density"
         }, 
         {
@@ -342,33 +342,53 @@
         }, 
         {
             "location": "/internals/abt/", 
-            "text": "Abstract Binding Trees\n\n\nHakaru makes use of many program transformations in its codebase.\nBecause of this, a special mechanism is included for handing\nvariable bindings and substitutions. We abstract this into its\nown typeclass called \nABT\n.\n\n\nBelow is an excerpt of this typeclass\n\n\nclass ABT (syn :: ([k] -\n k -\n *) -\n k -\n *) (abt :: [k] -\n k -\n *) | abt -\n syn where\n    -- Smart constructors for building a 'View' and then injecting it into the @abt@.\n    syn  :: syn abt  a -\n abt '[] a\n    var  :: Variable a -\n abt '[] a\n    bind :: Variable a -\n abt xs b -\n abt (a ': xs) b\n    caseBind :: abt (x ': xs) a -\n (Variable x -\n abt xs a -\n r) -\n r\n    ...", 
+            "text": "Abstract Binding Trees\n\n\nHakaru makes use of many program transformations in its codebase.\nBecause of this, a special mechanism is included for handing\nvariable bindings and substitutions. We abstract this into its\nown typeclass called \nABT\n. This can be found in \nLanguage.Hakaru.Syntax.ABT\n.\n\n\nBelow is an excerpt of this typeclass\n\n\nclass ABT (syn :: ([k] -\n k -\n *) -\n k -\n *) (abt :: [k] -\n k -\n *) | abt -\n syn where\n    -- Smart constructors for building a 'View' and then injecting it into the @abt@.\n    syn  :: syn abt  a -\n abt '[] a\n    var  :: Variable a -\n abt '[] a\n    bind :: Variable a -\n abt xs b -\n abt (a ': xs) b\n    caseBind :: abt (x ': xs) a -\n (Variable x -\n abt xs a -\n r) -\n r\n    ...", 
             "title": "ABT"
         }, 
         {
             "location": "/internals/abt/#abstract-binding-trees", 
-            "text": "Hakaru makes use of many program transformations in its codebase.\nBecause of this, a special mechanism is included for handing\nvariable bindings and substitutions. We abstract this into its\nown typeclass called  ABT .  Below is an excerpt of this typeclass  class ABT (syn :: ([k] -  k -  *) -  k -  *) (abt :: [k] -  k -  *) | abt -  syn where\n    -- Smart constructors for building a 'View' and then injecting it into the @abt@.\n    syn  :: syn abt  a -  abt '[] a\n    var  :: Variable a -  abt '[] a\n    bind :: Variable a -  abt xs b -  abt (a ': xs) b\n    caseBind :: abt (x ': xs) a -  (Variable x -  abt xs a -  r) -  r\n    ...", 
+            "text": "Hakaru makes use of many program transformations in its codebase.\nBecause of this, a special mechanism is included for handing\nvariable bindings and substitutions. We abstract this into its\nown typeclass called  ABT . This can be found in  Language.Hakaru.Syntax.ABT .  Below is an excerpt of this typeclass  class ABT (syn :: ([k] -  k -  *) -  k -  *) (abt :: [k] -  k -  *) | abt -  syn where\n    -- Smart constructors for building a 'View' and then injecting it into the @abt@.\n    syn  :: syn abt  a -  abt '[] a\n    var  :: Variable a -  abt '[] a\n    bind :: Variable a -  abt xs b -  abt (a ': xs) b\n    caseBind :: abt (x ': xs) a -  (Variable x -  abt xs a -  r) -  r\n    ...", 
             "title": "Abstract Binding Trees"
         }, 
         {
             "location": "/internals/datums/", 
-            "text": "", 
+            "text": "Data representation\n\n\nData types are stored using a sum of product representation.\nThey can be found in \nLanguage.Hakaru.Syntax.Datum\n.", 
             "title": "Datums"
         }, 
         {
+            "location": "/internals/datums/#data-representation", 
+            "text": "Data types are stored using a sum of product representation.\nThey can be found in  Language.Hakaru.Syntax.Datum .", 
+            "title": "Data representation"
+        }, 
+        {
             "location": "/internals/coercions/", 
+            "text": "Coercions", 
+            "title": "Coercions"
+        }, 
+        {
+            "location": "/internals/coercions/#coercions", 
             "text": "", 
             "title": "Coercions"
         }, 
         {
             "location": "/internals/transforms/", 
-            "text": "", 
+            "text": "Program transformations in Hakaru", 
             "title": "Transformaitons"
         }, 
         {
-            "location": "/internals/testing/", 
+            "location": "/internals/transforms/#program-transformations-in-hakaru", 
             "text": "", 
+            "title": "Program transformations in Hakaru"
+        }, 
+        {
+            "location": "/internals/testing/", 
+            "text": "Testing infrastructure in Hakaru\n\n\nHakaru can be tested by running \ncabal test\n from the\nroot directory of the project.\n\n\nTests written in Hakaru will be found in the \ntests/\n\nsubdirectory at the root of the project. Tests written\nin Haskell can be found at \nhaskell/Tests/\n.", 
             "title": "Testing"
+        }, 
+        {
+            "location": "/internals/testing/#testing-infrastructure-in-hakaru", 
+            "text": "Hakaru can be tested by running  cabal test  from the\nroot directory of the project.  Tests written in Hakaru will be found in the  tests/ \nsubdirectory at the root of the project. Tests written\nin Haskell can be found at  haskell/Tests/ .", 
+            "title": "Testing infrastructure in Hakaru"
         }, 
         {
             "location": "/internals/newfeature/", 

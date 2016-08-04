@@ -268,7 +268,7 @@
 <p>Hakaru makes use of many program transformations in its codebase.
 Because of this, a special mechanism is included for handing
 variable bindings and substitutions. We abstract this into its
-own typeclass called <code>ABT</code>.</p>
+own typeclass called <code>ABT</code>. This can be found in <code>Language.Hakaru.Syntax.ABT</code>.</p>
 <p>Below is an excerpt of this typeclass</p>
 <pre><code class="haskell">class ABT (syn :: ([k] -&gt; k -&gt; *) -&gt; k -&gt; *) (abt :: [k] -&gt; k -&gt; *) | abt -&gt; syn where
     -- Smart constructors for building a 'View' and then injecting it into the @abt@.

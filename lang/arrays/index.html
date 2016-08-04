@@ -305,7 +305,7 @@ Indices start at zero, so the maximum valid value of <code>i</code> is <code>siz
 <p>We also express loops that compute sums (<code>summate</code>) and products (<code>product</code>).
 The syntax of these loops begins by declaring an <strong>inclusive</strong> lower bound and
 an <strong>exclusive</strong> upper bound.  For example, the factorial of <code>n</code> is not
-<code>product i from 0 to n: i</code> but rather <code>product i from 0 to n+1: i</code>.
+<code>product i from 1 to n: i</code> but rather <code>product i from 1 to n+1: i</code>.
 This convention takes some getting used to but it makes it easy to deal
 with arrays.  For example, if <code>a</code> is an array of numbers then their sum is
 <code>summate i from 0 to size(a): a[i]</code>.</p></div>

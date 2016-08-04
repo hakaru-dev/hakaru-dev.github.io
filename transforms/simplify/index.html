@@ -270,7 +270,7 @@ programs. Simplify works by turning our programs into their expectation
 representation and sending to Maple to be algebraically-simplified.</p>
 <p>For example, the following represents a program from values of type
 <code>prob</code> to a measure of real numbers.</p>
-<pre><code>fn a prob:
+<pre><code class="nohighlight">fn a prob:
   x &lt;~ normal(a,1)
   y &lt;~ normal(x,1)
   z &lt;~ normal(y,1)
@@ -278,7 +278,7 @@ representation and sending to Maple to be algebraically-simplified.</p>
 </code></pre>
 
 <p>And it will simplify to the following equivalent program.</p>
-<pre><code>fn a prob: normal(prob2real(a), sqrt(3))
+<pre><code class="nohighlight">fn a prob: normal(prob2real(a), sqrt(3))
 </code></pre></div>
         </div>
 

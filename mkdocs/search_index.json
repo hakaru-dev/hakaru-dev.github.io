@@ -107,18 +107,13 @@
         }, 
         {
             "location": "/intro/installation/", 
-            "text": "Installation\n\n\nInstall Hakaru by cloning the latest version from our Github repo\n\n\ngit clone https://github.com/hakaru-dev/hakaru\ncd hakaru\n\n\n\n\nHakaru can then be installed either with \ncabal install\n or \nstack install\n\n\nInstalling on Windows\n\n\nDue to a \nghc bug\n, until ghc 8.0\nis released Windows machines need to install the logfloat library separately\n\n\ncabal install -j logfloat -f -useffi\ncd hakaru\ncabal install\n\n\n\n\nMaple extension\n\n\nWithin Hakaru, we use \nMaple\n to perform\ncomputer-algebra guided optimizations. To get access to these optimizations\nyou must have a licensed copy of Maple installed.\n\n\nIn addition to this, we must autoload some Maple libraries that come\nwith the system to access this functionality\n\n\nexport LOCAL_MAPLE=\n`which maple`\n\ncd hakaru/maple\nmaple update-archive.mpl\necho 'libname := \n/path-to-hakaru/hakaru/maple\n,libname:' \n ~/.mapleinit\n\n\n\n\nUnder Windows the instructions become\n\n\nSETX LOCAL_MAPLE \npath to Maple bin directory\n\\cmaple.exe\n\ncd hakaru\\maple \ncmaple update-archive.mpl\necho 'libname := \nC:\\\\\npath to hakaru\n\\\\hakaru\\\\maple\n,libname:' \n \nC:\\\npath to maple\n\\lib\\maple.ini\n\n\n\n\n\nIf the Maple extension has been properly installed running\n\n\necho \nnormal(0,1)\n | simplify -\n\n\n\n\nshould return\n\n\nnormal(0, 1)\n\n\n\n\nIf the \nLOCAL_MAPLE\n environment variable is not set, then \nsimplify\n\ndefaults to invoking \nssh\n to access a remote installation of Maple.\nThe invocation is\n\n\n$MAPLE_SSH\n -l \n$MAPLE_USER\n \n$MAPLE_SERVER\n \n$MAPLE_COMMAND -q -t\n\n\n\n\n\nand defaults to\n\n\n/usr/bin/ssh -l ppaml karst.uits.iu.edu \nmaple -q -t", 
+            "text": "Installation\n\n\nInstall Hakaru by cloning the latest version from our Github repo\n\n\ngit clone https://github.com/hakaru-dev/hakaru\ncd hakaru\n\n\n\n\nHakaru can then be installed either with \ncabal install\n or \nstack install\n\n\nDue to a \nghc bug\n, Windows users\nusing GHC 7.10 and below need to install the logfloat library separately\n\n\ncabal install -j logfloat -f -useffi\ncd hakaru\ncabal install\n\n\n\n\nMaple extension\n\n\nWithin Hakaru, we use \nMaple\n to perform\ncomputer-algebra guided optimizations. To get access to these optimizations\nyou must have a licensed copy of Maple installed.\n\n\nIn addition to this, we must autoload some Maple libraries that come\nwith the system to access this functionality\n\n\nexport LOCAL_MAPLE=\n`which maple`\n\ncd hakaru/maple\nmaple update-archive.mpl\necho 'libname := \n/path-to-hakaru/hakaru/maple\n,libname:' \n ~/.mapleinit\n\n\n\n\nUnder Windows the instructions become\n\n\nSETX LOCAL_MAPLE \npath to Maple bin directory\n\\cmaple.exe\n\ncd hakaru\\maple \ncmaple update-archive.mpl\necho 'libname := \nC:\\\\\npath to hakaru\n\\\\hakaru\\\\maple\n,libname:' \n \nC:\\\npath to maple\n\\lib\\maple.ini\n\n\n\n\n\nIf the Maple extension has been properly installed running\n\n\necho \nnormal(0,1)\n | simplify -\n\n\n\n\nshould return\n\n\nnormal(0, 1)\n\n\n\n\nIf the \nLOCAL_MAPLE\n environment variable is not set, then \nsimplify\n\ndefaults to invoking \nssh\n to access a remote installation of Maple.\nThe invocation is\n\n\n$MAPLE_SSH\n -l \n$MAPLE_USER\n \n$MAPLE_SERVER\n \n$MAPLE_COMMAND -q -t\n\n\n\n\n\nand defaults to\n\n\n/usr/bin/ssh -l ppaml karst.uits.iu.edu \nmaple -q -t", 
             "title": "Installation"
         }, 
         {
             "location": "/intro/installation/#installation", 
-            "text": "Install Hakaru by cloning the latest version from our Github repo  git clone https://github.com/hakaru-dev/hakaru\ncd hakaru  Hakaru can then be installed either with  cabal install  or  stack install", 
+            "text": "Install Hakaru by cloning the latest version from our Github repo  git clone https://github.com/hakaru-dev/hakaru\ncd hakaru  Hakaru can then be installed either with  cabal install  or  stack install  Due to a  ghc bug , Windows users\nusing GHC 7.10 and below need to install the logfloat library separately  cabal install -j logfloat -f -useffi\ncd hakaru\ncabal install", 
             "title": "Installation"
-        }, 
-        {
-            "location": "/intro/installation/#installing-on-windows", 
-            "text": "Due to a  ghc bug , until ghc 8.0\nis released Windows machines need to install the logfloat library separately  cabal install -j logfloat -f -useffi\ncd hakaru\ncabal install", 
-            "title": "Installing on Windows"
         }, 
         {
             "location": "/intro/installation/#maple-extension", 
@@ -302,12 +297,12 @@
         }, 
         {
             "location": "/internals/ast/", 
-            "text": "Internal Representation of Hakaru terms\n\n\nDatakind\n\n\nTerm\n\n\nSCons and SArgs\n\n\nPrimOp\n\n\nMeasureOp\n\n\nArrayOp", 
+            "text": "Internal Representation of Hakaru terms\n\n\nThe Hakaru AST can be found defined in\n\nhaskell/Language/Hakaru/Syntax.AST.hs\n. It is made up of several parts which this section and the next one will explain.\n\n\nWe should note, this datatype makes use of\n\nAbstract Binding Trees\n\nwhich we discuss in more detail in the next\n\nsection\n. ABTs can be understood as a way to abstract\nthe use of variables in the AST. The advantage of this is it allows\nall variable substitution and manipulation logic to live in one place\nand not be specific to a particular AST.\n\n\nDatakind\n\n\nTerm\n\n\nSCons and SArgs\n\n\nPrimOp\n\n\nMeasureOp\n\n\nArrayOp", 
             "title": "AST and Hakaru Datakind"
         }, 
         {
             "location": "/internals/ast/#internal-representation-of-hakaru-terms", 
-            "text": "", 
+            "text": "The Hakaru AST can be found defined in haskell/Language/Hakaru/Syntax.AST.hs . It is made up of several parts which this section and the next one will explain.  We should note, this datatype makes use of Abstract Binding Trees \nwhich we discuss in more detail in the next section . ABTs can be understood as a way to abstract\nthe use of variables in the AST. The advantage of this is it allows\nall variable substitution and manipulation logic to live in one place\nand not be specific to a particular AST.", 
             "title": "Internal Representation of Hakaru terms"
         }, 
         {

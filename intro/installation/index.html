@@ -259,8 +259,6 @@
     
         <li class="main active"><a href="#installation">Installation</a></li>
         
-            <li><a href="#installing-on-windows">Installing on Windows</a></li>
-        
     
         <li class="main "><a href="#maple-extension">Maple extension</a></li>
         
@@ -276,9 +274,8 @@ cd hakaru
 </code></pre>
 
 <p>Hakaru can then be installed either with <code>cabal install</code> or <code>stack install</code></p>
-<h2 id="installing-on-windows">Installing on Windows</h2>
-<p>Due to a <a href="https://ghc.haskell.org/trac/ghc/ticket/3242">ghc bug</a>, until ghc 8.0
-is released Windows machines need to install the logfloat library separately</p>
+<p>Due to a <a href="https://ghc.haskell.org/trac/ghc/ticket/3242">ghc bug</a>, Windows users
+using GHC 7.10 and below need to install the logfloat library separately</p>
 <pre><code class="bash">cabal install -j logfloat -f -useffi
 cd hakaru
 cabal install

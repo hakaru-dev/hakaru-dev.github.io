@@ -278,7 +278,7 @@
 
 <h1 id="internal-representation-of-hakaru-terms">Internal Representation of Hakaru terms</h1>
 <p>The Hakaru AST can be found defined in
-<a href="https://github.com/hakaru-dev/hakaru/blob/master/haskell/Language/Hakaru/Syntax/AST.hs">haskell/Language/Hakaru/Syntax.AST.hs</a>. It is made up of several parts which this section and the next one will explain.</p>
+<a href="https://github.com/hakaru-dev/hakaru/blob/master/haskell/Language/Hakaru/Syntax/AST.hs">haskell/Language/Hakaru/Syntax/AST.hs</a>. It is made up of several parts which this section and the next one will explain.</p>
 <p>We should note, this datatype makes use of
 <a href="http://winterkoninkje.dreamwidth.org/103978.html">Abstract Binding Trees</a>
 which we discuss in more detail in the next
@@ -287,6 +287,8 @@ the use of variables in the AST. The advantage of this is it allows
 all variable substitution and manipulation logic to live in one place
 and not be specific to a particular AST.</p>
 <h2 id="datakind">Datakind</h2>
+<p>The AST is typed using the Hakaru kind, defined in <a href="https://github.com/hakaru-dev/hakaru/blob/master/haskell/Language/Hakaru/Types/DataKind.hs">haskell/Language/Types/DataKind.hs</a>. All Hakaru types are defined in terms of
+the primitives in this datakind.</p>
 <h2 id="term">Term</h2>
 <h2 id="scons-and-sargs">SCons and SArgs</h2>
 <h2 id="primop">PrimOp</h2>

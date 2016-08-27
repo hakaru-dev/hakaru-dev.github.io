@@ -297,17 +297,17 @@
         }, 
         {
             "location": "/internals/ast/", 
-            "text": "Internal Representation of Hakaru terms\n\n\nThe Hakaru AST can be found defined in\n\nhaskell/Language/Hakaru/Syntax.AST.hs\n. It is made up of several parts which this section and the next one will explain.\n\n\nWe should note, this datatype makes use of\n\nAbstract Binding Trees\n\nwhich we discuss in more detail in the next\n\nsection\n. ABTs can be understood as a way to abstract\nthe use of variables in the AST. The advantage of this is it allows\nall variable substitution and manipulation logic to live in one place\nand not be specific to a particular AST.\n\n\nDatakind\n\n\nTerm\n\n\nSCons and SArgs\n\n\nPrimOp\n\n\nMeasureOp\n\n\nArrayOp", 
+            "text": "Internal Representation of Hakaru terms\n\n\nThe Hakaru AST can be found defined in\n\nhaskell/Language/Hakaru/Syntax/AST.hs\n. It is made up of several parts which this section and the next one will explain.\n\n\nWe should note, this datatype makes use of\n\nAbstract Binding Trees\n\nwhich we discuss in more detail in the next\n\nsection\n. ABTs can be understood as a way to abstract\nthe use of variables in the AST. The advantage of this is it allows\nall variable substitution and manipulation logic to live in one place\nand not be specific to a particular AST.\n\n\nDatakind\n\n\nThe AST is typed using the Hakaru kind, defined in \nhaskell/Language/Types/DataKind.hs\n. All Hakaru types are defined in terms of\nthe primitives in this datakind.\n\n\nTerm\n\n\nSCons and SArgs\n\n\nPrimOp\n\n\nMeasureOp\n\n\nArrayOp", 
             "title": "AST and Hakaru Datakind"
         }, 
         {
             "location": "/internals/ast/#internal-representation-of-hakaru-terms", 
-            "text": "The Hakaru AST can be found defined in haskell/Language/Hakaru/Syntax.AST.hs . It is made up of several parts which this section and the next one will explain.  We should note, this datatype makes use of Abstract Binding Trees \nwhich we discuss in more detail in the next section . ABTs can be understood as a way to abstract\nthe use of variables in the AST. The advantage of this is it allows\nall variable substitution and manipulation logic to live in one place\nand not be specific to a particular AST.", 
+            "text": "The Hakaru AST can be found defined in haskell/Language/Hakaru/Syntax/AST.hs . It is made up of several parts which this section and the next one will explain.  We should note, this datatype makes use of Abstract Binding Trees \nwhich we discuss in more detail in the next section . ABTs can be understood as a way to abstract\nthe use of variables in the AST. The advantage of this is it allows\nall variable substitution and manipulation logic to live in one place\nand not be specific to a particular AST.", 
             "title": "Internal Representation of Hakaru terms"
         }, 
         {
             "location": "/internals/ast/#datakind", 
-            "text": "", 
+            "text": "The AST is typed using the Hakaru kind, defined in  haskell/Language/Types/DataKind.hs . All Hakaru types are defined in terms of\nthe primitives in this datakind.", 
             "title": "Datakind"
         }, 
         {

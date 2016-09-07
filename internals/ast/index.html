@@ -366,6 +366,19 @@ data Term :: ([Hakaru] -&gt; Hakaru -&gt; *) -&gt; Hakaru -&gt; * where
 </code></pre>
 
 <h2 id="scons-and-sargs">SCons and SArgs</h2>
+<p>When using <code>(:$)</code> we have a way to describe primitives where we
+know the number of arguments they should get. In that regard,
+SArgs is a typed list of abt terms indexed by its size.</p>
+<p><code>haskell
+-- | The arguments to a @(':$')@ node in the 'Term'; that is, a list
+-- of ASTs, where the whole list is indexed by a (type-level) list
+-- of the indices of each element.
+data SArgs :: ([Hakaru] -&gt; Hakaru -&gt; *) -&gt; [([Hakaru], Hakaru)] -&gt; *
+    where
+    End :: SArgs abt '[]
+    (:*) :: !(abt vars a)
+        -&gt; !(SArgs abt args)
+        -&gt; SArgs abt ( '(vars, a) ': args)</code>haskell</p>
 <h2 id="primop">PrimOp</h2>
 <h2 id="measureop">MeasureOp</h2>
 <h2 id="arrayop">ArrayOp</h2></div>

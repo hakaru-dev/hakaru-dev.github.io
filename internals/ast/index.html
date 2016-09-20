@@ -381,7 +381,9 @@ data SArgs :: ([Hakaru] -&gt; Hakaru -&gt; *) -&gt; [([Hakaru], Hakaru)] -&gt; *
 </code></pre>
 
 <p>These are combined with SCons which describes the constructor, and
-the types it expects for its arguments.</p>
+the types it expects for its arguments. For example suppose we had
+an AST for a function <code>f</code> and it&rsquo;s argument <code>x</code>, we could construct
+a Term for applying <code>f</code> to <code>x</code> by writing <code>App_:$ f :* x :* End</code>.</p>
 <pre><code class="haskell">-- | The constructor of a @(':$')@ node in the 'Term'. Each of these
 -- constructors denotes a \&quot;normal\/standard\/basic\&quot; syntactic
 -- form (i.e., a generalized quantifier). In the literature, these

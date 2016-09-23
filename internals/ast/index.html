@@ -158,6 +158,12 @@
 </li>
 
                     
+                        
+<li >
+    <a href="../../transforms/hkc/">Compiling to C</a>
+</li>
+
+                    
                     </ul>
                 </li>
             
@@ -229,7 +235,7 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="next" href="../../transforms/simplify/">
+                    <a rel="next" href="../../transforms/hkc/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
@@ -265,11 +271,11 @@
         
             <li><a href="#scons-and-sargs">SCons and SArgs</a></li>
         
-            <li><a href="#primop">PrimOp</a></li>
-        
             <li><a href="#measureop">MeasureOp</a></li>
         
             <li><a href="#arrayop">ArrayOp</a></li>
+        
+            <li><a href="#primop">PrimOp</a></li>
         
     
     </ul>
@@ -454,9 +460,102 @@ data SCon :: [([Hakaru], Hakaru)] -&gt; Hakaru -&gt; * where
     Observe :: SCon '[ LC ('HMeasure a), LC a ] ('HMeasure a)
 </code></pre>
 
-<h2 id="primop">PrimOp</h2>
+<p>You&rsquo;ll notice in <code>SCon</code> there are definitions for PrimOp, MeasureOp, and ArrayOp
+these are done more organizational purposes and have constructions for the
+different categories of primitives.</p>
 <h2 id="measureop">MeasureOp</h2>
-<h2 id="arrayop">ArrayOp</h2></div>
+<p>Primitives of type measure are defined in MeasureOp.</p>
+<pre><code class="haskell">-- | Primitive operators to produce, consume, or transform
+-- distributions\/measures. This corresponds to the old @Mochastic@
+-- class, except that 'MBind' and 'Superpose_' are handled elsewhere
+-- since they are not simple operators. (Also 'Dirac' is handled
+-- elsewhere since it naturally fits with 'MBind', even though it
+-- is a siple operator.)
+data MeasureOp :: [Hakaru] -&gt; Hakaru -&gt; * where
+    Lebesgue    :: MeasureOp '[]                 'HReal
+    Counting    :: MeasureOp '[]                 'HInt
+    Categorical :: MeasureOp '[ 'HArray 'HProb ] 'HNat
+    Uniform     :: MeasureOp '[ 'HReal, 'HReal ] 'HReal
+    Normal      :: MeasureOp '[ 'HReal, 'HProb ] 'HReal
+    Poisson     :: MeasureOp '[ 'HProb         ] 'HNat
+    Gamma       :: MeasureOp '[ 'HProb, 'HProb ] 'HProb
+    Beta        :: MeasureOp '[ 'HProb, 'HProb ] 'HProb
+</code></pre>
+
+<h2 id="arrayop">ArrayOp</h2>
+<p>Primitives that involve manipulating value of type array,
+end up in ArrayOp.</p>
+<pre><code class="haskell">-- | Primitive operators for consuming or transforming arrays.
+data ArrayOp :: [Hakaru] -&gt; Hakaru -&gt; * where
+    Index  :: !(Sing a) -&gt; ArrayOp '[ 'HArray a, 'HNat ] a
+    Size   :: !(Sing a) -&gt; ArrayOp '[ 'HArray a ] 'HNat
+    Reduce :: !(Sing a) -&gt; ArrayOp '[ a ':-&gt; a ':-&gt; a, a, 'HArray a ] a
+</code></pre>
+
+<h2 id="primop">PrimOp</h2>
+<p>All primitive operations which don&rsquo;t return something
+of type array or measure are placed in PrimOp</p>
+<pre><code class="haskell">-- | Simple primitive functions, and constants.
+data PrimOp :: [Hakaru] -&gt; Hakaru -&gt; * where
+
+    -- -- -- Here we have /monomorphic/ operators
+    -- -- The Boolean operators
+    Not  :: PrimOp '[ HBool ] HBool
+    -- And, Or, Xor, Iff
+    Impl :: PrimOp '[ HBool, HBool ] HBool
+    -- Impl x y == Or (Not x) y
+    Diff :: PrimOp '[ HBool, HBool ] HBool
+    -- Diff x y == Not (Impl x y)
+    Nand :: PrimOp '[ HBool, HBool ] HBool
+    -- Nand aka Alternative Denial, Sheffer stroke
+    Nor  :: PrimOp '[ HBool, HBool ] HBool
+    -- Nor aka Joint Denial, aka Quine dagger, aka Pierce arrow
+
+    -- -- Trigonometry operators
+    Pi    :: PrimOp '[] 'HProb
+    Sin   :: PrimOp '[ 'HReal ] 'HReal
+    Cos   :: PrimOp '[ 'HReal ] 'HReal
+    Tan   :: PrimOp '[ 'HReal ] 'HReal
+    Asin  :: PrimOp '[ 'HReal ] 'HReal
+    Acos  :: PrimOp '[ 'HReal ] 'HReal
+    Atan  :: PrimOp '[ 'HReal ] 'HReal
+    Sinh  :: PrimOp '[ 'HReal ] 'HReal
+    Cosh  :: PrimOp '[ 'HReal ] 'HReal
+    Tanh  :: PrimOp '[ 'HReal ] 'HReal
+    Asinh :: PrimOp '[ 'HReal ] 'HReal
+    Acosh :: PrimOp '[ 'HReal ] 'HReal
+    Atanh :: PrimOp '[ 'HReal ] 'HReal
+
+    -- -- Other Real\/Prob-valued operators
+    RealPow   :: PrimOp '[ 'HProb, 'HReal ] 'HProb
+    Exp       :: PrimOp '[ 'HReal ] 'HProb
+    Log       :: PrimOp '[ 'HProb ] 'HReal
+    Infinity  :: HIntegrable a -&gt; PrimOp '[] a
+    GammaFunc :: PrimOp '[ 'HReal ] 'HProb
+    BetaFunc  :: PrimOp '[ 'HProb, 'HProb ] 'HProb
+
+    -- -- -- Here we have the /polymorphic/ operators
+    -- -- HEq and HOrd operators
+    Equal :: !(HEq  a) -&gt; PrimOp '[ a, a ] HBool
+    Less  :: !(HOrd a) -&gt; PrimOp '[ a, a ] HBool
+
+    -- -- HSemiring operators (the non-n-ary ones)
+    NatPow :: !(HSemiring a) -&gt; PrimOp '[ a, 'HNat ] a
+
+    -- -- HRing operators
+    Negate :: !(HRing a) -&gt; PrimOp '[ a ] a
+    Abs    :: !(HRing a) -&gt; PrimOp '[ a ] (NonNegative a)
+    Signum :: !(HRing a) -&gt; PrimOp '[ a ] a
+
+    -- -- HFractional operators
+    Recip :: !(HFractional a) -&gt; PrimOp '[ a ] a
+
+    -- -- HRadical operators
+    NatRoot :: !(HRadical a) -&gt; PrimOp '[ a, 'HNat ] a
+
+    -- -- HContinuous operators
+    Erf :: !(HContinuous a) -&gt; PrimOp '[ a ] a
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">

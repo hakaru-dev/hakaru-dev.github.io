@@ -272,7 +272,50 @@
 
 <h1 id="data-representation">Data representation</h1>
 <p>Data types are stored using a sum of product representation.
-They can be found in <code>Language.Hakaru.Syntax.Datum</code>.</p></div>
+They can be found in <code>Language.Hakaru.Syntax.Datum</code>.</p>
+<pre><code class="haskell">-- The first component is a hint for what the data constructor
+-- should be called when pretty-printing, giving error messages,
+-- etc. Like the hints for variable names, its value is not actually
+-- used to decide which constructor is meant or which pattern
+-- matches.
+data Datum :: (Hakaru -&gt; *) -&gt; Hakaru -&gt; * where
+    Datum
+        :: {-# UNPACK #-} !Text
+        -&gt; !(Sing (HData' t))
+        -&gt; !(DatumCode (Code t) ast (HData' t))
+        -&gt; Datum ast (HData' t)
+
+-- | The intermediate components of a data constructor. The intuition
+-- behind the two indices is that the @[[HakaruFun]]@ is a functor
+-- applied to the Hakaru type. Initially the @[[HakaruFun]]@ functor
+-- will be the 'Code' associated with the Hakaru type; hence it's
+-- the one-step unrolling of the fixed point for our recursive
+-- datatypes. But as we go along, we'll be doing induction on the
+-- @[[HakaruFun]]@ functor.
+data DatumCode :: [[HakaruFun]] -&gt; (Hakaru -&gt; *) -&gt; Hakaru -&gt; * where
+    -- Skip rightwards along the sum.
+    Inr :: !(DatumCode  xss abt a) -&gt; DatumCode (xs ': xss) abt a
+    -- Inject into the sum.
+    Inl :: !(DatumStruct xs abt a) -&gt; DatumCode (xs ': xss) abt a
+
+data DatumStruct :: [HakaruFun] -&gt; (Hakaru -&gt; *) -&gt; Hakaru -&gt; * where
+    -- BUG: haddock doesn't like annotations on GADT constructors
+    -- &lt;https://github.com/hakaru-dev/hakaru/issues/6&gt;
+
+    -- Combine components of the product. (\&quot;et\&quot; means \&quot;and\&quot; in Latin)
+    Et  :: !(DatumFun    x         abt a)
+        -&gt; !(DatumStruct xs        abt a)
+        -&gt;   DatumStruct (x ': xs) abt a
+
+    -- Close off the product.
+    Done :: DatumStruct '[] abt a
+
+data DatumFun :: HakaruFun -&gt; (Hakaru -&gt; *) -&gt; Hakaru -&gt; * where
+    -- Hit a leaf which isn't a recursive component of the datatype.
+    Konst :: !(ast b) -&gt; DatumFun ('K b) ast a
+    -- Hit a leaf which is a recursive component of the datatype.
+    Ident :: !(ast a) -&gt; DatumFun 'I     ast a
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">

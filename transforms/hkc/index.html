@@ -265,13 +265,15 @@
     
         <li class="main active"><a href="#hkc-compilation">HKC Compilation</a></li>
         
+            <li><a href="#type-conversions">Type Conversions</a></li>
+        
             <li><a href="#measures">Measures</a></li>
         
             <li><a href="#lambdas">Lambdas</a></li>
         
-            <li><a href="#building-c-types">Building C Types</a></li>
+            <li><a href="#computations">Computations</a></li>
         
-            <li><a href="#extra-options">Extra Options</a></li>
+            <li><a href="#parallel-programs">Parallel Programs</a></li>
         
     
     </ul>
@@ -279,13 +281,47 @@
             <div class="col-md-9" role="main">
 
 <h1 id="hkc-compilation">HKC Compilation</h1>
-<p><code>hkc</code> is a command line tool to compiler Hakaru programs to C.</p>
-<h2 id="measures">Measures</h2>
-<p>Measures compile to programs that sample from a distributions.</p>
-<pre><code>uniform(0,1)
+<p><code>hkc</code> is a command line tool to compiler Hakaru programs to C. HKC was
+created with portability and speed in mind. More recently, OpenMP support is
+being added to gain more performance on multi-core machines. Basic command line
+usage of HKC is much like other compilers:</p>
+<pre><code>hkc foo.hk -o foo.c
 </code></pre>
 
-<p>Will produce the sampler:</p>
+<p>It is possible to go straight to an executable with the <code>--make ARG</code> flag, where
+the argument is the C compiler you would like to use.</p>
+<h2 id="type-conversions">Type Conversions</h2>
+<p>The types available in Hakaru programs are the following: <code>nat</code>, <code>int</code>, <code>real</code>,
+<code>prob</code>, <code>array(&lt;type&gt;)</code>, <code>measure(&lt;type&gt;)</code>, and datum like <code>true</code> and <code>false</code>.</p>
+<p><code>nat</code> and <code>int</code> have a trivial mapping to the C <code>int</code> type. <code>real</code> becomes a C
+<code>double</code>. The <code>prob</code> type in Hakaru is stored in the log-domain for protection
+from so in C this corresponds to a <code>double</code>, but we first take the log of it
+before storing it, we have to take the exp of it to bring it back to the real
+numbers.</p>
+<p>Arrays become structs that contain the size and a pointer to data stored within.
+The structs are generated at compile time, but there are only four which are
+named after the type they contain. Here they all are:</p>
+<pre><code>struct arrayNat {
+  int size; int * data;
+};
+
+struct arrayInt {
+  int size; int * data;
+};
+
+struct arrayReal {
+  int size; double * data;
+};
+
+struct arrayProb {
+  int size; double * data;
+};
+</code></pre>
+
+<h2 id="measures">Measures</h2>
+<p>Measures compile to C functions that take a location for a sample, return the
+weight of the measure and store a sample in the location is was given. A simple
+example is <code>uniform(0,1)</code> a measure over type <code>real</code>.</p>
 <pre><code>#include &lt;time.h&gt;
 #include &lt;stdlib.h&gt;
 #include &lt;stdio.h&gt;
@@ -309,8 +345,11 @@ int main()
  }
 </code></pre>
 
-<p>The <code>-F</code> flag will produce a function that draws a single sample from a
-distribution.</p>
+<p>Recall that weights have type <code>prob</code> and are stored in the log-domain. This
+example has a weight of 1.</p>
+<p>Calling <code>hkc</code> on a measure will create a function like the one above and also a
+main function that infinitly takes samples. Using <code>hkc -F ARG</code> will produce
+just the function with the name of its argument.</p>
 <h2 id="lambdas">Lambdas</h2>
 <p>Lambdas compile to functions in C:</p>
 <pre><code>fn x array(real):
@@ -349,39 +388,45 @@ double fn_a(struct arrayReal x_b)
 </code></pre>
 
 <p>Using the <code>-F</code> flag will allow the user to add their own name to a function,
-otherwise the name is chosen automatically as &ldquo;fn_<unique identifier>&ldquo;.</p>
-<h2 id="building-c-types">Building C Types</h2>
-<p>In order to connect <code>hkc</code> generated code to external C code, we will need to
-know how a Hakaru type will look in C.</p>
-<!-- nat should be an unsigned int in the future -->
-
-<p><code>int</code> and <code>nat</code> both become a C <code>int</code>. <code>real</code> is turned into a C <code>double</code>.
-<code>prob</code> types are also turned into C <code>double</code> types, but these are in the log
-domain. Therefore, we must take the log of our data before handing to <code>hkc</code> code
-and take the exp of it when using the result.</p>
-<p>Hakara arrays, like <code>array(int)</code> will be represented as structs with two
-elements: an <code>int</code> called &ldquo;size&rdquo; representing the length of the array and a
-pointer to the data called &ldquo;data&rdquo; contained in the struct. <code>hkc</code> will
-automatically generate these struct declarations if they are needed in the
-program. Their names do not change.</p>
-<pre><code>struct arrayNat {
-  int size; int * data;
-  };
-
-struct arrayInt {
-  int size; double * data;
-  };
-
-struct arrayProb {
-  int size; double * data;
-  };
-
-struct arrayReal {
-  int size; double * data;
-  };
+otherwise the name is chosen automatically as <code>fn_&lt;unique identifier&gt;</code>.</p>
+<h2 id="computations">Computations</h2>
+<p>When compiling a computation, HKC just creates a main function to compute the
+value and print it. For example:</p>
+<pre><code>summate i from 1 to 100000000:
+  nat2real(i) / nat2real(i)
 </code></pre>
 
-<h2 id="extra-options">Extra Options</h2></div>
+<p>becomes:</p>
+<pre><code class="C">#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main()
+ {
+    double result;
+    int i_a;
+    double acc_b;
+    double _c;
+    acc_b = 0;
+    for (i_a = 1; i_a &lt; 100000000; i_a++)
+    {
+       _c = (1 / ((double)i_a));
+       acc_b += (_c * ((double)i_a));
+    }
+    result = acc_b;
+    printf(&quot;%.17f\n&quot;,result);
+    return 0;
+ }
+</code></pre>
+
+<h2 id="parallel-programs">Parallel Programs</h2>
+<p>Calling HKC with the <code>-j</code> flag will generate the code with parallel regions to
+compute the value. The parallel code uses OpenMP directives. To check if you&rsquo;re
+compiler supports OpenMP, check <a href="http://openmp.org/wp/openmp-compilers/">here</a>.</p>
+<p>For example, GCC requires the <code>-fopenmp</code> flag for OpenMP support:</p>
+<pre><code>hkc -j foo.hk -o foo.c
+gcc -lm -fopenmp foo.c -o foo.bin
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">

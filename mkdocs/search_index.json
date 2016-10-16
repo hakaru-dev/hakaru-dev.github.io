@@ -402,13 +402,18 @@
         }, 
         {
             "location": "/internals/transforms/", 
-            "text": "Program transformations in Hakaru", 
+            "text": "Program transformations in Hakaru\n\n\nCoalesce\n\n\nCoalesce is an internal transformation that works on the untyped Hakaru AST. It\ntakes recursive \nNAryOp\n terms that have the same type and combines them into\na single term. For instance:\n\n\n3.0 + 1.5 + 0.3\n\n\n\n\nis parser as:\n\n\nNaryOp Sum [3.0, NaryOp Sum [1.5, NaryOp Sum [0.3]]]\n\n\n\n\nwhich when coalesced becomes:\n\n\nNaryOp Sum [3.0,1.5,0.3]", 
             "title": "Transformaitons"
         }, 
         {
             "location": "/internals/transforms/#program-transformations-in-hakaru", 
             "text": "", 
             "title": "Program transformations in Hakaru"
+        }, 
+        {
+            "location": "/internals/transforms/#coalesce", 
+            "text": "Coalesce is an internal transformation that works on the untyped Hakaru AST. It\ntakes recursive  NAryOp  terms that have the same type and combines them into\na single term. For instance:  3.0 + 1.5 + 0.3  is parser as:  NaryOp Sum [3.0, NaryOp Sum [1.5, NaryOp Sum [0.3]]]  which when coalesced becomes:  NaryOp Sum [3.0,1.5,0.3]", 
+            "title": "Coalesce"
         }, 
         {
             "location": "/internals/testing/", 

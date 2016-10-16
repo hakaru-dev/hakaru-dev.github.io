@@ -265,12 +265,28 @@
     
         <li class="main active"><a href="#program-transformations-in-hakaru">Program transformations in Hakaru</a></li>
         
+            <li><a href="#coalesce">Coalesce</a></li>
+        
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="program-transformations-in-hakaru">Program transformations in Hakaru</h1></div>
+<h1 id="program-transformations-in-hakaru">Program transformations in Hakaru</h1>
+<h2 id="coalesce">Coalesce</h2>
+<p>Coalesce is an internal transformation that works on the untyped Hakaru AST. It
+takes recursive <code>NAryOp</code> terms that have the same type and combines them into
+a single term. For instance:</p>
+<pre><code>3.0 + 1.5 + 0.3
+</code></pre>
+
+<p>is parser as:</p>
+<pre><code>NaryOp Sum [3.0, NaryOp Sum [1.5, NaryOp Sum [0.3]]]
+</code></pre>
+
+<p>which when coalesced becomes:</p>
+<pre><code>NaryOp Sum [3.0,1.5,0.3]
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">

@@ -10,7 +10,7 @@
         <link rel="shortcut icon" href="../../favicon.ico">
         
 
-	<title>Disintegrate - Hakaru</title>
+	<title>Metropolis Hastings - Hakaru</title>
 
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -147,8 +147,8 @@
 
                     
                         
-<li class="active">
-    <a href="./">Disintegrate</a>
+<li >
+    <a href="../disintegrate/">Disintegrate</a>
 </li>
 
                     
@@ -159,8 +159,8 @@
 
                     
                         
-<li >
-    <a href="../mh/">Metropolis Hastings</a>
+<li class="active">
+    <a href="./">Metropolis Hastings</a>
 </li>
 
                     
@@ -247,12 +247,12 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="next" href="../expect/">
+                    <a rel="next" href="../simplify/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../simplify/">
+                    <a rel="prev" href="../compile/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -275,43 +275,81 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#disintegrations-transformation">Disintegrations transformation</a></li>
+        <li class="main active"><a href="#metropolis-hastings-transform">Metropolis Hastings transform</a></li>
         
-            <li><a href="#density">Density</a></li>
+            <li><a href="#mh-command">mh command</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="disintegrations-transformation">Disintegrations transformation</h1>
-<p>The disintegration transformation takes as input a program
-representing a joint probability distribution, and returns
-a program which represents an posterior distribution.</p>
-<p>For example, if we have the following joint distribution <code>hello.hk</code></p>
-<pre><code>θ &lt;~ normal(0,1)
-x &lt;~ normal(θ,1)
-return (x,θ)
+<h1 id="metropolis-hastings-transform">Metropolis Hastings transform</h1>
+<p>In Hakaru, all inference algorithms are represented as program
+transformations. In particular, the Metropolis-Hastings transform
+takes as input a probabilistic program representing the target
+distribution, and a probabilistic program representing the proposal
+distribution and returns a probabilistic program representing the MH
+transition kernel.</p>
+<h2 id="mh-command">mh command</h2>
+<p>You can access this functionality using the <code>mh</code> command. It takes
+two files as input representing the target distribution and proposal
+kernel.</p>
+<p>For example, suppose we would like to make a Markov Chain for the
+normal distribution, where the proposal distribution is a random walk.</p>
+<h3 id="target">Target</h3>
+<pre><code class="nohighlight"># target.hk
+normal(0,1)
 </code></pre>
 
-<p>When we call <code>disintegrate hello.hk</code> we obtain:</p>
-<pre><code>fn x2 real: 
- θ &lt;~ normal(0, 1)
- x7 &lt;~ weight((exp((negate(((x2 - θ) ^ 2)) / 2))
-                / 
-               1
-                / 
-               sqrt((2 * pi))),
-              return ())
- return θ
+<h3 id="proposal">Proposal</h3>
+<pre><code class="nohighlight"># proposal.hk
+fn x real: normal(x, 0.04)
 </code></pre>
 
-<p>This represents the posterior on <code>θ</code> given a value of <code>x</code> which
-has been renamed <code>x2</code>.</p>
-<h2 id="density">Density</h2>
-<p>Finding the density of a probability distribution at a particular
-point is actually a special-case of disintegrate and is
-defined in terms of it and the expectation transformation.</p></div>
+<p>We can use <code>mh</code> to create a transition kernel.</p>
+<pre><code class="bash">mh target.hk proposal.hk
+
+x5 = x2 = fn x0 real: 
+           (exp((negate(((x0 - nat2real(0)) ^ 2))
+                  / 
+                 prob2real((2 * (nat2prob(1) ^ 2)))))
+             / 
+            nat2prob(1)
+             / 
+            sqrt((2 * pi))
+             / 
+            1)
+     fn x1 real: 
+      x0 &lt;~ normal(x1, (1/25))
+      return (x0, (x2(x0) / x2(x1)))
+fn x4 real: 
+ x3 &lt;~ x5(x4)
+ (match x3: 
+   (x1, x2): 
+    x0 &lt;~ weight(min(1, x2), return true) &lt;|&gt; 
+          weight(real2prob((prob2real(1) - prob2real(min(1, x2)))),
+                 return false)
+    return (match x0: 
+             true: x1
+             false: x4))
+
+</code></pre>
+
+<p>This can then be simplified.</p>
+<pre><code class="bash">mh target.hk proposal.hk | simplify -
+
+fn x4 real: 
+ x03 &lt;~ normal(x4, (1/25))
+ weight(min(1, (exp(((x03 ^ 2) * -1/2)) * exp(((x4 ^ 2) / 2)))),
+        return x03) &lt;|&gt; 
+ weight(real2prob((1
+                    + 
+                   (prob2real(min(1, (exp(((x03 ^ 2) * -1/2)) * exp(((x4 ^ 2) / 2)))))
+                     * 
+                    (-1)))),
+        return x4)
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">

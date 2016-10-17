@@ -98,6 +98,18 @@
     </url>
         
     <url>
+     <loc>None/transforms/mh/</loc>
+     <lastmod>2016-10-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/transforms/compile/</loc>
+     <lastmod>2016-10-16</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>None/transforms/hkc/</loc>
      <lastmod>2016-10-16</lastmod>
      <changefreq>daily</changefreq>

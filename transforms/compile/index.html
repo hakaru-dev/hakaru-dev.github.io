@@ -10,7 +10,7 @@
         <link rel="shortcut icon" href="../../favicon.ico">
         
 
-	<title>Disintegrate - Hakaru</title>
+	<title>Compiling to Haskell - Hakaru</title>
 
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -147,8 +147,8 @@
 
                     
                         
-<li class="active">
-    <a href="./">Disintegrate</a>
+<li >
+    <a href="../disintegrate/">Disintegrate</a>
 </li>
 
                     
@@ -165,8 +165,8 @@
 
                     
                         
-<li >
-    <a href="../compile/">Compiling to Haskell</a>
+<li class="active">
+    <a href="./">Compiling to Haskell</a>
 </li>
 
                     
@@ -247,12 +247,12 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="next" href="../expect/">
+                    <a rel="next" href="../mh/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../simplify/">
+                    <a rel="prev" href="../hkc/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -275,43 +275,15 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#disintegrations-transformation">Disintegrations transformation</a></li>
-        
-            <li><a href="#density">Density</a></li>
+        <li class="main active"><a href="#compiling-to-haskell">Compiling to Haskell</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="disintegrations-transformation">Disintegrations transformation</h1>
-<p>The disintegration transformation takes as input a program
-representing a joint probability distribution, and returns
-a program which represents an posterior distribution.</p>
-<p>For example, if we have the following joint distribution <code>hello.hk</code></p>
-<pre><code>θ &lt;~ normal(0,1)
-x &lt;~ normal(θ,1)
-return (x,θ)
-</code></pre>
-
-<p>When we call <code>disintegrate hello.hk</code> we obtain:</p>
-<pre><code>fn x2 real: 
- θ &lt;~ normal(0, 1)
- x7 &lt;~ weight((exp((negate(((x2 - θ) ^ 2)) / 2))
-                / 
-               1
-                / 
-               sqrt((2 * pi))),
-              return ())
- return θ
-</code></pre>
-
-<p>This represents the posterior on <code>θ</code> given a value of <code>x</code> which
-has been renamed <code>x2</code>.</p>
-<h2 id="density">Density</h2>
-<p>Finding the density of a probability distribution at a particular
-point is actually a special-case of disintegrate and is
-defined in terms of it and the expectation transformation.</p></div>
+<h1 id="compiling-to-haskell">Compiling to Haskell</h1>
+<p>Hakaru can be compiled to Haskell using the <code>compile</code> command.</p></div>
         </div>
 
         <footer class="col-md-12">

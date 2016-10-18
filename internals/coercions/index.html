@@ -282,7 +282,20 @@
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="coercions">Coercions</h1></div>
+<h1 id="coercions">Coercions</h1>
+<p>For convenience, Hakaru offers functions to convert between the four
+different numeric types in the language. These types are</p>
+<ul>
+<li>nat - Natural numbers</li>
+<li>int - Integers</li>
+<li>prob - Positive real numbers</li>
+<li>real - Real numbers</li>
+</ul>
+<p>Amongst these types there are a collection of safe and unsafe
+coercions. A safe coercion is one which is always guaranteed to
+be valid. For example, converting a <code>nat</code> to an <code>int</code> is always
+safe. Converting an <code>int</code> to a <code>nat</code> is unsafe as the value can
+negative, and lead to runtime errors.</p></div>
         </div>
 
         <footer class="col-md-12">

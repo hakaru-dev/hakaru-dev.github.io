@@ -322,12 +322,12 @@
         }, 
         {
             "location": "/transforms/compile/", 
-            "text": "Compiling to Haskell\n\n\nHakaru can be compiled to Haskell using the \ncompile\n command.", 
+            "text": "Compiling to Haskell\n\n\nHakaru can be compiled to Haskell using the \ncompile\n command.\n\n\nFor example if we wish to compile \nexample.hk\n\n\nx \n~ normal(0,1)\ny \n~ normal(x,1)\nreturn y\n\n\n\n\nWe call \ncompile example.hk\n, which produces a file \nexample.hs\n.\n\n\nThis is a regular Haskell file, which can then be furthered compiled into\nmachine code.\n\n\ncat example.hs\n\n\n\n\n{-# LANGUAGE DataKinds, NegativeLiterals #-}\nmodule Main where\n\nimport           Prelude                          hiding (product)\nimport           Language.Hakaru.Runtime.Prelude\nimport           Language.Hakaru.Types.Sing\nimport qualified System.Random.MWC                as MWC\nimport           Control.Monad\n\nprog = \n  normal (nat2real (nat_ 0)) (nat2prob (nat_ 1)) \n= \\ x0 -\n\n  normal x0 (nat2prob (nat_ 1)) \n= \\ y1 -\n\n  dirac y1\n\nmain :: IO ()\nmain = do\n  g \n- MWC.createSystemRandom\n  forever $ run g prog", 
             "title": "Compiling to Haskell"
         }, 
         {
             "location": "/transforms/compile/#compiling-to-haskell", 
-            "text": "Hakaru can be compiled to Haskell using the  compile  command.", 
+            "text": "Hakaru can be compiled to Haskell using the  compile  command.  For example if we wish to compile  example.hk  x  ~ normal(0,1)\ny  ~ normal(x,1)\nreturn y  We call  compile example.hk , which produces a file  example.hs .  This is a regular Haskell file, which can then be furthered compiled into\nmachine code.  cat example.hs  {-# LANGUAGE DataKinds, NegativeLiterals #-}\nmodule Main where\n\nimport           Prelude                          hiding (product)\nimport           Language.Hakaru.Runtime.Prelude\nimport           Language.Hakaru.Types.Sing\nimport qualified System.Random.MWC                as MWC\nimport           Control.Monad\n\nprog = \n  normal (nat2real (nat_ 0)) (nat2prob (nat_ 1))  = \\ x0 - \n  normal x0 (nat2prob (nat_ 1))  = \\ y1 - \n  dirac y1\n\nmain :: IO ()\nmain = do\n  g  - MWC.createSystemRandom\n  forever $ run g prog", 
             "title": "Compiling to Haskell"
         }, 
         {

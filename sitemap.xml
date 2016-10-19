@@ -4,7 +4,7 @@
     
     <url>
      <loc>None/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,19 +13,19 @@
         
     <url>
      <loc>None/intro/probprog/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/intro/installation/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/intro/quickstart/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -35,43 +35,43 @@
         
     <url>
      <loc>None/lang/rand/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/lang/letbind/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/lang/cond/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/lang/coercions/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/lang/functions/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/lang/datatypes/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/lang/arrays/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -81,37 +81,37 @@
         
     <url>
      <loc>None/transforms/expect/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/transforms/disintegrate/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/transforms/simplify/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/transforms/mh/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/transforms/compile/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/transforms/hkc/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -121,43 +121,43 @@
         
     <url>
      <loc>None/internals/ast/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/internals/abt/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/internals/datums/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/internals/coercions/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/internals/transforms/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/internals/testing/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>None/internals/newfeature/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -166,7 +166,7 @@
     
     <url>
      <loc>None/examples/</loc>
-     <lastmod>2016-10-18</lastmod>
+     <lastmod>2016-10-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
     

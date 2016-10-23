@@ -311,7 +311,13 @@ has been renamed <code>x2</code>.</p>
 <h2 id="density">Density</h2>
 <p>Finding the density of a probability distribution at a particular
 point is actually a special-case of disintegrate and is
-defined in terms of it and the expectation transformation.</p></div>
+defined in terms of it and the expectation transformation.</p>
+<p>We also have a command <code>density</code> for doing so.</p>
+<pre><code class="nohighlight">echo &quot;normal(0,1)&quot; | density -
+
+fn x0 real: 
+ (exp((negate(((x0 + 0) ^ 2)) / 2)) / 1 / sqrt((2 * pi)) / 1)
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">

@@ -272,7 +272,7 @@
         }, 
         {
             "location": "/transforms/disintegrate/", 
-            "text": "Disintegrations transformation\n\n\nThe disintegration transformation takes as input a program\nrepresenting a joint probability distribution, and returns\na program which represents an posterior distribution.\n\n\nFor example, if we have the following joint distribution \nhello.hk\n\n\n\u03b8 \n~ normal(0,1)\nx \n~ normal(\u03b8,1)\nreturn (x,\u03b8)\n\n\n\n\nWhen we call \ndisintegrate hello.hk\n we obtain:\n\n\nfn x2 real: \n \u03b8 \n~ normal(0, 1)\n x7 \n~ weight((exp((negate(((x2 - \u03b8) ^ 2)) / 2))\n                / \n               1\n                / \n               sqrt((2 * pi))),\n              return ())\n return \u03b8\n\n\n\n\nThis represents the posterior on \n\u03b8\n given a value of \nx\n which\nhas been renamed \nx2\n.\n\n\nDensity\n\n\nFinding the density of a probability distribution at a particular\npoint is actually a special-case of disintegrate and is\ndefined in terms of it and the expectation transformation.", 
+            "text": "Disintegrations transformation\n\n\nThe disintegration transformation takes as input a program\nrepresenting a joint probability distribution, and returns\na program which represents an posterior distribution.\n\n\nFor example, if we have the following joint distribution \nhello.hk\n\n\n\u03b8 \n~ normal(0,1)\nx \n~ normal(\u03b8,1)\nreturn (x,\u03b8)\n\n\n\n\nWhen we call \ndisintegrate hello.hk\n we obtain:\n\n\nfn x2 real: \n \u03b8 \n~ normal(0, 1)\n x7 \n~ weight((exp((negate(((x2 - \u03b8) ^ 2)) / 2))\n                / \n               1\n                / \n               sqrt((2 * pi))),\n              return ())\n return \u03b8\n\n\n\n\nThis represents the posterior on \n\u03b8\n given a value of \nx\n which\nhas been renamed \nx2\n.\n\n\nDensity\n\n\nFinding the density of a probability distribution at a particular\npoint is actually a special-case of disintegrate and is\ndefined in terms of it and the expectation transformation.\n\n\nWe also have a command \ndensity\n for doing so.\n\n\necho \nnormal(0,1)\n | density -\n\nfn x0 real: \n (exp((negate(((x0 + 0) ^ 2)) / 2)) / 1 / sqrt((2 * pi)) / 1)", 
             "title": "Disintegrate"
         }, 
         {
@@ -282,7 +282,7 @@
         }, 
         {
             "location": "/transforms/disintegrate/#density", 
-            "text": "Finding the density of a probability distribution at a particular\npoint is actually a special-case of disintegrate and is\ndefined in terms of it and the expectation transformation.", 
+            "text": "Finding the density of a probability distribution at a particular\npoint is actually a special-case of disintegrate and is\ndefined in terms of it and the expectation transformation.  We also have a command  density  for doing so.  echo  normal(0,1)  | density -\n\nfn x0 real: \n (exp((negate(((x0 + 0) ^ 2)) / 2)) / 1 / sqrt((2 * pi)) / 1)", 
             "title": "Density"
         }, 
         {

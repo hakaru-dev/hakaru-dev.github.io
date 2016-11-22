@@ -295,7 +295,31 @@ different numeric types in the language. These types are</p>
 coercions. A safe coercion is one which is always guaranteed to
 be valid. For example, converting a <code>nat</code> to an <code>int</code> is always
 safe. Converting an <code>int</code> to a <code>nat</code> is unsafe as the value can
-negative, and lead to runtime errors.</p></div>
+negative, and lead to runtime errors.</p>
+<p>These are represented in the AST using the <code>CoerceTo</code> and <code>UnsafeFrom</code>
+constructors. Note that coercions are always defined in terms of the
+safe direction to go to.</p>
+<pre><code class="haskell">CoerceTo_   :: !(Coercion a b) -&gt; SCon '[ LC a ] b
+UnsafeFrom_ :: !(Coercion a b) -&gt; SCon '[ LC b ] a
+</code></pre>
+
+<p>Internally, coercions are specified using the <code>Coercion</code> datatype. This
+datatype states that each coercion is made up of a series of primitive
+coercions.</p>
+<pre><code class="haskell">data Coercion :: Hakaru -&gt; Hakaru -&gt; * where
+    CNil :: Coercion a a
+    CCons :: !(PrimCoercion a b) -&gt; !(Coercion b c) -&gt; Coercion a c
+</code></pre>
+
+<p>These primitive coercions can either involve loosening a restriction
+on the sign of the value, or changing the numeric value to be over
+a continuous value. For example, to coerce from int to real, we would
+have a single <code>Coercion</code> with a <code>PrimCoercion</code> in it with the Continuous
+data constructor.</p>
+<pre><code class="haskell">data PrimCoercion :: Hakaru -&gt; Hakaru -&gt; * where
+    Signed     :: !(HRing a)       -&gt; PrimCoercion (NonNegative a) a
+    Continuous :: !(HContinuous a) -&gt; PrimCoercion (HIntegral   a) a
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">

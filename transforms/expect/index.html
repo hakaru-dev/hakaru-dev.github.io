@@ -302,7 +302,8 @@ function <code>2*x + 1</code>. This program expands to the following:</p>
  recip(real2prob(3 - 1)) * real2prob(2*x + 1)
 </code></pre>
 
-<p>This can be optimized by <code>simplify</code> into <code>5</code>.</p>
+<p>This can be optimized by piping by it into the <code>simplify</code> program. It
+will in turn return <code>5</code>.</p>
 <h2 id="normalize">Normalize</h2>
 <p>We also provide a <code>normalize</code> command. This command takes as input a
 program representing any measure and reweights it into a program

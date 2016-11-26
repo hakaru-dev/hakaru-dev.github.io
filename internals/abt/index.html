@@ -295,7 +295,11 @@ own typeclass called <code>ABT</code>. This can be found in <code>Language.Hakar
     bind :: Variable a -&gt; abt xs b -&gt; abt (a ': xs) b
     caseBind :: abt (x ': xs) a -&gt; (Variable x -&gt; abt xs a -&gt; r) -&gt; r
     ...
-</code></pre></div>
+</code></pre>
+
+<p>The advantage of having this typeclass is that we think about variable binding
+independently of the AST for our language. For example, we can define variable
+substitution once and for all.</p></div>
         </div>
 
         <footer class="col-md-12">

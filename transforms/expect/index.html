@@ -297,7 +297,8 @@ the expectation over that measure with respect to the given function.</p>
 </code></pre>
 
 <p>This program computes the expectation of <code>uniform(1,3)</code> using the
-function <code>2*x + 1</code>. This program expands to the following:</p>
+function <code>2*x + 1</code>. This program expands to the following equivalent
+program:</p>
 <pre><code>integrate x from 1 to 3: 
  recip(real2prob(3 - 1)) * real2prob(2*x + 1)
 </code></pre>

@@ -282,7 +282,7 @@
         }, 
         {
             "location": "/transforms/expect/", 
-            "text": "Expectation transformation\n\n\nThe expectation transformation takes a program representing a measure,\nand a function over the sample space, and returns a program computing\nthe expectation over that measure with respect to the given function.\n\n\nExpect\n\n\nExpect can be used inside programs with the \nexpect\n keyword.\n\n\nexpect x uniform(1,3):\n    real2prob(2*x + 1)\n\n\n\n\nThis program computes the expectation of \nuniform(1,3)\n using the\nfunction \n2*x + 1\n. This program expands to the following:\n\n\nintegrate x from 1 to 3: \n recip(real2prob(3 - 1)) * real2prob(2*x + 1)\n\n\n\n\nThis can be optimized by piping by it into the \nsimplify\n program. It\nwill in turn return \n5\n.\n\n\nNormalize\n\n\nWe also provide a \nnormalize\n command. This command takes as input a\nprogram representing any measure and reweights it into a program\nrepresenting a probability distribution.\n\n\nFor example in a slightly contrived example, we can weight a normal\ndistribution by two. Normalizing it will then remove this weight.\n\n\n echo \nweight(2, normal(0,1))\n | normalize | simplify -\nnormal(0, 1)", 
+            "text": "Expectation transformation\n\n\nThe expectation transformation takes a program representing a measure,\nand a function over the sample space, and returns a program computing\nthe expectation over that measure with respect to the given function.\n\n\nExpect\n\n\nExpect can be used inside programs with the \nexpect\n keyword.\n\n\nexpect x uniform(1,3):\n    real2prob(2*x + 1)\n\n\n\n\nThis program computes the expectation of \nuniform(1,3)\n using the\nfunction \n2*x + 1\n. This program expands to the following equivalent\nprogram:\n\n\nintegrate x from 1 to 3: \n recip(real2prob(3 - 1)) * real2prob(2*x + 1)\n\n\n\n\nThis can be optimized by piping by it into the \nsimplify\n program. It\nwill in turn return \n5\n.\n\n\nNormalize\n\n\nWe also provide a \nnormalize\n command. This command takes as input a\nprogram representing any measure and reweights it into a program\nrepresenting a probability distribution.\n\n\nFor example in a slightly contrived example, we can weight a normal\ndistribution by two. Normalizing it will then remove this weight.\n\n\n echo \nweight(2, normal(0,1))\n | normalize | simplify -\nnormal(0, 1)", 
             "title": "Expect"
         }, 
         {
@@ -292,7 +292,7 @@
         }, 
         {
             "location": "/transforms/expect/#expect", 
-            "text": "Expect can be used inside programs with the  expect  keyword.  expect x uniform(1,3):\n    real2prob(2*x + 1)  This program computes the expectation of  uniform(1,3)  using the\nfunction  2*x + 1 . This program expands to the following:  integrate x from 1 to 3: \n recip(real2prob(3 - 1)) * real2prob(2*x + 1)  This can be optimized by piping by it into the  simplify  program. It\nwill in turn return  5 .", 
+            "text": "Expect can be used inside programs with the  expect  keyword.  expect x uniform(1,3):\n    real2prob(2*x + 1)  This program computes the expectation of  uniform(1,3)  using the\nfunction  2*x + 1 . This program expands to the following equivalent\nprogram:  integrate x from 1 to 3: \n recip(real2prob(3 - 1)) * real2prob(2*x + 1)  This can be optimized by piping by it into the  simplify  program. It\nwill in turn return  5 .", 
             "title": "Expect"
         }, 
         {

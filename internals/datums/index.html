@@ -327,7 +327,9 @@ data DatumFun :: HakaruFun -&gt; (Hakaru -&gt; *) -&gt; Hakaru -&gt; * where
     Konst :: !(ast b) -&gt; DatumFun ('K b) ast a
     -- Hit a leaf which is a recursive component of the datatype.
     Ident :: !(ast a) -&gt; DatumFun 'I     ast a
-</code></pre></div>
+</code></pre>
+
+<p>In Hakaru we have implemented Bool, Pair, Either, Maybe, and List.</p></div>
         </div>
 
         <footer class="col-md-12">

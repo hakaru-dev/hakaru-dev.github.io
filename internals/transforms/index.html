@@ -230,6 +230,8 @@
         
             <li><a href="#optimizations">Optimizations</a></li>
         
+            <li><a href="#unused-passes">Unused Passes</a></li>
+        
     
     </ul>
 </div></div>
@@ -375,7 +377,45 @@ This pass serves to clean up some of the junk introduced by other passes.</p>
 <p>Found in <code>Language.Hakaru.Evalutation.ConstantPropagation</code></p>
 <p>Performs simple constant propagation and constant folding.
 The current implementation does not do that much work, mostly just evaluating
-primitive operations when their arguments are constant.</p></div>
+primitive operations when their arguments are constant.</p>
+<h2 id="unused-passes">Unused Passes</h2>
+<h3 id="loop-peeling">Loop Peeling</h3>
+<p>Found in <code>Language.Hakaru.Syntax.Unroll</code></p>
+<p>Loop peeling was an initial attempt at performing loop invariant code motion by
+leveraging CSE to do most of the heavy lifting.
+Peeling is a common strategy to make other optimization passes &ldquo;loop-aware&rdquo;.
+The idea is to peel off one iteration of a loop and then apply the existing
+suite of optimizations.
+Consider the following <code>summate</code> whose body  <code>e</code> is some loop-invariant
+computation.</p>
+<pre><code>(summate lo hi (λ x -&gt; e))
+</code></pre>
+
+<p>After peeling we obtain</p>
+<pre><code>(if (= lo hi)
+    0
+    (let ([x lo])
+      (let ([t1 e])
+        (let ([t2 (summate (+ lo 1) hi (λ x -&gt; e))])
+          (+ t1 t2)))))
+</code></pre>
+
+<p>After applying CSE, the loop invariant body is simply reused on each iteration</p>
+<pre><code>(if (= lo hi)
+    0
+    (let ([x lo])
+      (let ([t1 e])
+        (let ([t2 (summate (+ lo 1) hi (λ x -&gt; t1))])
+          (+ t1 t2)))))
+</code></pre>
+
+<p>ANF ensures that all subexpression in the <code>e</code> bound to <code>t1</code> are shareable with
+the copy of <code>e</code> used in the body of the <code>summate</code>, allowing us to hoist out
+subexpressions of <code>e</code> and not just the entire <code>summate</code> body.</p>
+<p>This pass is currently disabled in favor of the let-floating pass, which does
+a better job without causing an exponential blow up in code size.
+Some of Hakaru&rsquo;s looping constructs, such as <code>array</code>, cannot be peeled, so we
+cannot move loop invariant operations out of <code>array</code> statements.</p></div>
         </div>
 
         <footer class="col-md-12">

@@ -264,10 +264,13 @@ In order, the optimizations performed are:</p>
 <li>Common subexpression elimination</li>
 <li>Pruning of dead binders</li>
 <li>Uniquification of variables (for the C backend)</li>
+<li>Constant Propagation</li>
 </ol>
 <p>Each pass is described in more detail below.</p>
 <h3 id="a-normalization">A-normalization</h3>
 <p>Found in <code>Language.Hakaru.Syntax.ANF</code></p>
+<p>See <strong>The Essence of Compiling with Continuations by Flannigan, Sabry, Duba, and
+Felleisen</strong></p>
 <p>A-normalization converts expressions into <em>administrative normal form</em> (ANF).
 This ensures that all intermediate values are named and all arguments to
 functions or primitive operations are either literals or variables.
@@ -289,7 +292,7 @@ other passes as well.</p>
 <p>Found in <code>Language.Hakaru.Syntax.Uniquify</code></p>
 <p>Ensures all variables in the program have unique variable identifiers.
 This is not strictly necessary, but simplifies the implementation of other
-passes, and several of the following passes rely on this property.</p>
+passes, several of which rely on this property.</p>
 <h3 id="let-floating">Let-floating</h3>
 <p>Found in <code>Language.Hakaru.Syntax.Hoist</code></p>
 <p>See <strong>Let-Floating: Moving Bindings to Give Faster Programs (1996)
@@ -329,8 +332,9 @@ Consider the example</p>
 <pre><code>(+ (add1 z) (add1 z))
 </code></pre>
 
-<p>Eliminating the common expression <code>(add1 z)</code> requires us to know the evaluation
-order of arguments, recognize when an expression is duplicated, and introduce it
+<p>Eliminating the common expression <code>(add1 z)</code> requires us to traverse the
+expression in evaluation order, track expression which have already been
+evaluated, recognize when an expression is duplicated, and introduce it
 with a new name that dominates all use sites of that expression.
 However, an expression in ANF allows us to perform CSE simply by keeping track
 of let-bound expressions and propagating those expressions downward into the
@@ -357,6 +361,7 @@ the variable <code>t1</code>.</p>
 <p>A major goal of CSE is to cleanup any work which is duplicated by the
 let-floating pass.</p>
 <h3 id="pruning">Pruning</h3>
+<p>Found in <code>Language.Hakaru.Syntax.Prune</code></p>
 <p>This is essentially a limited form of dead code elimination.
 If an expression is bound to a variable which is never referenced, then that
 expression need never be executed, as the code language has no side effects.
@@ -365,7 +370,12 @@ This pass serves to clean up some of the junk introduced by other passes.</p>
 <ol>
 <li><code>(let ([x e1]) e2) =&gt; e2 if x not in fv(e2)</code></li>
 <li><code>(let ([x e1]) x)  =&gt; e1</code></li>
-</ol></div>
+</ol>
+<h3 id="constant-propagation">Constant Propagation</h3>
+<p>Found in <code>Language.Hakaru.Evalutation.ConstantPropagation</code></p>
+<p>Performs simple constant propagation and constant folding.
+The current implementation does not do that much work, mostly just evaluating
+primitive operations when their arguments are constant.</p></div>
         </div>
 
         <footer class="col-md-12">

@@ -7,7 +7,7 @@
         
         <meta name="author" content="Hakaru Team">
         
-        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="shortcut icon" href="../../favicon.ico">
         
 
 	<title>Random Primitives - Hakaru</title>
@@ -285,27 +285,90 @@
 <h1 id="primitive-probability-distributions">Primitive Probability Distributions</h1>
 <p>Hakaru comes with a small set of primitive probability
 distributions.</p>
-<p>|<h4>normal(mean. <em>real</em>, standard_deviation. <em>prob</em>): <em>measure(real)</em> </h4> |
-|----------------------------------------------------------------------------|
-| univariate Normal (Gaussian) distribution                                  |</p>
-<p>|<h4>uniform(low. <em>real</em>, high. <em>real</em>): <em>measure(real)</em> </h4>                          |
-|---------------------------------------------------------------------------------------|
-| Uniform distribution is a continuous univariate distribution defined from low to high |</p>
-<p>|<h4>gamma(shape. <em>prob</em>, scale. <em>prob</em>): <em>measure(prob)</em> </h4>              |
-|--------------------------------------------------------------------------- |
-| Gamma distribution with shape and scale parameterization                   |</p>
-<p>|<h4>beta(a. <em>prob</em>, b. <em>prob</em>): <em>measure(prob)</em> </h4>                       |
-|--------------------------------------------------------------------------- |
-| Beta distribution                                                          |</p>
-<p>|<h4>poisson(l. <em>prob</em>): <em>measure(nat)</em> </h4>                                |
-|--------------------------------------------------------------------------- |
-| Poisson distribution                                                       |</p>
-<p>|<h4>categorical(v. <em>array(prob)</em>): <em>measure(nat)</em> </h4>                     |
-|--------------------------------------------------------------------------- |
-| Categorical distribution                                                   |</p>
-<p>|<h4>dirac(x. <em>a</em>): <em>measure(a)</em> </h4>                                       |
-|--------------------------------------------------------------------------- |
-| Dirac distribution                                                         |</p>
+<table>
+<thead>
+<tr>
+<th><h4>normal(mean. <em>real</em>, standard_deviation. <em>prob</em>): <em>measure(real)</em> </h4></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>univariate Normal (Gaussian) distribution</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><h4>uniform(low. <em>real</em>, high. <em>real</em>): <em>measure(real)</em> </h4></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Uniform distribution is a continuous univariate distribution defined from low to high</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><h4>gamma(shape. <em>prob</em>, scale. <em>prob</em>): <em>measure(prob)</em> </h4></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gamma distribution with shape and scale parameterization</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><h4>beta(a. <em>prob</em>, b. <em>prob</em>): <em>measure(prob)</em> </h4></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Beta distribution</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><h4>poisson(l. <em>prob</em>): <em>measure(nat)</em> </h4></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Poisson distribution</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><h4>categorical(v. <em>array(prob)</em>): <em>measure(nat)</em> </h4></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Categorical distribution</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><h4>dirac(x. <em>a</em>): <em>measure(a)</em> </h4></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dirac distribution</td>
+</tr>
+</tbody>
+</table>
 <p>The Dirac distribution appears often enough, that we have given an
 additional keyword in our language for it: <code>return</code>. The following
 programs are equivalent.</p>
@@ -315,15 +378,42 @@ programs are equivalent.</p>
 <pre><code class="nohighlight">return 3
 </code></pre>
 
-<p>|<h4>lebesgue: <em>measure(real)</em> </h4>                                         |
-|--------------------------------------------------------------------------- |
-| the distribution constant over the real line                               |</p>
-<p>|<h4>weight(x. <em>prob</em>, m. <em>measure(a)</em>): <em>measure(a)</em> </h4>                  |
-|--------------------------------------------------------------------------- |
-| a <em>m</em> distribution, reweighted by <em>x</em>                                      |</p>
-<p>|<h4>reject: <em>measure(a)</em> </h4>                                              |
-|--------------------------------------------------------------------------- |
-| The distribution over the empty set                                        |</p>
+<table>
+<thead>
+<tr>
+<th><h4>lebesgue: <em>measure(real)</em> </h4></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>the distribution constant over the real line</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><h4>weight(x. <em>prob</em>, m. <em>measure(a)</em>): <em>measure(a)</em> </h4></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a <em>m</em> distribution, reweighted by <em>x</em></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><h4>reject: <em>measure(a)</em> </h4></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The distribution over the empty set</td>
+</tr>
+</tbody>
+</table>
 <p>Finally, we have a binary choice operator <code>&lt;|&gt;</code>, which takes two
 distributions, and returns an unnormalized distribution which returns
 one or the other.  For example, to get a distribution which where with

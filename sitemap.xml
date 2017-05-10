@@ -3,7 +3,7 @@
 
     
     <url>
-     <loc>/</loc>
+     <loc>None/</loc>
      <lastmod>2017-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -12,71 +12,25 @@
     
         
     <url>
-     <loc>/intro/probprog/</loc>
+     <loc>None/intro/probprog/</loc>
      <lastmod>2017-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/intro/installation/</loc>
+     <loc>None/intro/installation/</loc>
      <lastmod>2017-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/intro/quickstart/</loc>
+     <loc>None/intro/quickstart/</loc>
      <lastmod>2017-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/examples/</loc>
-     <lastmod>2017-05-10</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    
-
-    
-        
-    <url>
-     <loc>/lang/rand/</loc>
-     <lastmod>2017-05-10</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/lang/letbind/</loc>
-     <lastmod>2017-05-10</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/lang/cond/</loc>
-     <lastmod>2017-05-10</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/lang/coercions/</loc>
-     <lastmod>2017-05-10</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/lang/functions/</loc>
-     <lastmod>2017-05-10</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/lang/datatypes/</loc>
-     <lastmod>2017-05-10</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/lang/arrays/</loc>
+     <loc>None/examples/</loc>
      <lastmod>2017-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -86,37 +40,43 @@
     
         
     <url>
-     <loc>/transforms/expect/</loc>
+     <loc>None/lang/rand/</loc>
      <lastmod>2017-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/transforms/disintegrate/</loc>
+     <loc>None/lang/letbind/</loc>
      <lastmod>2017-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/transforms/simplify/</loc>
+     <loc>None/lang/cond/</loc>
      <lastmod>2017-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/transforms/mh/</loc>
+     <loc>None/lang/coercions/</loc>
      <lastmod>2017-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/transforms/compile/</loc>
+     <loc>None/lang/functions/</loc>
      <lastmod>2017-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/transforms/hkc/</loc>
+     <loc>None/lang/datatypes/</loc>
+     <lastmod>2017-05-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/lang/arrays/</loc>
      <lastmod>2017-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -126,43 +86,83 @@
     
         
     <url>
-     <loc>/internals/ast/</loc>
+     <loc>None/transforms/expect/</loc>
      <lastmod>2017-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/internals/abt/</loc>
+     <loc>None/transforms/disintegrate/</loc>
      <lastmod>2017-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/internals/datums/</loc>
+     <loc>None/transforms/simplify/</loc>
      <lastmod>2017-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/internals/coercions/</loc>
+     <loc>None/transforms/mh/</loc>
      <lastmod>2017-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/internals/transforms/</loc>
+     <loc>None/transforms/compile/</loc>
      <lastmod>2017-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/internals/testing/</loc>
+     <loc>None/transforms/hkc/</loc>
+     <lastmod>2017-05-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>None/internals/ast/</loc>
      <lastmod>2017-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/internals/newfeature/</loc>
+     <loc>None/internals/abt/</loc>
+     <lastmod>2017-05-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/internals/datums/</loc>
+     <lastmod>2017-05-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/internals/coercions/</loc>
+     <lastmod>2017-05-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/internals/transforms/</loc>
+     <lastmod>2017-05-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/internals/testing/</loc>
+     <lastmod>2017-05-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/internals/newfeature/</loc>
      <lastmod>2017-05-10</lastmod>
      <changefreq>daily</changefreq>
     </url>

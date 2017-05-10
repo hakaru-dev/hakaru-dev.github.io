@@ -64,19 +64,25 @@
                     
                         
 <li >
-    <a href="intro/probprog/">What is Probabilistic Programming</a>
+    <a href="intro/probprog/">What is Probabilistic Programming?</a>
 </li>
 
                     
                         
 <li >
-    <a href="intro/installation/">Installation</a>
+    <a href="intro/installation/">Installing Hakaru</a>
 </li>
 
                     
                         
 <li >
-    <a href="intro/quickstart/">Quick Example</a>
+    <a href="intro/quickstart/">Quick Start</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="examples/">Examples</a>
 </li>
 
                     
@@ -223,17 +229,11 @@
                     
                         
 <li >
-    <a href="internals/newfeature/">Adding a Language Feautre</a>
+    <a href="internals/newfeature/">Adding a Language Feature</a>
 </li>
 
                     
                     </ul>
-                </li>
-            
-            
-            
-                <li >
-                    <a href="examples/">Examples</a>
                 </li>
             
             
@@ -275,19 +275,15 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#overview">Overview</a></li>
+        <li class="main active"><a href="#introduction">Introduction</a></li>
         
-    
-        <li class="main "><a href="#introduction">Introduction</a></li>
-        
-            <li><a href="#what-is-probabilistic-programming">What is Probabilistic Programming</a></li>
+            <li><a href="#what-is-probabilistic-programming">What is Probabilistic Programming?</a></li>
         
             <li><a href="#installation">Installation</a></li>
         
             <li><a href="#quickstart">Quickstart</a></li>
         
-    
-        <li class="main "><a href="#examples">Examples</a></li>
+            <li><a href="#examples">Examples</a></li>
         
     
         <li class="main "><a href="#language-guide">Language Guide</a></li>
@@ -325,88 +321,94 @@
         <li class="main "><a href="#internals">Internals</a></li>
         
     
+        <li class="main "><a href="#citing-us">Citing Us</a></li>
+        
+    
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
+<p><a href="https://hackage.haskell.org/package/hakaru"><img alt="Hackage" src="https://img.shields.io/hackage/v/hakaru.svg" /></a>
+<a href="https://travis-ci.org/hakaru-dev/hakaru"><img alt="Build Status" src="https://travis-ci.org/hakaru-dev/hakaru.svg?branch=master" /></a>
+<a href="https://ci.appveyor.com/project/zaxtax/hakaru"><img alt="Windows Build Status" src="https://ci.appveyor.com/api/projects/status/3dbdr2hjfk40x697?svg=true" /></a>
+<a href="https://github.com/hakaru-dev/hakaru/blob/master/LICENSE"><img alt="licence" src="http://img.shields.io/badge/licence-BSD-blue.svg?style=flat" /></a></p>
 <h1 class="logo">Hakaru</h1>
 
 <hr />
-<p>Hakaru is a probabilistic programming language. A probabilistic programming
-language is a language specifically designed for manipulating probability
-distributions. These sorts of languages are great for machine learning and
-stochastic modeling.</p>
-<h2 id="overview">Overview</h2>
-<p>This manual provides a guide for how to use Hakaru.</p>
+<p>Hakaru is a simply-typed probabilistic programming language, designed for easy specification of probabilistic models and inference algorithms. This type of language is useful
+for the development of machine learning algorithms and stochastic modeling. Hakaru enables the design of modular probabilistic inference programs by providing:</p>
+<ul>
+<li>A language for representing probabilistic distributions, queries, and inferences</li>
+<li>Methods for transforming probabilistic information, such as conditional probability and probabilistic inference, using computer algebra</li>
+</ul>
+<p>This documentation provides information for installing and using Hakaru. Sample programs are included to demonstrate some of Hakaru&rsquo;s functionality and Hakaru implementation
+details are included to help guide future Hakaru developments and extensions.</p>
+<p><strong>Warning: This code is alpha and experimental.</strong></p>
+<p>Contact us at ppaml@indiana.edu if you have any questions or concerns.</p>
 <h2 id="introduction">Introduction</h2>
-<h3 id="what-is-probabilistic-programming"><a href="./intro/probprog">What is Probabilistic Programming</a></h3>
-<p>Probabilistic programming systems allow us to write programs which
-describe probability distributions, and provide mechanisms to
-sample and condition the distributions they represent on data. In
-this page, we give a sense of the sorts of problems Hakaru is
-great at solving, and how you would describe them in Hakaru.</p>
+<p>This section introduces probabilistic programming and illustrates how Hakaru can be used to solve and describe these types of problems, how to install Hakaru on your 
+machine, and some sample programs to get you started.</p>
+<h3 id="what-is-probabilistic-programming"><a href="./intro/probprog">What is Probabilistic Programming?</a></h3>
+<p>Probabilistic programming systems allow us to write programs which describe probability distributions, and provide mechanisms to sample and condition the distributions 
+they represent on data. In this page, we give a sense of the sorts of problems Hakaru is great at solving, and how you would describe them in Hakaru.</p>
 <h3 id="installation"><a href="./intro/installation">Installation</a></h3>
-<p>Learn how to install Hakaru</p>
+<p>You can install Hakaru on Linux, OSX, and Windows and extend its functionality using MapleSoft&rsquo;s Maple. </p>
 <h3 id="quickstart"><a href="./intro/quickstart">Quickstart</a></h3>
-<p>Get started with this quickstart page. Where we show
-how to sample and condition from a small Hakaru program.</p>
-<h2 id="examples"><a href="./examples">Examples</a></h2>
-<p>Here we go through several more involved examples of the kinds of
-problems Hakaru is uniquely well-suited to solve.</p>
-<p>In particular, we describe a model for Gaussian Mixture Models and
-using a form of Bayesian Naives Bayes as applied to document
-classification.</p>
+<p>This page will introduce you to Hakaru&rsquo;s basic functionality by creating a program to sample and condition a mixture model of a coin toss.</p>
+<h3 id="examples"><a href="./examples">Examples</a></h3>
+<p>Two examples, a Gaussian Mixture Model and a Latent Dirichlet Allocation (LDA) topic model, highlight the types of problems that Hakaru is uniquely suited to help you solve.</p>
 <h2 id="language-guide">Language Guide</h2>
-<p>The language section provides an overview of the syntax of Hakaru as
-well as some of the primitives in the language.</p>
+<p>The language section provides an overview of the syntax of Hakaru as well as some of the primitives in the language.</p>
 <h3 id="random-primitives"><a href="./lang/rand">Random Primitives</a></h3>
 <p>These are the built-in probability distributions.</p>
 <h3 id="let-and-bind"><a href="./lang/letbind">Let and Bind</a></h3>
-<p>This is how we can give names to subexpressions and a
-draw from a probability distribution.</p>
+<p>This is how we can give names to subexpressions and a draw from a probability distribution.</p>
 <h3 id="conditionals"><a href="./lang/cond">Conditionals</a></h3>
-<p>Hakaru supports a restricted <code>if</code> expression</p>
+<p>Hakaru supports a restricted <code>if</code> expression.</p>
 <h3 id="types-and-coercions"><a href="./lang/coercions">Types and Coercions</a></h3>
-<p>Hakaru is a simply-typed language. This section
-describes the types available and functions for
-moving between them.</p>
+<p>Hakaru is a simply-typed language. This section describes the types available and functions for moving between them.</p>
 <h3 id="functions"><a href="./lang/functions">Functions</a></h3>
 <p>Defining and using functions</p>
 <h3 id="datatypes-and-match"><a href="./lang/datatypes">Datatypes and match</a></h3>
-<p>Hakaru supports a few built-in datatypes, and offers functionality for
-taking them apart and reconstructing them.</p>
+<p>Hakaru supports a few built-in datatypes, and offers functionality for taking them apart and reconstructing them.</p>
 <h3 id="arrays-and-loops"><a href="./lang/arrays">Arrays and loops</a></h3>
-<p>We offer special support for arrays, and for probability
-distributions over arrays.
-We also express loops that compute sums and products.</p>
+<p>We offer special support for arrays, and for probability distributions over arrays. We also express loops that compute sums and products.</p>
 <h2 id="transformations">Transformations</h2>
-<p>Hakaru implements its inference algorithms predominately as
-program transformations. The following are the major ones
-our system provides.</p>
+<p>Hakaru implements its inference algorithms predominately as program transformations. The following are the major ones our system provides.</p>
 <h3 id="expect"><a href="./transforms/expect">Expect</a></h3>
 <p>Computing expectation of a measure</p>
 <h3 id="disintegrate"><a href="./transforms/disintegrate">Disintegrate</a></h3>
-<p>A transformation which takes a joint distribution and
-produces a program representing the conditional distribution.</p>
+<p>A transformation which takes a joint distribution and produces a program representing the conditional distribution.</p>
 <h3 id="simplify"><a href="./transforms/simplify">Simplify</a></h3>
-<p>Any Hakaru expression can be simplified, using
-the Maple computer-algebra system.</p>
+<p>Any Hakaru expression can be simplified, using the Maple computer-algebra system.</p>
 <h3 id="metropolis-hastings"><a href="./transforms/mh">Metropolis Hastings</a></h3>
-<p>Automatically transform a measure into a transition kernel usable
-in a Metropolis Hastings algorithm.</p>
+<p>Automatically transform a measure into a transition kernel usable in a Metropolis Hastings algorithm.</p>
 <h3 id="compiling-to-haskell"><a href="./transforms/compile">Compiling to Haskell</a></h3>
 <h3 id="compiling-to-c"><a href="./transforms/hkc">Compiling to C</a></h3>
 <h2 id="internals">Internals</h2>
-<p>The internals section of the manual provides some insight into how
-Hakaru is implemented and offers guidance into how the system can
-be extended.</p>
+<p>The internals section of the manual provides some insight into how Hakaru is implemented and offers guidance into how the system can be extended.</p>
 <p><a href="./internals/ast">AST</a></p>
 <p><a href="./internals/abt">ABT</a></p>
 <p><a href="./internals/datums">Datums</a></p>
 <p><a href="./internals/coercions">Coercions</a></p>
 <p><a href="./internals/transforms">Transformations</a></p>
 <p><a href="./internals/testing">Testing</a></p>
-<p><a href="./internals/newfeature">Adding a Language Feature</a></p></div>
+<p><a href="./internals/newfeature">Adding a Language Feature</a></p>
+<h2 id="citing-us">Citing Us</h2>
+<p>When referring to Hakaru, please cite the following <a href="http://homes.soic.indiana.edu/ccshan/rational/system.pdf">academic paper</a>:</p>
+<p>P. Narayanan, J. Carette, W. Romano, C. Shan and R. Zinkov, &ldquo;Probabilistic Inference by Program Transformation in Hakaru (System Description)&rdquo;, Functional and Logic 
+Programming, pp. 62-79, 2016.</p>
+<pre><code class="nohighlight">@inproceedings{narayanan2016probabilistic,
+    title = {Probabilistic inference by program transformation in Hakaru (system description)},
+    author = {Narayanan, Praveen and Carette, Jacques and Romano, Wren and Shan, Chung{-}chieh and Zinkov, Robert},
+    booktitle = {International Symposium on Functional and Logic Programming - 13th International Symposium, {FLOPS} 2016, Kochi, Japan, March 4-6, 2016, Proceedings},
+    pages = {62--79},
+    year = {2016},
+    organization = {Springer},
+    url = {http://dx.doi.org/10.1007/978-3-319-29604-3_5},
+    doi = {10.1007/978-3-319-29604-3_5},
+}
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">

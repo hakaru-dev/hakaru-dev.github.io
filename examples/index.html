@@ -7,7 +7,7 @@
         
         <meta name="author" content="Hakaru Team">
         
-        <link rel="shortcut icon" href="../favicon.ico">
+        <link rel="shortcut icon" href="favicon.ico">
         
 
 	<title>Examples - Hakaru</title>
@@ -58,25 +58,31 @@
             
             
             
-                <li class="dropdown">
+                <li class="dropdown active">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Introduction <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                     
                         
 <li >
-    <a href="../intro/probprog/">What is Probabilistic Programming</a>
+    <a href="../intro/probprog/">What is Probabilistic Programming?</a>
 </li>
 
                     
                         
 <li >
-    <a href="../intro/installation/">Installation</a>
+    <a href="../intro/installation/">Installing Hakaru</a>
 </li>
 
                     
                         
 <li >
-    <a href="../intro/quickstart/">Quick Example</a>
+    <a href="../intro/quickstart/">Quick Start</a>
+</li>
+
+                    
+                        
+<li class="active">
+    <a href="./">Examples</a>
 </li>
 
                     
@@ -223,17 +229,11 @@
                     
                         
 <li >
-    <a href="../internals/newfeature/">Adding a Language Feautre</a>
+    <a href="../internals/newfeature/">Adding a Language Feature</a>
 </li>
 
                     
                     </ul>
-                </li>
-            
-            
-            
-                <li class="active">
-                    <a href="./">Examples</a>
                 </li>
             
             
@@ -247,12 +247,12 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="next" href="../internals/newfeature/">
+                    <a rel="next" href="../intro/quickstart/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
-                <li class="disabled">
-                    <a rel="prev" >
+                <li >
+                    <a rel="prev" href="../lang/rand/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -332,7 +332,7 @@ return (x, mu). pair(array(real), array(real))
 </code></pre>
 
 <h3 id="latent-dirichlet-allocation">Latent Dirichlet Allocation</h3>
-<p>Below is the LDA topic model.</p>
+<p>Below is the LDA topic model, a form of Bayesian Naives Bayes.</p>
 <pre><code class="nohighlight">K = 2 # number of topics
 M = 3 # number of docs
 V = 7 # size of vocabulary

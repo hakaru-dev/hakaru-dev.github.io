@@ -384,17 +384,24 @@ arrays.</p>
 <h3 id="loops"><a href="./lang/loops">Loops</a></h3>
 <p>Hakaru loops are specialized to compute the summation or product of the elements in an array.</p>
 <h2 id="transformations">Transformations</h2>
-<p>Hakaru implements its inference algorithms predominately as program transformations. The following are the major ones our system provides.</p>
+<p>Hakaru includes some inference algorithms that you can use to transform your probabilistic models into other forms to extract desireable information. Its inference 
+algorithms are implemented predominately as program transformations.</p>
 <h3 id="expect-and-normalize"><a href="./transforms/expect">Expect and Normalize</a></h3>
-<p>Computing expectation of a measure</p>
+<p>The expectation transformation (<code>expect</code>) computes expectation of a measure with respect to a given function. The normalization transformation (<code>normalize</code>) reweights a
+program so that it represents a normal distribution.</p>
 <h3 id="disintegrate-and-density"><a href="./transforms/disintegrate">Disintegrate and Density</a></h3>
-<p>A transformation which takes a joint distribution and produces a program representing the conditional distribution.</p>
+<p>The disintegration transformation (<code>disintegrate</code>) produces a program representing the conditional distribution based on a joint probability distribution. The density
+transformation (<code>density</code>) is used to create a conditional distribution model that is used to estimate the density of the distribution at a particular point.</p>
 <h3 id="simplify"><a href="./transforms/simplify">Simplify</a></h3>
-<p>Any Hakaru expression can be simplified, using the Maple computer-algebra system.</p>
+<p>The simplify transformation (<code>simplify</code>) is used to improve Hakaru programs by simplifying proababilistic models using computer algebra. This transformation requires the
+use of Maple.</p>
 <h3 id="metropolis-hastings"><a href="./transforms/mh">Metropolis Hastings</a></h3>
-<p>Automatically transform a measure into a transition kernel usable in a Metropolis Hastings algorithm.</p>
+<p>The Metropolis Hastings transform (<code>mh</code>) is used to convert a Hakaru program into a Metropolis Hastings transition kernel.</p>
 <h3 id="compiling-to-haskell"><a href="./transforms/compile">Compiling to Haskell</a></h3>
+<p>A Hakaru program can be ported into Haskell which can then be converted into machine code for other applications.</p>
 <h3 id="compiling-to-c"><a href="./transforms/hkc">Compiling to C</a></h3>
+<p>Depending on the scale, a Hakaru program might be resource-intensive to run. In these situations, you could port your Hakaru program to C using the <code>hkc</code> command to take
+advantage of other tools such as OpenMP for parallel processing. </p>
 <h2 id="internals">Internals</h2>
 <p>The internals section of the manual provides some insight into how Hakaru is implemented and offers guidance into how the system can be extended.</p>
 <ul>

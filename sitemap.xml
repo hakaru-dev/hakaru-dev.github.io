@@ -58,13 +58,19 @@
     </url>
         
     <url>
-     <loc>/lang/coercions/</loc>
+     <loc>/lang/loops/</loc>
      <lastmod>2017-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/lang/functions/</loc>
+     <lastmod>2017-05-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/lang/coercions/</loc>
      <lastmod>2017-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>

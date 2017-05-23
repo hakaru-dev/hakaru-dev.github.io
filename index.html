@@ -371,15 +371,18 @@ instructions for accessing the primitive distributions in your programs.</p>
 <h3 id="conditionals"><a href="./lang/cond">Conditionals</a></h3>
 <p>Hakaru supports a restricted <code>if</code> expression for selections between two conditions.</p>
 <h3 id="functions"><a href="./lang/functions">Functions</a></h3>
-<p>Defining and using functions</p>
+<p>Hakaru supports both named and anonymous function definitions.</p>
 <h3 id="types-and-coercions"><a href="./lang/coercions">Types and Coercions</a></h3>
-<p>Hakaru is a simply-typed language. This section describes the types available and functions for moving between them.</p>
+<p>Hakaru has basic types which can also be combined to make complex ones. To aid in the communication of information between Hakaru functions, coercions are defined to allow 
+conversions between compatible types.</p>
 <h3 id="data-types-and-match"><a href="./lang/datatypes">Data Types and Match</a></h3>
-<p>Hakaru supports a few built-in datatypes, and offers functionality for taking them apart and reconstructing them.</p>
+<p>Hakaru supports some built-in data types from Haskell. The <code>match</code> function is used for deconstructing them to extract their elements and to reconstructing data back into
+these data types.</p>
 <h3 id="arrays-and-plate"><a href="./lang/arrays">Arrays and Plate</a></h3>
-<p>We offer special support for arrays, and for probability distributions over arrays.</p>
+<p>Hakaru has special syntax for arrays, which is considered distinct from the other supported data types. A specialized array, <code>plate</code>, is used for describing measures over
+arrays.</p>
 <h3 id="loops"><a href="./lang/loops">Loops</a></h3>
-<p>You can use Hakaru loops to compute sums and products of arrays.</p>
+<p>Hakaru loops are specialized to compute the summation or product of the elements in an array.</p>
 <h2 id="transformations">Transformations</h2>
 <p>Hakaru implements its inference algorithms predominately as program transformations. The following are the major ones our system provides.</p>
 <h3 id="expect-and-normalize"><a href="./transforms/expect">Expect and Normalize</a></h3>

@@ -275,122 +275,220 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#quickstart">Quickstart</a></li>
+        <li class="main active"><a href="#quick-start-a-mixture-model-example">Quick Start: A Mixture Model Example</a></li>
+        
+            <li><a href="#modeling-a-bernoulli-experiment">Modeling a Bernoulli Experiment</a></li>
+        
+            <li><a href="#creating-a-mixture-model">Creating a Mixture Model</a></li>
+        
+            <li><a href="#conditioning-a-hakaru-program">Conditioning a Hakaru Program</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="quickstart">Quickstart</h1>
-<p>Assuming you have Hakaru <a href="../../intro/installation">installed</a>, let&rsquo;s
-sample a simple a model.</p>
-<pre><code class="nohighlight">x &lt;~ bern(0.5)
-y &lt;~ match x:
-      true:  normal(0,1)
-      false: uniform(0,1)
-return (y,x)
+<h1 id="quick-start-a-mixture-model-example">Quick Start: A Mixture Model Example</h1>
+<p>Let&rsquo;s start with a simple model of a coin toss experiment so that you can become familiar with some of Hakaru&rsquo;s data types and functionality. We will assume that a single 
+coin flip can be represented using a Bernoulli distribution. After we have created the Bernoulli model, we will use it to create a mixture model and condition the model
+to estimate what the original coin toss experiment looked like based on the resulting mixture model samples.</p>
+<h2 id="modeling-a-bernoulli-experiment">Modeling a Bernoulli Experiment</h2>
+<p>We will use the <code>categorical</code> Hakaru <a href="../../lang/rand/">Random Primitive</a> to write a Bernoulli distribution<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> for our model. The <code>categorical</code> primitive requires an 
+<a href="../../lang/arrays/">array</a> representing the probability of achieving each category in the experiement. Let&rsquo;s start with a fair experiment and state that each side of the 
+coin has an equal chance of being picked. The result of the coin toss is stored in the variable <code>b</code> using Hakaru&rsquo;s notation for <a href="../../lang/letbind">bind</a>:</p>
+<pre><code class="nohighlight">b &lt;~ categorical([0.5, 0.5])
 </code></pre>
 
-<p>The generative model here has us flip a coin with bias 0.5, and then
-have <em>x</em> be a draw from that distribution. We then check if <em>x</em> is
-true or false. Based on that we either have <em>y</em> be a draw from
-a normal or uniform distribution, and then we return both <em>x</em> and <em>y</em>.
-Because we are choosing between a normal and a uniform distribution,
-programs like these are sometimes called <em>mixture</em> models.</p>
-<p>Assuming we save this file to <code>twomixture.hk</code> we can sample from it by
-passing it as an argument to the <code>hakaru</code> command. </p>
-<pre><code class="bash">hakaru twomixture.hk
+<p>For data type simplicity, we will map Heads to <code>true</code> and Tails to <code>false</code>. By putting the values of <code>true</code> and <code>false</code> into an array, we can use the value in <code>b</code> to
+select which of them to return as the result of the coin toss:</p>
+<pre><code class="nohighlight">return [true, false][b]
 </code></pre>
 
-<p>Hakaru will then produce an infinite stream of samples from the
-distribution this program represents.</p>
-<pre><code class="bash">(0.8614855008328531, false)
-(0.27145378737815007, false)
-(6.137461559047042e-4, false)
-(0.9699201771404777, true)
-(1.2904529857533733, true)
-(8.605226081336681e-2, false)
-(-0.7713069511457459, true)
-(0.18162205213257607, true)
-(-1.143049106224509, true)
-(0.3667084406816875, false)
+<p>A characteristic of the Bernoulli distribution is that it assumes that only one experiment is conducted. To collect samples, we need to run this experiment multiple times.
+To aid in this task, we can rewrite the Bernoulli model as a <a href="../../lang/functions/">function</a>. We will call our function <code>bern</code>: </p>
+<pre><code class="nohighlight">def bern ():
+    b &lt;~ categorical([0.5, 0.5])
+    return [true, false][b]
+</code></pre>
+
+<p>Now that we are using functions, we can generalize our model so that we can run experiments on both fair and trick coins. To do this, we should pass in a probability <code>p</code> as 
+a function argument, which is then used to populate the <code>categorical</code> primitive. Hakaru has a specialized data type for probabilities called <code>prob</code>, which we will use as the
+data type for our function input:</p>
+<pre><code class="nohighlight">def bern (p prob):
+    b &lt;~ categorical([p, (1 - p)])
+    return [true, false][b]
+</code></pre>
+
+<p>If you we to run this function, we will get a <code>Type Mismatch</code> error. This is because the value <code>(1 - p)</code> is converted to type <code>real</code> as a result of the subtraction operation
+and <code>categorical</code> expects all of the values in its array to be of type <code>prob</code>. One solution would be to manually pass in the value of <code>(1 - p)</code> as a function argument, which
+would artificially complicate our function. Instead, we can use Hakaru&rsquo;s <a href="../../lang/coercions/">coercions</a> to recast <code>(1 - p)</code> to type <code>prob</code>:</p>
+<pre><code class="nohighlight">def bern (p prob):
+    b &lt;~ categorical([p, real2prob(1 - p)])
+    return [true, false][b]
+</code></pre>
+
+<p>We can now use our model to run a series of Bernoullli experiments. Let&rsquo;s set up our program to use a fair coin and save it as <code>bernoulli.hk</code>:</p>
+<pre><code class="nohighlight">def bern (p prob):
+    b &lt;~ categorical([p, real2prob(1 - p)])
+    return [true, false][b]
+
+bern(0.5)
+</code></pre>
+
+<p>Running this program using <code>hakaru bernoulli.hk</code> should result in an infinite stream of coin toss trials:</p>
+<pre><code class="bash">false
+true
+false
+true
+true
+true
 ...
 </code></pre>
 
-<p>Of course, Hakaru wouldn&rsquo;t be very interesting if that was all it
-did. Often what we wish to do is condition a distribution on
-data. Suppose for <code>twomixture.hk</code> we knew <em>y</em>, and would like to
-sample <code>x</code> conditioned on this information. We can symbolically
-produce the unnormalized conditional distribution, which we call the
-<em>disintegration</em> of the program.</p>
-<pre><code class="bash">disintegrate twomixture.hk
+<p>Now that we have set up our Bernoulli experiment, let&rsquo;s use it to create a mixture model.</p>
+<h2 id="creating-a-mixture-model">Creating a Mixture Model</h2>
+<p>Let&rsquo;s use our coin flip experiment to create a mixture model by drawing a sample from a normal distribution when the coin is Heads (<code>true</code>) and from a uniform distribution
+when it is Tails (<code>false</code>). This is called a <em>mixture model</em><sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup> because we are selecting samples from different distributions. Let&rsquo;s start by saving a copy of your 
+Bernoulli function into a new program so that we can use it in our new model. For this example, we will call it <code>twomixture.hk</code>.</p>
+<p>Let&rsquo;s start by binding the return value of our <code>bern</code> function to a variable called <code>coin</code> to represent the outcome of an experiment:</p>
+<pre><code class="nohighlight">coin &lt;~ bern(0.5)
 </code></pre>
 
-<p>This returns</p>
-<pre><code class="nohighlight">fn x2 real: 
- weight(0.5,
-        weight((exp((negate(((x2 + 0.0) ^ 2)) * 0.5)) * 
-                1.0 * 
-                recip(natroot((2.0 * pi), 2))),
-               x = true
-               return x)) &lt;|&gt; 
- weight(0.5,
-        match (not((x2 &lt; 0.0)) &amp;&amp; not((1.0 &lt; x2))): 
-         true: 
-          x = false
-          return x
-         false: reject. measure(bool))
+<p>Now that we have stored the result of our experiment, let&rsquo;s use it to generate a sample. Our model has a selection condition where Heads causes a sample to be drawn from 
+achieving normal distribution and Tails draws from a uniform distribution. There are two ways of handling this in Hakaru &ndash; <a href="../../lang/cond/">conditionals</a> and 
+<a href="../../lang/datatypes/">pattern matching</a>. Since we are working with Booleans, let&rsquo;s use patern matching so that we can see what it looks like in Hakaru.</p>
+<p>Hakaru pattern matching requires a sequence and a set of possible patterns to compare the sequence to. In our model, our sequence would be <code>coin</code> because that is what we are
+using to select a distribution. Our possible patterns are the possible values that <code>coin</code> could have &ndash; <code>true</code> and <code>false</code>. When the pattern is <code>true</code>, we call the normal
+distribution and when it is <code>false</code> we call the uniform distribution. Both the <code>normal</code> and <code>uniform</code> functions are included in Hakaru&rsquo;s <a href="../../lang/rand/">Random Primitives</a>,
+so we do not need to define our own functions for them. The outcome of the pattern match will not be saved unless we bind it to a variable, so let&rsquo;s bind it to a variable
+called <code>sample</code>:</p>
+<pre><code class="nohighlight">sample &lt;~ match coin:
+    true: normal(0,1)
+    false: uniform(0,1)
 </code></pre>
 
-<p>Disintegrate returns a function, to make it easier to sample
-from, we&rsquo;ll give a value for x2. We&rsquo;ll call this file
-<code>twomixture2.hk</code></p>
-<pre><code>x2 = 0.3
-weight(0.5,
-    weight((exp((negate(((x2 + 0.0) ^ 2)) * 0.5)) * 
-        1.0 * 
-            recip(natroot((2.0 * pi), 2))),
-            x = true
-            return x)) &lt;|&gt; 
-weight(0.5,
-    match (not((x2 &lt; 0.0)) &amp;&amp; not((1.0 &lt; x2))): 
-        true:
-         x = false
-         return x
-        false: reject. measure(bool))
+<p>Now that we have both the result of our coin toss experiment (<code>coin</code>) and our mixture model (<code>sample</code>), we can return the values:</p>
+<pre><code class="nohighlight">return(coin, sample)
 </code></pre>
 
-<p>Which we can run through some unix commands to get a sense of
-the distribution</p>
-<pre><code class="bash">hakaru twomixture2.hk | head -n 1000 | sort | uniq -c
+<p>We have completed the mixture model program and can run it using the command `hakaru twomixture.hk&rsquo; to collect samples indefinitely:</p>
+<pre><code class="bash">(true, -0.37622272051934547)
+(false, 4.666320977960081e-2)
+(true, 1.3351978120820147)
+(true, 0.4657111228024136)
+(false, 0.6528078075939211)
+(false, 0.2410145787295287)
+(false, 0.624335005419879)
+(true, -1.5127939371882644)
+(false, 0.15925713370352967)
+(true, 2.2762774663914114e-2)
+...
+</code></pre>
+
+<p>Of course, Hakaru would not be very interesting if it only provided the means for you to define your model. Let&rsquo;s try conditioning our model so that we can experiment with
+different values for <code>sample</code> to estimate what values of <code>coin</code> were used.</p>
+<h2 id="conditioning-a-hakaru-program">Conditioning a Hakaru Program</h2>
+<p>Suppose for our <code>twomixture.hk</code> program, we know the value of <code>sample</code> and want to see what the original values for <code>coin</code> were. We can symbolically produce the unnormalized 
+conditional distribution from which <code>coin</code> samples are taken by using Hakaru&rsquo;s <a href="../../transforms/disintegrate/">disintegration</a> transform. Before we use <code>disintegrate</code>, we 
+must change the line <code>return (coin, sample)</code> to <code>return (sample, coin)</code>. This tells <code>disintegrate</code> that we want to create a posterior distribution for <code>coin</code> using known 
+values for <code>sample</code>. </p>
+<p>Once we have setup our model for the <code>disintegrate</code> transform, we can transform our model by calling <code>disintegrate twomixture.hk</code>. The <code>disintegrate</code> transform creates a new 
+model written as an anonymous function so that it is easier for you to use in other applications. In the model generated by the <code>disintegrate</code> transform, our variable 
+<code>sample</code> has been renamed to <code>x5</code>:</p>
+<pre><code class="nohighlight">fn x5 real: 
+ bern = fn p prob: 
+         b &lt;~ categorical([p, real2prob((1 - prob2real(p)))])
+         return [true, false][b]
+ coin &lt;~ bern(1/2)
+ (match coin: 
+   true: 
+    x12 &lt;~ weight((exp((negate(((x5 + 0) ^ 2)) / 2))
+                    / 
+                   1
+                    / 
+                   sqrt((2 * pi))),
+                  return ())
+    return coin
+   _: reject. measure(bool)) &lt;|&gt; 
+ bern = fn p prob: 
+         b &lt;~ categorical([p, real2prob((1 - prob2real(p)))])
+         return [true, false][b]
+ coin &lt;~ bern(1/2)
+ (match coin: 
+   false: 
+    (match (not((x5 &lt; 0)) &amp;&amp; not((1 &lt; x5))): 
+      true: 
+       x12 &lt;~ return ()
+       return coin
+      _: reject. measure(bool))
+   _: reject. measure(bool))
+</code></pre>
+
+<p><strong>Note:</strong> The output for <code>disintegrate</code> will be printed in the console. You can easily save this program to a file by redirecting the output to a file by calling 
+<code>hakaru disintegrate model1.hk &gt; modelDis.hk</code>. For this example, we will call our new program <code>twomixture_D.hk</code>. </p>
+<p>We can use this program to experiment with different values of <code>sample</code>(<code>x5</code>) to see what the original coin toss experiment looked like. To avoid altering the function 
+generated by <code>disintegrate</code>, let&rsquo;s assign it to a variable <code>coinToss</code> so that we can reference it at the end of our program. For our first experiment, let&rsquo;s try a value of
+<code>0.3</code>. This means that we are conditioning our model to be more likely to pick samples from the uniform distribution:</p>
+<pre><code class="nohighlight">coinToss = fn x5 real: 
+             bern = fn p prob: 
+                     b &lt;~ categorical([p, real2prob((1 - prob2real(p)))])
+                     return [true, false][b]
+             coin &lt;~ bern(1/2)
+             (match coin: 
+               true: 
+                x12 &lt;~ weight((exp((negate(((x5 + 0) ^ 2)) / 2))
+                                / 
+                               1
+                                / 
+                               sqrt((2 * pi))),
+                              return ())
+                return coin
+               _: reject. measure(bool)) &lt;|&gt; 
+             bern = fn p prob: 
+                     b &lt;~ categorical([p, real2prob((1 - prob2real(p)))])
+                     return [true, false][b]
+             coin &lt;~ bern(1/2)
+             (match coin: 
+               false: 
+                (match (not((x5 &lt; 0)) &amp;&amp; not((1 &lt; x5))): 
+                  true: 
+                   x12 &lt;~ return ()
+                   return coin
+                  _: reject. measure(bool))
+               _: reject. measure(bool))
+
+coinToss(0.3)
+</code></pre>
+
+<p>We can now run the program to estimate what values for <code>coin</code>. Let&rsquo;s use some Unix commands to run the program 1000 times and gather the results into counts:</p>
+<pre><code class="bash">hakaru twomixture_D.hk | head -n 1000 | sort | uniq -c
 
     526 false
     474 true
 </code></pre>
 
-<p>As we can see, when x2 = 0.3, the uniform distribution is slightly more
-likely. If we change x2 to be 3.0</p>
-<pre><code class="nohighlight">x2 = 3.0
-weight(0.5,
-    weight((exp((negate(((x2 + 0.0) ^ 2)) * 0.5)) * 
-        1.0 * 
-            recip(natroot((2.0 * pi), 2))),
-            x = true
-            return x)) &lt;|&gt; 
-weight(0.5,
-    match (not((x2 &lt; 0.0)) &amp;&amp; not((1.0 &lt; x2))): 
-        true:
-         x = false
-         return x
-        false: reject. measure(bool))
-</code></pre>
-
-<p>This reflects that only the normal case is possible.</p>
-<pre><code class="bash">hakaru twomixture3.hk | head -n 1000 | sort | uniq -c
+<p>As we can see, when <code>x5 = 0.3</code>, our coin tosses were more likely to be Tails (<code>false</code>) than Heads (<code>true</code>). Let&rsquo;s change our argument to <code>coinToss</code> to <code>3.0</code> so that we are
+conditioned to pick values from the normal distribution much more frequently. Running this program shows that our coin tosses must have all been Heads for this value to be
+possible:</p>
+<pre><code class="bash">hakaru twomixture_D.hk | head -n 1000 | sort | uniq -c
 
     1000 true
-</code></pre></div>
+</code></pre>
+
+<p>You have written a model to represent a Bernoulli experiement and used it to create a mixture model using a normal and uniform distribution. You have also used the 
+<code>disintegrate</code> transform to generate a new model that can be conditioned with different mixture model results to infer what the original distribution of coin toss 
+experiements might have been. For more Hakaru examples, see the <a href="../../examples">Examples</a>.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p><a href="https://en.wikipedia.org/wiki/Bernoulli_distribution">Bernoulli distribution (Wikipedia)</a>&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://en.wikipedia.org/wiki/Mixture_model">Mixture Model (Wikipedia)</a>&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
         </div>
 
         <footer class="col-md-12">

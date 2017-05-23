@@ -277,6 +277,8 @@
     
         <li class="main active"><a href="#adding-a-feature-to-the-hakaru-language">Adding a feature to the Hakaru language</a></li>
         
+            <li><a href="#documenting-a-hakaru-feature">Documenting a Hakaru Feature</a></li>
+        
     
     </ul>
 </div></div>
@@ -293,7 +295,23 @@
 <li>Update the sampler if this primitive is intended to exist at runtime</li>
 <li>Update the compilers to emit the right code for this symbol</li>
 </ul>
-<p>TODO: We give an example of what this looks like by adding <code>double</code> to the language.</p></div>
+<p>TODO: We give an example of what this looks like by adding <code>double</code> to the language.</p>
+<h2 id="documenting-a-hakaru-feature">Documenting a Hakaru Feature</h2>
+<p>If you add a new feature to Hakaru, you should write accompanying documentation so that others can learn how to use it. The Hakaru documentation is written using 
+<a href="http://www.mkdocs.org/">MkDocs</a>, which uses MarkDown to format source files. In order to download MkDocs, it is recommended that you use the <a href="https://www.python.org/">Python</a> 
+package manager <code>pip</code>. The <code>pip</code> package manager is bundled with Python starting in versions 2.7.9 and 3.4, so it will be installed alongside Python. If you are using an 
+earlier version of Python, you will need to install <code>pip</code> manually. </p>
+<ul>
+<li>On Windows, you must download <code>get-pip.py</code> and run it in the command prompr using <code>python get-pip.py</code></li>
+<li>On Linux, you can install <code>pip</code> from the command line using <code>sudo apt-get install python-pip</code></li>
+<li>On OSX, you can install <code>pip</code> from the command line using <code>sudo easy-install pip</code></li>
+</ul>
+<p>Once you have installed <code>pip</code>, you can download the required packages for the Hakaru documentation:</p>
+<pre><code class="bash">pip install mkdocs
+pip install python-markdown-math
+pip install mkdocs-extensions
+pip install mkdocs-bootswatch
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">

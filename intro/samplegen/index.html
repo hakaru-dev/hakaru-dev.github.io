@@ -10,7 +10,7 @@
         <link rel="shortcut icon" href="favicon.ico">
         
 
-	<title>Primitive Probability Distributions - Hakaru</title>
+	<title>Generating Samples from your Hakaru Program - Hakaru</title>
 
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -58,31 +58,31 @@
             
             
             
-                <li class="dropdown">
+                <li class="dropdown active">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Introduction <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                     
                         
 <li >
-    <a href="../../intro/probprog/">What is Probabilistic Programming?</a>
+    <a href="../probprog/">What is Probabilistic Programming?</a>
 </li>
 
                     
                         
 <li >
-    <a href="../../intro/installation/">Installing Hakaru</a>
+    <a href="../installation/">Installing Hakaru</a>
+</li>
+
+                    
+                        
+<li class="active">
+    <a href="./">Generating Samples from your Hakaru Program</a>
 </li>
 
                     
                         
 <li >
-    <a href="../../intro/samplegen/">Generating Samples from your Hakaru Program</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../../intro/quickstart/">Quick Start: A Mixture Model Example</a>
+    <a href="../quickstart/">Quick Start: A Mixture Model Example</a>
 </li>
 
                     
@@ -97,55 +97,55 @@
             
             
             
-                <li class="dropdown active">
+                <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Language Guide <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                     
                         
-<li class="active">
-    <a href="./">Primitive Probability Distributions</a>
+<li >
+    <a href="../../lang/rand/">Primitive Probability Distributions</a>
 </li>
 
                     
                         
 <li >
-    <a href="../letbind/">Let and Bind</a>
+    <a href="../../lang/letbind/">Let and Bind</a>
 </li>
 
                     
                         
 <li >
-    <a href="../cond/">Conditionals</a>
+    <a href="../../lang/cond/">Conditionals</a>
 </li>
 
                     
                         
 <li >
-    <a href="../functions/">Functions</a>
+    <a href="../../lang/functions/">Functions</a>
 </li>
 
                     
                         
 <li >
-    <a href="../coercions/">Types and Coercions</a>
+    <a href="../../lang/coercions/">Types and Coercions</a>
 </li>
 
                     
                         
 <li >
-    <a href="../datatypes/">Data Types and Match</a>
+    <a href="../../lang/datatypes/">Data Types and Match</a>
 </li>
 
                     
                         
 <li >
-    <a href="../arrays/">Arrays and Plate</a>
+    <a href="../../lang/arrays/">Arrays and Plate</a>
 </li>
 
                     
                         
 <li >
-    <a href="../loops/">Loops</a>
+    <a href="../../lang/loops/">Loops</a>
 </li>
 
                     
@@ -259,12 +259,12 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="next" href="../../examples/">
+                    <a rel="next" href="../installation/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../letbind/">
+                    <a rel="prev" href="../quickstart/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -287,172 +287,57 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#primitive-probability-distributions">Primitive Probability Distributions</a></li>
+        <li class="main active"><a href="#generating-samples-from-your-hakaru-program">Generating Samples from your Hakaru Program</a></li>
+        
+            <li><a href="#usage">Usage</a></li>
+        
+            <li><a href="#example">Example</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="primitive-probability-distributions">Primitive Probability Distributions</h1>
-<p>Hakaru comes with a small set of primitive probability
-distributions.</p>
-<table>
-<thead>
-<tr>
-<th><h4>normal(mean. <em>real</em>, standard_deviation. <em>prob</em>): <em>measure(real)</em> </h4></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>univariate Normal (Gaussian) distribution</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th><h4>uniform(low. <em>real</em>, high. <em>real</em>): <em>measure(real)</em> </h4></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Uniform distribution is a continuous univariate distribution defined from low to high</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th><h4>gamma(shape. <em>prob</em>, scale. <em>prob</em>): <em>measure(prob)</em> </h4></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Gamma distribution with shape and scale parameterization</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th><h4>beta(a. <em>prob</em>, b. <em>prob</em>): <em>measure(prob)</em> </h4></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Beta distribution</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th><h4>poisson(l. <em>prob</em>): <em>measure(nat)</em> </h4></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Poisson distribution</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th><h4>categorical(v. <em>array(prob)</em>): <em>measure(nat)</em> </h4></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Categorical distribution</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th><h4>dirac(x. <em>a</em>): <em>measure(a)</em> </h4></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Dirac distribution</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<p>The Dirac distribution appears often enough, that we have given an
-additional keyword in our language for it: <code>return</code>. The following
-programs are equivalent.</p>
-<pre><code class="nohighlight">dirac(3)
+<h1 id="generating-samples-from-your-hakaru-program">Generating Samples from your Hakaru Program</h1>
+<p>The <code>hakaru</code> command is used to indefinitely generate samples from a Hakaru program.</p>
+<h2 id="usage">Usage</h2>
+<p>The <code>hakaru</code> command can take up to two Hakaru programs as arguments. If only one program is provided, the <code>hakaru</code> command generates samples based on the model described in
+the Hakaru program. In this case, the <code>hakaru</code> command can be invoked in the command-line by calling:</p>
+<pre><code class="bash">hakaru hakaru_program.hk
 </code></pre>
 
-<pre><code class="nohighlight">return 3
+<p>If a second program is given to the <code>hakaru</code> command, it will treat the two programs as the start of a Markov Chain. This is used when you have created a transition kernal 
+using the <a href="../../transforms/mh/">Metropolis Hastings</a> transformation. To invoke the <code>hakaru</code> command with a transition kernal, you would call:</p>
+<pre><code class="bash">hakaru --transition-kernel transition.hk init.hk
 </code></pre>
 
-<table>
-<thead>
-<tr>
-<th><h4>lebesgue: <em>measure(real)</em> </h4></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>the distribution constant over the real line</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th><h4>weight(x. <em>prob</em>, m. <em>measure(a)</em>): <em>measure(a)</em> </h4></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>a <em>m</em> distribution, reweighted by <em>x</em></td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th><h4>reject: <em>measure(a)</em> </h4></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>The distribution over the empty set</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<p>Finally, we have a binary choice operator <code>&lt;|&gt;</code>, which takes two
-distributions, and returns an unnormalized distribution which returns
-one or the other.  For example, to get a distribution which where with
-probability 0.5 draws from a uniform(0,1), and probability 0.5 draws
-from uniform(5,6).</p>
-<pre><code class="nohighlight">weight(0.5, uniform(0,1)) &lt;|&gt;
-weight(0.5, uniform(5,6))
+<p>The first program, <code>transition.hk</code>,  is treated as the transition kernel and the second program, <code>init.hk</code>, is treated as the initial state of the Markov Chain. When the 
+<code>hakaru</code> command is run, a sample is drawn from <code>init.hk</code>. This sample is then passed to <code>transition.hk</code> to generate the second sample. After this point, samples generated
+from <code>transition.hk</code> are passed back into itself to generate further samples.</p>
+<h2 id="example">Example</h2>
+<p>The normal distribution is a commonly used distribution in probabilistic modeling. A simple Hakaru program to generate samples from this distribution is:</p>
+<pre><code class="nohighlight">return normal(0,1)
+</code></pre>
+
+<p>If you save this program as <code>norm.hk</code>, you can generate samples from it by calling:</p>
+<pre><code class="bash">hakaru norm.hk
+</code></pre>
+
+<p>The <code>hakaru</code> command will print a continuous stream of samples drawn from this program:</p>
+<pre><code class="bash">1.2806867344192752
+1.7931987343253566
+1.7437712239446213
+0.21570155009510955
+0.7124154152070546
+0.14340054239444883
+0.3125790473514405
+-0.9078427070858872
+0.7188339944834061
+6.240694120048951e-2
+0.5053667107752018
+1.1994605612832265
+-1.195280076420274
+...
 </code></pre></div>
         </div>
 

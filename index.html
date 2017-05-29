@@ -403,8 +403,9 @@ program&rsquo;s output by counting them.</p>
 <p>The expectation transformation (<code>expect</code>) computes expectation of a measure with respect to a given function. The normalization transformation (<code>normalize</code>) reweights a
 program so that it represents a normal distribution.</p>
 <h3 id="disintegrate-and-density"><a href="./transforms/disintegrate">Disintegrate and Density</a></h3>
-<p>The disintegration transformation (<code>disintegrate</code>) produces a program representing the conditional distribution based on a joint probability distribution. The density
-transformation (<code>density</code>) is used to create a conditional distribution model that is used to estimate the density of the distribution at a particular point.</p>
+<p>The disintegration transformation (<code>disintegrate</code>) produces a program representing the conditional distribution based on a joint probability distribution. This command
+is equivalent to model conditioning in probability theory. The density transformation (<code>density</code>) is used to create a conditional distribution model that is used to estimate 
+the density of the distribution at a particular point.</p>
 <h3 id="simplify"><a href="./transforms/simplify">Simplify</a></h3>
 <p>The simplify transformation (<code>simplify</code>) is used to improve Hakaru programs by simplifying proababilistic models using computer algebra. This transformation requires the
 use of Maple.</p>

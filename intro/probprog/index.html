@@ -333,7 +333,7 @@ our set of bus arrival times to predict a value for <script type="math/tex">f</s
 <h2 id="example-bayesian-tug-of-war">Example: Bayesian Tug-of-War</h2>
 <p>To demonstrate the value of this problem-solving approach, we will write a Hakaru program to represent a simplified version of the 
 <a href="https://probmods.org/v1/generative-models.html#example-bayesian-tug-of-war">tug-of-war</a> example from probmods.org. A completed version of this program can be found
-in the <a href="https://github.com/hakaru-dev/hakaru/blob/master/examples/tugofwar.hk">Hakaru examples directory</a>.</p>
+in the <a href="https://github.com/hakaru-dev/hakaru/blob/master/examples/tugofwar_rejection.hk">Hakaru examples directory</a>.</p>
 <p>Three friends, Alice, Bob and Carol, want to know which of them is the strongest. They decide that the winner of a game of tug-of-war must be stronger than their opponent,
 and arrange to take turns playing tug-of-war against each other. The person who wins the most matches will be deemed the strongest of them.</p>
 <p>You can write a probabilistic program to represent this scenario. In this simulation, the friends are only interested in knowing who will win the third match (<code>match3</code>) 
@@ -372,11 +372,11 @@ else:
 </code></pre>
 
 <p>You have now created a Hakaru program that describes a probabilistic model and restricted the accepted samples based on known data. You should save your program as 
-<code>tugofwar.hk</code> so that you can run Hakaru to infer the outcome of <code>match3</code>. </p>
-<p>If you call <code>hakaru tugofwar.hk</code>, you will get a continuous stream of Boolean results. You can make the calculations more legible by restricting the number of program 
-executions and counting how many of each Boolean appears. For example, if you restrict the number of program executions to 10000 and collect the results, you will see that 
-<code>True</code> occurs much more frequently than <code>False</code>. This means that Alice is likely to win <code>match3</code> against Carol.</p>
-<pre><code class="bash">hakaru tugofwar.hk | head -n 10000 | cut -f 2 | sort | uniq -c
+<code>tugofwar_rejection.hk</code> so that you can run Hakaru to infer the outcome of <code>match3</code>. </p>
+<p>If you call <code>hakaru tugofwar_rejection.hk</code>, you will get a continuous stream of Boolean results. You can make the calculations more legible by restricting the number of 
+program executions and counting how many of each Boolean appears. For example, if you restrict the number of program executions to 10000 and collect the results, you will 
+see that <code>True</code> occurs much more frequently than <code>False</code>. This means that Alice is likely to win <code>match3</code> against Carol.</p>
+<pre><code class="bash">hakaru --no-weights tugofwar_rejection.hk | head -n 10000 | sort | uniq -c
    3060 false
    6940 true
 </code></pre>

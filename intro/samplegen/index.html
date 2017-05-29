@@ -314,6 +314,20 @@ using the <a href="../../transforms/mh/">Metropolis Hastings</a> transformation.
 <p>The first program, <code>transition.hk</code>,  is treated as the transition kernel and the second program, <code>init.hk</code>, is treated as the initial state of the Markov Chain. When the 
 <code>hakaru</code> command is run, a sample is drawn from <code>init.hk</code>. This sample is then passed to <code>transition.hk</code> to generate the second sample. After this point, samples generated
 from <code>transition.hk</code> are passed back into itself to generate further samples.</p>
+<h3 id="the-dash-operator">The Dash (<code>-</code>) Operator</h3>
+<p>You might encounter some scenarios where you wish to run a Hakaru command or transformation on a program and then send the resulting output to another command or transform. In 
+these cases, you can take advantage of the dash (<code>-</code>) command-line notation.</p>
+<p>The dash notation is a shortcut used to pass standard inputs and outputs to another command in the same line of script. For example, if you wanted to run the <code>disintegrate</code>
+Hakaru command followed by the <code>simplify</code> command, you would enter:</p>
+<pre><code class="bash">disintegrate program.hk | simplify -
+</code></pre>
+
+<p>This command is equilvalent to entering:</p>
+<pre><code class="bash">disintegrate program.hk &gt; temp.hk
+simplify temp.hk
+</code></pre>
+
+<p><strong>Note:</strong> The <code>&gt;</code> operator redirects the output from <code>disintegrate program.hk</code> to a new file called <code>temp.hk</code>.</p>
 <h2 id="example">Example</h2>
 <p>The normal distribution is a commonly used distribution in probabilistic modeling. A simple Hakaru program to generate samples from this distribution is:</p>
 <pre><code class="nohighlight">return normal(0,1)
@@ -338,7 +352,9 @@ from <code>transition.hk</code> are passed back into itself to generate further 
 1.1994605612832265
 -1.195280076420274
 ...
-</code></pre></div>
+</code></pre>
+
+<p>An example for using the <code>hakaru</code> command using a transition kernel is available on the <a href="../../transforms/mh/">Metropolis Hastings</a> transform page.</p></div>
         </div>
 
         <footer class="col-md-12">

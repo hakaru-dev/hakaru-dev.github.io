@@ -116,7 +116,19 @@
     </url>
         
     <url>
+     <loc>/transforms/normalize/</loc>
+     <lastmod>2017-05-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>/transforms/disintegrate/</loc>
+     <lastmod>2017-05-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/transforms/density/</loc>
      <lastmod>2017-05-30</lastmod>
      <changefreq>daily</changefreq>
     </url>

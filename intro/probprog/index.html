@@ -303,10 +303,10 @@
             <div class="col-md-9" role="main">
 
 <h1 id="what-is-probabilistic-programming">What is Probabilistic Programming?</h1>
-<p>Probablilistic programming is a software-driven method for creating probabilistic models and then using them to make probabilistic inferences. It 
+<p>Probabilistic programming is a software-driven method for creating probabilistic models and then using them to make probabilistic inferences. It 
 provides a means for writing programs which describe probabilistic models such that they can be used to make probabilistic inferences. For example, the 
 Hakaru program <script type="math/tex">poisson(5)</script> represents the Poisson distribution with a rate of five. A Probabilistic Programming Language (PPL) is a computer language designed to 
-describe probabalistic models and distributions such that probabilistic inferences can be made programmatically<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>. Hakaru is an example of a PPL. </p>
+describe probabilistic models and distributions such that probabilistic inferences can be made programmatically<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>. Hakaru is an example of a PPL. </p>
 <p>Why do we need a programming language for describing probability distributions? Consider a machine learning problem. A typical workflow for this type of design is, when 
 presented with a problem, to design an inference algorithm for a specific probabilistic distribution and query. The development of a distribution, query, and inference
 algorithm can be a time consuming task, even for someone that is skilled in these areas. Automating this process via a PPL allows for a broader exploration of the design
@@ -326,7 +326,7 @@ can represent the likelihood function using a Poisson distribution:</p>
 <script type="math/tex; mode=display"> f(\lambda) = \frac{\lambda^x e^{-\lambda}}{x!} </script>
 </p>
 <h2 id="methods-of-probabilistic-reasoning">Methods of Probabilistic Reasoning</h2>
-<p>There are two main approaches to statistical reasoning: Frequentist and Bayesian. In Frequentist reasoning, the goal is to maximize the liklihood function. In the density
+<p>There are two main approaches to statistical reasoning: Frequentist and Bayesian. In Frequentist reasoning, the goal is to maximize the likelihood function. In the density
 model for our bus arrival times, this would mean finding a value for <script type="math/tex">\lambda</script> that maximizes <script type="math/tex">f</script>. In Bayesian reasoning, an estimation is made using the given 
 function parameters and a conditioned data set collected for the event. For our density model, we would design an estimation functions using our parameters and given it
 our set of bus arrival times to predict a value for <script type="math/tex">f</script>. You can use either approach to probabilistic reasoning in your Hakaru programs. </p>
@@ -387,18 +387,18 @@ only require a manageable number of samples or that are easy to collect. However
 this, you could generate samples using a <em>simulation</em>. In a simulation, you can select the population&rsquo;s mean and then generate values around this data point. If you wanted 
 to know what a population would look like with a different mean, you simply need to change that value in your model and run the simulation again. </p>
 <p>What about the cases where you do have some samples and you want to know something about it? In this case, you use the data you have to guide the generation of samples in 
-order to learn how the data occured. This approach is called <em>inference</em>. To be able to make inferences from your known samples, you must add reasoning mechanisms to your 
+order to learn how the data occurred. This approach is called <em>inference</em>. To be able to make inferences from your known samples, you must add reasoning mechanisms to your 
 model to gauge the usefulness of a model-generated sample with respect to some data that you have already collected. For example, you might have collected some disease data 
-from a hospital and want to know how it spread in the affected patients. After creating a proababilistic model of disease transmission, you can use your collected data 
+from a hospital and want to know how it spread in the affected patients. After creating a probabilistic model of disease transmission, you can use your collected data 
 to reason about the samples generated from your model to judge its relevance in the creation of the data that you have collected.</p>
 <p>In the tug-of-war example, you used Hakaru to restrict which samples were kept (Alice must have won <code>match1</code> and Bob must have won <code>match2</code>) and which ones were discarded. 
 This inference approach is called <em>rejection sampling</em> because restricted samples generated from your model are discarded. Would this approach still work if the model were 
 changed? Could we use this same technique to determine if Alice will win her match and by how much?</p>
-<p>As you pose more complex questions, creating models as rejection samplers becomes increasing inefficient because of the number of discarded samples. It would be
-better if your model could be transformed such that only observed data points are generated so that compuational resources are not wasted on data that will not exist in 
+<p>As you pose more complex questions, creating models as rejection samplers becomes increasingly inefficient because of the number of discarded samples. It would be
+better if your model could be transformed such that only observed data points are generated so that computational resources are not wasted on data that will not exist in 
 your data set.</p>
 <p>Hakaru uses <em>importance sampling</em> where, instead of being rejected immediately, each sample is assigned a weight so that a sample average can be calculated. As more 
-samples are generated, sample weights are updated to reflect the likelihood of that sample&rsquo;s rejection. While this works well for model inferencing when the model has
+samples are generated, sample weights are updated to reflect the likelihood of that sample&rsquo;s rejection. While this works well for model inference when the model has
 only a few dimensions, there are more powerful tools that can be used for more complex scenarios.</p>
 <h3 id="the-metropolis-hastings-algorithm-a-markov-chain-monte-carlo-method">The Metropolis-Hastings Algorithm: A Markov Chain Monte Carlo Method</h3>
 <p>You might encounter situations where direct sampling from your model is difficult, which is common for multi-dimensional models. In models with high dimensionality, sample 

@@ -92,6 +92,18 @@
 </li>
 
                     
+                        
+<li >
+    <a href="transforms/compile/">Compiling to Haskell</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="transforms/hkc/">Compiling to C</a>
+</li>
+
+                    
                     </ul>
                 </li>
             
@@ -179,18 +191,6 @@
                         
 <li >
     <a href="transforms/mh/">Metropolis Hastings</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="transforms/compile/">Compiling to Haskell</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="transforms/hkc/">Compiling to C</a>
 </li>
 
                     
@@ -299,6 +299,10 @@
         
             <li><a href="#examples">Examples</a></li>
         
+            <li><a href="#compiling-to-haskell">Compiling to Haskell</a></li>
+        
+            <li><a href="#compiling-to-c">Compiling to C</a></li>
+        
     
         <li class="main "><a href="#language-guide">Language Guide</a></li>
         
@@ -328,10 +332,6 @@
             <li><a href="#simplify">Simplify</a></li>
         
             <li><a href="#metropolis-hastings">Metropolis Hastings</a></li>
-        
-            <li><a href="#compiling-to-haskell">Compiling to Haskell</a></li>
-        
-            <li><a href="#compiling-to-c">Compiling to C</a></li>
         
     
         <li class="main "><a href="#internals">Internals</a></li>
@@ -371,6 +371,11 @@ they represent on data. In this page, we give a sense of the sorts of problems H
 <p>This page will introduce you to Hakaru&rsquo;s basic functionality by creating a program to sample and condition a mixture model of a coin toss.</p>
 <h3 id="examples"><a href="./examples">Examples</a></h3>
 <p>Two examples, a Gaussian Mixture Model and a Latent Dirichlet Allocation (LDA) topic model, highlight the types of problems that Hakaru is uniquely suited to help you solve.</p>
+<h3 id="compiling-to-haskell"><a href="./transforms/compile">Compiling to Haskell</a></h3>
+<p>A Hakaru program can be ported into Haskell which can then be converted into machine code for other applications.</p>
+<h3 id="compiling-to-c"><a href="./transforms/hkc">Compiling to C</a></h3>
+<p>Depending on the scale, a Hakaru program might be resource-intensive to run. In these situations, you could port your Hakaru program to C using the <code>hkc</code> command to take
+advantage of other tools such as OpenMP for parallel processing. </p>
 <h2 id="language-guide">Language Guide</h2>
 <p>The Language Guide presents an overview of Hakaru&rsquo;s language primitives and core functionality.</p>
 <h3 id="primitive-probability-distributions"><a href="./lang/rand">Primitive Probability Distributions</a></h3>
@@ -411,11 +416,6 @@ the density of the distribution at a particular point.</p>
 use of Maple.</p>
 <h3 id="metropolis-hastings"><a href="./transforms/mh">Metropolis Hastings</a></h3>
 <p>The Metropolis Hastings transform (<code>mh</code>) is used to convert a Hakaru program into a Metropolis Hastings transition kernel.</p>
-<h3 id="compiling-to-haskell"><a href="./transforms/compile">Compiling to Haskell</a></h3>
-<p>A Hakaru program can be ported into Haskell which can then be converted into machine code for other applications.</p>
-<h3 id="compiling-to-c"><a href="./transforms/hkc">Compiling to C</a></h3>
-<p>Depending on the scale, a Hakaru program might be resource-intensive to run. In these situations, you could port your Hakaru program to C using the <code>hkc</code> command to take
-advantage of other tools such as OpenMP for parallel processing. </p>
 <h2 id="internals">Internals</h2>
 <p>The internals section of the manual provides some insight into how Hakaru is implemented and offers guidance into how the system can be extended.</p>
 <ul>

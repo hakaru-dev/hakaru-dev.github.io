@@ -41,6 +41,18 @@
      <changefreq>daily</changefreq>
     </url>
         
+    <url>
+     <loc>/transforms/compile/</loc>
+     <lastmod>2017-05-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/transforms/hkc/</loc>
+     <lastmod>2017-05-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     
 
     
@@ -117,18 +129,6 @@
         
     <url>
      <loc>/transforms/mh/</loc>
-     <lastmod>2017-05-30</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/transforms/compile/</loc>
-     <lastmod>2017-05-30</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/transforms/hkc/</loc>
      <lastmod>2017-05-30</lastmod>
      <changefreq>daily</changefreq>
     </url>

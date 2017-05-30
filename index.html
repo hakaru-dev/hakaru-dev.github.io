@@ -416,7 +416,7 @@ arrays.</p>
 <p>Hakaru loops are specialized to compute the summation or product of the elements in an array.</p>
 <h2 id="transformations">Transformations</h2>
 <p>Hakaru includes some inference algorithms that you can use to transform your probabilistic models into other forms to extract desireable information. Its inference 
-algorithms are implemented predominately as program transformations.</p>
+algorithms are implemented predominantly as program transformations.</p>
 <p><strong>Note:</strong> By default, Hakaru assigns a weight to each generated sample. These weights are not printed by the <code>hakaru</code> command. For most programs, a weight of one is used.
 Otherwise it is possible for the weights to vary between samples. This might result in differing results from the original and transformed programs when summarizing a 
 program&rsquo;s output by counting them.</p>
@@ -430,7 +430,7 @@ is equivalent to model conditioning in probability theory. </p>
 <h3 id="density"><a href="./transforms/density">Density</a></h3>
 <p>The density transformation (<code>density</code>) is used to create a conditional distribution model that is used to estimate the density of the distribution at a particular point.</p>
 <h3 id="simplify"><a href="./transforms/simplify">Simplify</a></h3>
-<p>The simplify transformation (<code>simplify</code>) is used to improve Hakaru programs by simplifying proababilistic models using computer algebra. This transformation requires the
+<p>The simplify transformation (<code>simplify</code>) is used to improve Hakaru programs by simplifying probabilistic models using computer algebra. This transformation requires the
 use of Maple.</p>
 <h3 id="metropolis-hastings"><a href="./transforms/mh">Metropolis Hastings</a></h3>
 <p>The Metropolis Hastings transform (<code>mh</code>) is used to convert a Hakaru program into a Metropolis Hastings transition kernel.</p>

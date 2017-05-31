@@ -315,6 +315,8 @@
 <a href="../disintegrate/"><code>disintegrate</code> transform</a> that also computes the <a href="../expect/">expectation</a> of the probabilistic 
 distribution as part of its work. </p>
 <h2 id="usage">Usage</h2>
+<p>Your Hakaru program must be a proabability distribution (type <code>measure(x)</code>) in order to use the <code>density</code> transform. Most Hakaru programs that end
+with a <code>return</code> statement do not meet this requirement because they return values instead of functions on values.</p>
 <p>You can use the <code>density</code> transform in the command line by calling:</p>
 <pre><code class="bash">density hakaru_program.hk
 </code></pre>

@@ -161,6 +161,12 @@
 </li>
 
                     
+                        
+<li >
+    <a href="transforms/expect/">Expect</a>
+</li>
+
+                    
                     </ul>
                 </li>
             
@@ -169,12 +175,6 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Transformations <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                    
-                        
-<li >
-    <a href="transforms/expect/">Expect</a>
-</li>
-
                     
                         
 <li >
@@ -334,10 +334,10 @@
         
             <li><a href="#loops">Loops</a></li>
         
+            <li><a href="#expect">Expect</a></li>
+        
     
         <li class="main "><a href="#transformations">Transformations</a></li>
-        
-            <li><a href="#expect">Expect</a></li>
         
             <li><a href="#normalize">Normalize</a></li>
         
@@ -414,14 +414,14 @@ these data types.</p>
 arrays.</p>
 <h3 id="loops"><a href="./lang/loops">Loops</a></h3>
 <p>Hakaru loops are specialized to compute the summation or product of the elements in an array.</p>
+<h3 id="expect"><a href="./transforms/expect">Expect</a></h3>
+<p>The expectation feature (<code>expect</code>) computes expectation of a measure with respect to a given function. </p>
 <h2 id="transformations">Transformations</h2>
 <p>Hakaru includes some inference algorithms that you can use to transform your probabilistic models into other forms to extract desireable information. Its inference 
 algorithms are implemented predominantly as program transformations.</p>
 <p><strong>Note:</strong> By default, Hakaru assigns a weight to each generated sample. These weights are not printed by the <code>hakaru</code> command. For most programs, a weight of one is used.
 Otherwise it is possible for the weights to vary between samples. This might result in differing results from the original and transformed programs when summarizing a 
 program&rsquo;s output by counting them.</p>
-<h3 id="expect"><a href="./transforms/expect">Expect</a></h3>
-<p>The expectation transformation (<code>expect</code>) computes expectation of a measure with respect to a given function. </p>
 <h3 id="normalize"><a href="./transforms/normalize">Normalize</a></h3>
 <p>The normalization transformation (<code>normalize</code>) reweights a program so that it represents a normal distribution.</p>
 <h3 id="disintegrate"><a href="./transforms/disintegrate">Disintegrate</a></h3>

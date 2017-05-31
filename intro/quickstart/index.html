@@ -485,7 +485,7 @@ coinToss(0.3)
 </code></pre>
 
 <p>We can now run the program to estimate what values for <code>coin</code>. Let&rsquo;s use some Unix commands to run the program 1000 times and gather the results into counts:</p>
-<pre><code class="bash">hakaru --no-weights twomixture_D.hk | head -n 1000 | sort | uniq -c
+<pre><code class="bash">hakaru -w twomixture_D.hk | head -n 1000 | sort | uniq -c
 
     526 false
     474 true
@@ -494,7 +494,7 @@ coinToss(0.3)
 <p>As we can see, when <code>x5 = 0.3</code>, our coin tosses were more likely to be Tails (<code>false</code>) than Heads (<code>true</code>). Let&rsquo;s change our argument to <code>coinToss</code> to <code>3.0</code> so that we are
 conditioned to pick values from the normal distribution much more frequently. Running this program shows that our coin tosses must have all been Heads for this value to be
 possible:</p>
-<pre><code class="bash">hakaru --no-weights twomixture_D.hk | head -n 1000 | sort | uniq -c
+<pre><code class="bash">hakaru -w twomixture_D.hk | head -n 1000 | sort | uniq -c
 
     1000 true
 </code></pre>

@@ -419,9 +419,8 @@ arrays.</p>
 <h2 id="transformations">Transformations</h2>
 <p>Hakaru includes some inference algorithms that you can use to transform your probabilistic models into other forms to extract desireable information. Its inference 
 algorithms are implemented predominantly as program transformations.</p>
-<p><strong>Note:</strong> By default, Hakaru assigns a weight to each generated sample. These weights are not printed by the <code>hakaru</code> command. For most programs, a weight of one is used.
-Otherwise it is possible for the weights to vary between samples. This might result in differing results from the original and transformed programs when summarizing a 
-program&rsquo;s output by counting them.</p>
+<p><strong>Note:</strong> By default, Hakaru assigns a weight to each generated sample. Typically a weight of one is used, but it is possible for the weights to vary between samples. This 
+might result in differing results from the original and transformed programs when summarizing a program&rsquo;s output by counting them.</p>
 <h3 id="normalize"><a href="./transforms/normalize">Normalize</a></h3>
 <p>The normalization transformation (<code>normalize</code>) reweights a program so that it represents a normal distribution.</p>
 <h3 id="disintegrate"><a href="./transforms/disintegrate">Disintegrate</a></h3>

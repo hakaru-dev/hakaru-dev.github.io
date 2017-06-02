@@ -301,19 +301,34 @@
     
         <li class="main active"><a href="#testing-infrastructure-in-hakaru">Testing infrastructure in Hakaru</a></li>
         
+            <li><a href="#running-tests">Running Tests</a></li>
+        
+            <li><a href="#creating-new-tests">Creating New Tests</a></li>
+        
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
 <h1 id="testing-infrastructure-in-hakaru">Testing infrastructure in Hakaru</h1>
-<p>Hakaru can be tested by running <code>cabal test</code> from the
-root directory of the project.</p>
-<p>Tests written in Hakaru will be found in the <code>tests/</code>
-subdirectory at the root of the project. Tests written
-in Haskell can be found at <code>haskell/Tests/</code>.</p>
-<p>Note: tests related to <code>simplify</code> and which require Maple will also be
-run if a local installation of Maple is detected.</p></div>
+<p>Unit testing has been created for Hakaru&rsquo;s main functions. The test suite is managed by Cabal and written in Haskell.</p>
+<p>Tests written to test programs written using Hakaru are located in the <code>tests/</code> subdirectory at the root of the 
+project. Tests written in Haskell to check Hakaru functionality can be found at <code>haskell/Tests/</code>.</p>
+<h2 id="running-tests">Running Tests</h2>
+<p>Hakaru can be tested by running <code>cabal test</code> or <code>stack test</code> from the root directory of the project.</p>
+<p><strong>Note:</strong> Tests that require Maple, such as <code>simplify</code> tests, are only run if a local installation of Maple is detected.</p>
+<h2 id="creating-new-tests">Creating New Tests</h2>
+<p>Hakaru testing is managed in the <code>hakaru.cabal</code> file found in the root directory. The main file for using the test suite is <code>TestSuite.hs</code>, which can be
+found in <code>haskell\tests</code>.</p>
+<p>For all tests, two programs are required &ndash; the program to test and a program representing the expected result.</p>
+<h3 id="writing-hakaru-tests">Writing Hakaru Tests</h3>
+<p>When creating Hakaru tests, your two programs must be saved as seperate files.</p>
+<p>You can add a test of your Hakaru programs to a Haskell program by using the <code>testConcreteFiles</code> function from <code>haskell/Tests/TestTools.hs</code>. This function 
+takes two Hakaru programs as arguments. It first runs <code>simplify</code> on the first file and then asserts if it is equivilant to the second file.</p>
+<h3 id="writing-haskell-tests">Writing Haskell Tests</h3>
+<p>Haskell tests are created using the <code>HUnit</code> testing framework. Most existing Haskell tests use the <code>testSStriv</code> function from <code>haskell/Tests/TestTools.hs</code>.
+This function asserts that the first Haskell function passed to it simplifies to the same function provided by the second function argument. The 
+simplification performed specifically calls the <code>simplify</code> Hakaru transform.</p></div>
         </div>
 
         <footer class="col-md-12">

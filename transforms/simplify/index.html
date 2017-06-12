@@ -299,9 +299,9 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#simplify">Simplify</a></li>
+        <li class="main active"><a href="#hakaru-maple">Hakaru-Maple</a></li>
         
-            <li><a href="#usage">Usage</a></li>
+            <li><a href="#subcommands">Subcommands</a></li>
         
             <li><a href="#example">Example</a></li>
         
@@ -310,15 +310,73 @@
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="simplify">Simplify</h1>
-<p>The <code>simplify</code> transformation uses Maple to algebraically reduce your Hakaru programs. You can use this method as part of your optimization plan. Before being sent to Maple, 
-the <code>simplify</code> transformation converts your Hakaru program into its expectation representation.</p>
-<h2 id="usage">Usage</h2>
-<p>You can use the <code>simplify</code> transformation in the command line by calling:</p>
-<pre><code class="bash">simplify hakaru_program.hk
-</code></pre>
-
-<p>The output of this transformation is a new Hakaru program representing the algebraically-simplified model.</p>
+<h1 id="hakaru-maple">Hakaru-Maple</h1>
+<p>Hakaru uses the computer algebra system Maple to aid in performing program
+transformations. You can use this functionality of Hakaru if you have Maple
+installed locally or can access Maple remotely. </p>
+<p>Maple can be accessed through the module <code>Language.Hakaru.Maple</code> or through the
+Hakaru program <code>hk-maple</code>.</p>
+<p>The <code>hk-maple</code> command invokes a Maple command on a Hakaru program. Given a
+Hakaru program in concrete syntax and a Maple-Hakaru command, typecheck the
+program invoke the Maple command on the program and its type pretty print, parse
+and typecheck the program resulting from Maple. See the <code>--help</code> flag of
+<code>hk-maple</code> for more information.</p>
+<p>The currently available Maple-Hakaru commands (also called subcommands):</p>
+<ul>
+<li>Simplify </li>
+<li>Disintegrate </li>
+<li>Summarize </li>
+</ul>
+<p>Note: calls to Maple may take a very long time. To see if your program is taking
+an appreciable amount of time to parse and typecheck, use the <code>--debug</code> flag.</p>
+<h2 id="subcommands">Subcommands</h2>
+<h3 id="simplify">Simplify</h3>
+<p>Hakaru programs are interpreted by Maple as linear operators. In this
+interpretation, many commonly understood (by Maple) and powerful tools for
+simplification become available. The metric for simplification as understood by
+this command is sampling efficiency. <code>Simplify</code> attempts to be as conservative
+as possible in changing the given program. In particular, it should not change
+terms unless an improvement with respect to sampling is performed; in this case,
+arbitrary rearrangement may happen, even if an expression more similair to the
+original could be produced.</p>
+<p><code>Simplify</code> is the default subcommand.</p>
+<p><code>Simplify</code> preserves the semantics of the given program up to normalization of
+weights. If the stronger sense of equivalence is needed, the output of
+<code>Simplify</code> can be passed to <code>normalize</code>. </p>
+<h3 id="disintegrate">Disintegrate</h3>
+<p>The Maple disintegrator is an alternative implementation of the program
+transformation described in [Disintegrate]. Semantically, the Maple
+disintegrator and Haskell disintegrator implement the same transformation. In
+particular, their outputs are not (often) identical, but have equivalent
+sampling semantics. In practice, the ouputs may differ, since one may fail where
+the other succeeds. </p>
+<p>If in doubt about which disintegrator to use, consider the following order:</p>
+<ol>
+<li><code>disintegrate x</code></li>
+<li><code>disintegrate x | hk-maple -</code></li>
+<li><code>hk-maple --command disintegrate x</code></li>
+<li><code>hk-maple x | disintegrate -</code> </li>
+<li>etc&hellip;</li>
+</ol>
+<p>All of the above programs should be equivalent as samplers. </p>
+<p>The disintegrator internally relies heavily on the <code>Simplify</code> command, so if the
+given problem is an easy disintegration problem but a difficult simplification
+problem, it is preferred to use the Haskell disintegrator followed by a call
+to <code>Simplify</code>.</p>
+<p>The chance that the Maple disintegrator produces a good program (or any program
+at all) is proportional to the type of program it is given. In addition to
+programs whose disintegration by Haskell is not efficient as a sampler, the
+following programs are good candidates:</p>
+<ul>
+<li>programs which contain superpositions with complicated conditions</li>
+<li>programs which contain complicated rational polynomials </li>
+</ul>
+<p>The Maple disintegrator follows the same conventions as the Haskell
+disintegrator.</p>
+<p>Like <code>Simplify</code>, <code>Disintegrate</code> preserves the semantics of the given program only up to
+normalization of weights.</p>
+<h3 id="summarize">Summarize</h3>
+<p>?</p>
 <h2 id="example">Example</h2>
 <p>This program takes in a value of type <code>prob</code> and returns a measure of type <code>real</code>:</p>
 <pre><code class="nohighlight">fn a prob:

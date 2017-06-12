@@ -311,15 +311,16 @@
             <div class="col-md-9" role="main">
 
 <h1 id="generating-samples-from-your-hakaru-program">Generating Samples from your Hakaru Program</h1>
-<p>The <code>hakaru</code> command is used to indefinitely generate samples from a Hakaru program.</p>
+<p>The <code>hakaru</code> command is used to indefinitely generate samples from a Hakaru program. The <code>hakaru</code> command is an importance sampler, so each sample is assigned a weight. 
+These weights are typically <code>1.0</code>, but this might not be the case for all Hakaru programs.</p>
 <h2 id="usage">Usage</h2>
 <p>The <code>hakaru</code> command can take up to two Hakaru programs as arguments. If only one program is provided, the <code>hakaru</code> command generates samples based on the model described in
 the Hakaru program. In this case, the <code>hakaru</code> command can be invoked in the command-line by calling:</p>
 <pre><code class="bash">hakaru hakaru_program.hk
 </code></pre>
 
-<p>If a second program is given to the <code>hakaru</code> command, it will treat the two programs as the start of a Markov Chain. This is used when you have created a transition kernal 
-using the <a href="../../transforms/mh/">Metropolis Hastings</a> transformation. To invoke the <code>hakaru</code> command with a transition kernal, you would call:</p>
+<p>If a second program is given to the <code>hakaru</code> command, it will treat the two programs as the start of a Markov Chain. This is used when you have created a transition kernel 
+using the <a href="../../transforms/mh/">Metropolis Hastings</a> transformation. To invoke the <code>hakaru</code> command with a transition kernel, you would call:</p>
 <pre><code class="bash">hakaru --transition-kernel transition.hk init.hk
 </code></pre>
 
@@ -327,65 +328,63 @@ using the <a href="../../transforms/mh/">Metropolis Hastings</a> transformation.
 <code>hakaru</code> command is run, a sample is drawn from <code>init.hk</code>. This sample is then passed to <code>transition.hk</code> to generate the second sample. After this point, samples generated
 from <code>transition.hk</code> are passed back into itself to generate further samples.</p>
 <h3 id="the-dash-operator">The Dash (<code>-</code>) Operator</h3>
-<p>You might encounter some scenarios where you wish to run a Hakaru command or transformation on a program and then send the resulting output to another command or transform. In 
-these cases, you can take advantage of the dash (<code>-</code>) command-line notation.</p>
+<p>You might encounter some scenarios where you wish to run a Hakaru command or transformation on a program and then send the resulting output to another command or transform. 
+In these cases, you can take advantage of the dash (<code>-</code>) command-line notation.</p>
 <p>The dash notation is a shortcut used to pass standard inputs and outputs to another command in the same line of script. For example, if you wanted to run the <code>disintegrate</code>
 Hakaru command followed by the <code>simplify</code> command, you would enter:</p>
 <pre><code class="bash">disintegrate program.hk | simplify -
 </code></pre>
 
-<p>This command is equilvalent to entering:</p>
+<p>This command is equivalent to entering:</p>
 <pre><code class="bash">disintegrate program.hk &gt; temp.hk
 simplify temp.hk
 </code></pre>
 
 <p><strong>Note:</strong> The <code>&gt;</code> operator redirects the output from <code>disintegrate program.hk</code> to a new file called <code>temp.hk</code>.</p>
 <h2 id="example">Example</h2>
-<p>The normal distribution is a commonly used distribution in probabilistic modeling. A simple Hakaru program to generate samples from this distribution is:</p>
-<pre><code class="nohighlight">return normal(0,1)
+<p>The &ldquo;trick coin&rdquo; is a basic example that is used to introduce the probability or expectation of an outcome. Suppose we are given an unfair coin that follows the distribution:</p>
+<pre><code class="nohighlight">weight(3, return true) &lt;|&gt; weight(1, return false)
 </code></pre>
 
-<p>If you save this program as <code>norm.hk</code>, you can generate samples from it by calling:</p>
-<pre><code class="bash">hakaru norm.hk
+<p>If you save this program as <code>biasedcoin.hk</code>, you can generate samples from it by calling:</p>
+<pre><code class="bash">hakaru biasedcoin.hk
 </code></pre>
 
 <p>The <code>hakaru</code> command will print a continuous stream of samples drawn from this program:</p>
-<pre><code class="bash">1.0     1.0     -0.3972582073860394
-1.0     1.0     5.6338252430958864e-2
-1.0     1.0     -0.20943562475454072
-1.0     1.0     -0.819120522312333
-1.0     1.0     8.751803599366902e-2
-1.0     1.0     -1.331099012725283
-1.0     1.0     -2.7818114615228814e-2
-1.0     1.0     0.826857488709436
-1.0     1.0     0.8653639888398083
-1.0     1.0     0.1538518225473193
-1.0     1.0     -0.7354102387601734
-1.0     1.0     1.1604484258837295
-1.0     1.0     0.26847855847761243
-1.0     1.0     -0.26134128530561285
+<pre><code class="bash">4.0     true
+4.0     true
+4.0     true
+4.0     true
+4.0     true
+4.0     true
+4.0     true
+4.0     false
+4.0     false
 ...
 </code></pre>
 
-<p>In this example, all sample weights are <code>1</code>. To suppress the printing of weights during sample generation, you can use the <code>--no-weights</code> option:</p>
+<p>In this example, all sample weights are <code>4.0</code>. Let&rsquo;s say that you wanted to know how many times the coin landed on each of HEADS and TAILS. You can collect an estimate of 
+this ratio by using a short command-line program that limits sample generation to 2000 samples:</p>
+<pre><code class="bash">$ hakaru biasedcoin.hk | head -n 2000 | awk '{a[$2]+=$1/$1}END{for(i in a) print i, a[i]}'
+false 509
+true 1491
+</code></pre>
+
+<p><strong>Note:</strong> The <code>$1/$1</code> expression in the <code>awk</code> command normalizes the weight produced by the <code>hakaru</code> command so that individual samples are counted. If this expression is
+simplified to <code>$1</code>, the <code>awk</code> command returns the sum of the weights.</p>
+<p>To suppress the printing of weights during sample generation, you can use the <code>--no-weights</code> or <code>-w</code> option:</p>
 <pre><code class="bash">hakaru --no-weights norm.hk
 </code></pre>
 
 <p>Which will result in the printing of samples without their weight information:</p>
-<pre><code class="bash">0.7505833618849641
--3.0157439504826952e-2
-1.8516535505034426
--0.1290032373875403
--1.3007179610623967
--1.1003383475624913
--6.582105542515895e-2
-1.0295214963052317
-1.0299285419588868
--6.214526660454764e-2
-0.46461836869237355
--0.6303856890688903
-0.22057597993019365
--1.5735921283484084
+<pre><code class="bash">false
+true
+true
+true
+false
+true
+true
+true
 ...
 </code></pre>
 

@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,43 +13,43 @@
         
     <url>
      <loc>/intro/probprog/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/intro/installation/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/intro/samplegen/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/intro/quickstart/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/examples/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/transforms/compile/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/transforms/hkc/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -59,55 +59,55 @@
         
     <url>
      <loc>/lang/rand/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/lang/letbind/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/lang/cond/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/lang/functions/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/lang/coercions/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/lang/datatypes/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/lang/arrays/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/lang/loops/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/transforms/expect/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -117,31 +117,31 @@
         
     <url>
      <loc>/transforms/normalize/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/transforms/disintegrate/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/transforms/density/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/transforms/simplify/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/transforms/mh/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -151,43 +151,43 @@
         
     <url>
      <loc>/internals/ast/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/internals/abt/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/internals/datums/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/internals/coercions/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/internals/transforms/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/internals/testing/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/internals/newfeature/</loc>
-     <lastmod>2017-06-12</lastmod>
+     <lastmod>2017-06-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         

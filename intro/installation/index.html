@@ -345,8 +345,8 @@ cabal test
 <p>On Linux systems, Hakaru can be setup to use Maple by running:</p>
 <pre><code class="bash">export LOCAL_MAPLE=&quot;`which maple`&quot;
 cd hakaru/maple
-maple update-archive.mpl
 echo 'libname := &quot;/path-to-hakaru/hakaru/maple&quot;,libname:' &gt;&gt; ~/.mapleinit
+maple update-archive.mpl
 </code></pre>
 
 <p>On Windows systems, Hakaru can be setup to use Maple by performing the following steps in Administrator mode:</p>
@@ -362,12 +362,12 @@ echo 'libname := &quot;/path-to-hakaru/hakaru/maple&quot;,libname:' &gt;&gt; ~/.
 <p><strong>Note:</strong> You might need to restart your computer for the variable to be recognized.    </p>
 </li>
 <li>
-<p>In the Windows command prompt (cmd), Navigate to the <code>hakaru\maple</code> directory and run:</p>
-<p><code>cmaple update-archive.mpl</code></p>
-</li>
-<li>
 <p>In the Windows command prompt (cmd), create a file <code>maple.ini</code> by running:</p>
 <p><code>echo libname := "C:\\&lt;path to hakaru&gt;\\hakaru\\maple",libname: &gt;&gt; "C:\&lt;path to maple&gt;\lib\maple.ini"</code></p>
+</li>
+<li>
+<p>In the Windows command prompt (cmd), Navigate to the <code>hakaru\maple</code> directory and run:</p>
+<p><code>cmaple update-archive.mpl</code></p>
 </li>
 </ol>
 <h3 id="testing-your-maple-installation-with-hakaru">Testing Your Maple Installation with Hakaru</h3>

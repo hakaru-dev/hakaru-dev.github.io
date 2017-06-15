@@ -311,6 +311,12 @@
             <div class="col-md-9" role="main">
 
 <h1 id="generating-samples-from-your-hakaru-program">Generating Samples from your Hakaru Program</h1>
+<p>The Hakaru language is built on Monte Carlo methods, which aim to generate individual samples and estimate expectation functions from a given distribution. The first task,
+drawing samples from a distribution, is often difficult and this can be exhasperated as the dimensionality of the sample space increases. Importance sampling is a Monte
+Carlo method that is used to generate samples by estimating an expectation function for the target distribution instead. The estimated expectation function is then used to 
+generate samples. To account for the knowledge that the samples were not generated from the target distribution, a weight is assigned so that each sample&rsquo;s contribution to
+the estimator is adjusted according to its relevence. However, this method only works well if the distribution proposed by the expectation function is similar to the target
+distribution. For more complex distributions, a different approach, such as the Metropolis Hastings method should be used<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>.</p>
 <p>The <code>hakaru</code> command is used to indefinitely generate samples from a Hakaru program using importance sampling. Each sample is assigned a weight, and a sample&rsquo;s weight is 
 initialized to <code>1.0</code>. Weights are changed by Hakaru primitives and processes such as <a href="../../lang/rand/"><code>weight</code></a>.</p>
 <h2 id="usage">Usage</h2>
@@ -387,7 +393,15 @@ true
 ...
 </code></pre>
 
-<p>An example for using the <code>hakaru</code> command using a transition kernel is available on the <a href="../../transforms/mh/">Metropolis Hastings</a> transform page.</p></div>
+<p>An example for using the <code>hakaru</code> command using a transition kernel is available on the <a href="../../transforms/mh/">Metropolis Hastings</a> transform page.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>D.J.C. MacKay, &ldquo;Introduction to Monte Carlo Methods&rdquo;, Learning in Graphical Models, vol. 89, pp. 175-204, 1998.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
         </div>
 
         <footer class="col-md-12">

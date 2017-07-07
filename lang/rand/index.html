@@ -88,12 +88,6 @@
                     
                         
 <li >
-    <a href="../../examples/">Examples</a>
-</li>
-
-                    
-                        
-<li >
     <a href="../../transforms/compile/">Compiling to Haskell</a>
 </li>
 
@@ -101,6 +95,33 @@
                         
 <li >
     <a href="../../transforms/hkc/">Compiling to C</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Workflow and Examples <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="../../workflow/intro/">What is the Hakaru Workflow?</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../workflow/discrete/">Tutorial: Hakaru Workflow for Discrete Models</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../examples/">Examples</a>
 </li>
 
                     
@@ -196,7 +217,7 @@
                     
                         
 <li >
-    <a href="../../transforms/simplify/">Simplify</a>
+    <a href="../../transforms/hk-maple/">Hakaru Maple</a>
 </li>
 
                     
@@ -271,7 +292,7 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="next" href="../../transforms/hkc/">
+                    <a rel="next" href="../../examples/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
@@ -419,13 +440,13 @@ programs are equivalent.</p>
 <table>
 <thead>
 <tr>
-<th><h4>lebesgue: <em>measure(real)</em> </h4></th>
+<th><h4>lebesgue(low. <em>real</em>, high.<em>real</em>): <em>measure(real)</em> </h4></th>
 <th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>the distribution constant over the real line</td>
+<td>the distribution constant between <code>low</code> and <code>high</code> and zero elsewhere. <code>high</code> must be at least <code>low</code>.</td>
 <td>-</td>
 </tr>
 </tbody>

@@ -88,12 +88,6 @@
                     
                         
 <li >
-    <a href="../../examples/">Examples</a>
-</li>
-
-                    
-                        
-<li >
     <a href="../../transforms/compile/">Compiling to Haskell</a>
 </li>
 
@@ -101,6 +95,33 @@
                         
 <li >
     <a href="../../transforms/hkc/">Compiling to C</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Workflow and Examples <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="../../workflow/intro/">What is the Hakaru Workflow?</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../workflow/discrete/">Tutorial: Hakaru Workflow for Discrete Models</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../examples/">Examples</a>
 </li>
 
                     
@@ -196,7 +217,7 @@
                     
                         
 <li >
-    <a href="../../transforms/simplify/">Simplify</a>
+    <a href="../../transforms/hk-maple/">Hakaru Maple</a>
 </li>
 
                     
@@ -508,7 +529,7 @@ different categories of primitives.</p>
 -- elsewhere since it naturally fits with 'MBind', even though it
 -- is a siple operator.)
 data MeasureOp :: [Hakaru] -&gt; Hakaru -&gt; * where
-    Lebesgue    :: MeasureOp '[]                 'HReal
+    Lebesgue    :: MeasureOp '[ 'HReal, 'HReal ] 'HReal
     Counting    :: MeasureOp '[]                 'HInt
     Categorical :: MeasureOp '[ 'HArray 'HProb ] 'HNat
     Uniform     :: MeasureOp '[ 'HReal, 'HReal ] 'HReal

@@ -88,12 +88,6 @@
                     
                         
 <li >
-    <a href="examples/">Examples</a>
-</li>
-
-                    
-                        
-<li >
     <a href="transforms/compile/">Compiling to Haskell</a>
 </li>
 
@@ -101,6 +95,33 @@
                         
 <li >
     <a href="transforms/hkc/">Compiling to C</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Workflow and Examples <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="workflow/intro/">What is the Hakaru Workflow?</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="workflow/discrete/">Tutorial: Hakaru Workflow for Discrete Models</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="examples/">Examples</a>
 </li>
 
                     
@@ -196,7 +217,7 @@
                     
                         
 <li >
-    <a href="transforms/simplify/">Simplify</a>
+    <a href="transforms/hk-maple/">Hakaru Maple</a>
 </li>
 
                     
@@ -309,11 +330,18 @@
         
             <li><a href="#quick-start-a-mixture-model-example">Quick Start: A Mixture Model Example</a></li>
         
-            <li><a href="#examples">Examples</a></li>
-        
             <li><a href="#compiling-to-haskell">Compiling to Haskell</a></li>
         
             <li><a href="#compiling-to-c">Compiling to C</a></li>
+        
+    
+        <li class="main "><a href="#hakaru-workflow-and-examples">Hakaru Workflow and Examples</a></li>
+        
+            <li><a href="#what-is-the-hakaru-workflow">What is the Hakaru Workflow?</a></li>
+        
+            <li><a href="#tutorial-hakaru-workflow-for-discrete-models">Tutorial: Hakaru Workflow for Discrete Models</a></li>
+        
+            <li><a href="#examples">Examples</a></li>
         
     
         <li class="main "><a href="#language-guide">Language Guide</a></li>
@@ -385,13 +413,18 @@ they represent on data. In this page, we give a sense of the sorts of problems H
 <p>You can use the <code>hakaru</code> command to generate samples from your probabilistic model.</p>
 <h3 id="quick-start-a-mixture-model-example"><a href="./intro/quickstart">Quick Start: A Mixture Model Example</a></h3>
 <p>This page will introduce you to Hakaru&rsquo;s basic functionality by creating a program to sample and condition a mixture model of a coin toss.</p>
-<h3 id="examples"><a href="./examples">Examples</a></h3>
-<p>Two examples, a Gaussian Mixture Model and a Latent Dirichlet Allocation (LDA) topic model, highlight the types of problems that Hakaru is uniquely suited to help you solve.</p>
 <h3 id="compiling-to-haskell"><a href="./transforms/compile">Compiling to Haskell</a></h3>
 <p>A Hakaru program can be ported into Haskell which can then be converted into machine code for other applications.</p>
 <h3 id="compiling-to-c"><a href="./transforms/hkc">Compiling to C</a></h3>
 <p>Depending on the scale, a Hakaru program might be resource-intensive to run. In these situations, you could port your Hakaru program to C using the <code>hkc</code> command to take
 advantage of other tools such as OpenMP for parallel processing. </p>
+<h2 id="hakaru-workflow-and-examples">Hakaru Workflow and Examples</h2>
+<h3 id="what-is-the-hakaru-workflow"><a href="workflow/intro/">What is the Hakaru Workflow?</a></h3>
+<p>Hakaru provides a language and tools to aid in each step of the Bayesian inference workflow.</p>
+<h3 id="tutorial-hakaru-workflow-for-discrete-models"><a href="workflow/discrete/">Tutorial: Hakaru Workflow for Discrete Models</a></h3>
+<p>This example of a burglary alarm demonstrates the workflow typically followed when creating Hakaru programs.</p>
+<h3 id="examples"><a href="./examples">Examples</a></h3>
+<p>Two examples, a Gaussian Mixture Model and a Latent Dirichlet Allocation (LDA) topic model, highlight the types of problems that Hakaru is uniquely suited to help you solve.</p>
 <h2 id="language-guide">Language Guide</h2>
 <p>The Language Guide presents an overview of Hakaru&rsquo;s language primitives and core functionality.</p>
 <h3 id="primitive-probability-distributions"><a href="./lang/rand">Primitive Probability Distributions</a></h3>
@@ -428,7 +461,7 @@ might result in differing results from the original and transformed programs whe
 is equivalent to model conditioning in probability theory. </p>
 <h3 id="density"><a href="./transforms/density">Density</a></h3>
 <p>The density transformation (<code>density</code>) is used to create a conditional distribution model that is used to estimate the density of the distribution at a particular point.</p>
-<h3 id="hakaru-maple"><a href="./transforms/simplify">Hakaru-Maple</a></h3>
+<h3 id="hakaru-maple"><a href="./transforms/hk-maple">Hakaru-Maple</a></h3>
 <p>The simplify transformation (<code>hk-maple -c Simplify</code>) is used to improve Hakaru programs by simplifying probabilistic models using computer algebra. This transformation requires the
 use of Maple. Hakaru provides two other transformations also written in Maple.</p>
 <h3 id="metropolis-hastings"><a href="./transforms/mh">Metropolis Hastings</a></h3>

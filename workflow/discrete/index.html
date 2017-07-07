@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Hakaru Team">
+        
+        <link rel="shortcut icon" href="favicon.ico">
+        
+
+	<title>Tutorial: Hakaru Workflow for Discrete Models - Hakaru</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link href="../../logo.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">Hakaru</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="../..">Home</a>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Introduction <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="../../intro/probprog/">What is Probabilistic Programming?</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../intro/installation/">Installing Hakaru</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../intro/samplegen/">Generating Samples from your Hakaru Program</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../intro/quickstart/">Quick Start: A Mixture Model Example</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../transforms/compile/">Compiling to Haskell</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../transforms/hkc/">Compiling to C</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Workflow and Examples <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="../intro/">What is the Hakaru Workflow?</a>
+</li>
+
+                    
+                        
+<li class="active">
+    <a href="./">Tutorial: Hakaru Workflow for Discrete Models</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../examples/">Examples</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Language Guide <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="../../lang/rand/">Primitive Probability Distributions</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../lang/letbind/">Let and Bind</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../lang/cond/">Conditionals</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../lang/functions/">Functions</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../lang/coercions/">Types and Coercions</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../lang/datatypes/">Data Types and Match</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../lang/arrays/">Arrays and Plate</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../lang/loops/">Loops</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../transforms/expect/">Expect</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Transformations <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="../../transforms/normalize/">Normalize</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../transforms/disintegrate/">Disintegrate</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../transforms/density/">Density</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../transforms/hk-maple/">Hakaru Maple</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../transforms/mh/">Metropolis Hastings</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Internals <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="../../internals/ast/">AST and Hakaru Datakind</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../internals/abt/">ABT</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../internals/datums/">Datums</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../internals/coercions/">Coercions</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../internals/transforms/">Transformaitons</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../internals/testing/">Testing</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../internals/newfeature/">Adding a Language Feature</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                <li >
+                    <a rel="next" href="../intro/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../../examples/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/hakaru-dev/hakaru">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#tutorial-hakaru-workflow-for-a-discrete-model">Tutorial: Hakaru Workflow for a Discrete Model</a></li>
+        
+            <li><a href="#modelling">Modelling</a></li>
+        
+            <li><a href="#transformation">Transformation</a></li>
+        
+            <li><a href="#application">Application</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="tutorial-hakaru-workflow-for-a-discrete-model">Tutorial: Hakaru Workflow for a Discrete Model</h1>
+<p>The problem of a burglary alarm has been used to illustrate the workflow for modelling discrete distributions in Hakaru<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>. It has been adapted from Pearl&rsquo;s textbook on 
+probabilistic reasoning (page 35)<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup>:</p>
+<blockquote>
+<p>Imagine being awakened one night by the shrill sound of your burglar alarm. What is your degree of belief that a burglary attempt has taken place? For illustrative 
+purposes we make the following judgements: (a) There is a 95% chance that an attempted burglary will trigger the alarm system &ndash; P(Alarm|Burglary) = 0.95; (b) based on 
+previous false alarms, there is a slight (1 percent) chance that the alarm will be triggered by a mechanism other than an attempted burglary &ndash; P(Alarm|No Burglary) = 0.01;
+(c) previous crime patterns indicate that there is a one in ten thousand chance that a given house will be burglarized on a given night &ndash; P(Burglary) = 10^-4.</p>
+</blockquote>
+<h2 id="modelling">Modelling</h2>
+<p>To determine whether or not you believe that a burglary is taking place, you must begin by modelling the prior probability distribution. This requires you to create a model
+based on what you have observed (the sounding of the alarm) and what you would like to know or infer (is a burglary happening?). This is a discrete model because you can only
+select from distinct choices for each of the knowledge sets that you have.</p>
+<p>One way that you can model this scenario in Hakaru is by first creating a function for a Bernoulli experiment, which will return either <code>true</code> or <code>false</code>:</p>
+<pre><code class="nohighlight">def bern(p prob):
+    x &lt;~ categorical([p, real2prob(1 - p)])
+    return [true, false][x]
+</code></pre>
+
+<p>This helper function makes it simpler to represent the information that we are provided in Pearl&rsquo;s problem. For example, the knowledge <script type="math/tex">P(Burglary) = 10^{-4}</script> 
+(<code>burglary == true</code>) can now be encoded in the Hakaru program as:</p>
+<pre><code class="nohighlight">burglary &lt;~ bern(0.0001)
+</code></pre>
+
+<p>Now that we have encoded the likelihood of a burglary taking place, we can also encode the conditional probabilities of the alarm going off in the case of a burglary,
+and the chances of a false alarm. We want <code>alarm</code> to be <code>true</code> with a 95% probability when a burglary is taking place (<code>burglary == true</code>). We also want <code>alarm</code> to be
+<code>true</code> with a 1% probability when there is no burglary (<code>burglary == false</code>). Since the likelihood of the alarm going off is dependent on the value of <code>burglary</code>, we can
+use Hakaru&rsquo;s <a href="../../lang/cond/">conditionals</a> to determine which distribution to pick from. We can then pass this decision to our <code>bern</code> function to get the value for <code>alarm</code>:</p>
+<pre><code class="nohighlight">alarm &lt;~ bern(if burglary: 0.95 else: 0.01)
+</code></pre>
+
+<p>To complete our model, we return the values for <code>burglary</code> and <code>alarm</code>. Note that the order that the values are returned in matters for the next step in the Hakaru workflow.
+Since we want to make an inference based on known information, we must return values in order of known (<code>alarm</code>) followed by unknown (<code>burglary</code>) knowledge:</p>
+<pre><code class="nohighlight">return (alarm, burglary)
+</code></pre>
+
+<h2 id="transformation">Transformation</h2>
+<p>For this problem, we are only interested in the cases where the alarm is sounding (<code>alarm == true</code>). If we were to skip down to the application step in the Hakaru workflow,
+we would have a difficult time collecting enough samples for this set because they happen infrequently. Instead, we will use the transformation step of the Hakaru 
+workflow to convert our prior model into a conditional distribution. This will make it easier to collect the samples that we want later on. For our burglary problem, our
+transformation stage only requires the <a href="../../transforms/disintegrate/"><code>disintegrate</code> transformation</a>. </p>
+<p>Assuming that you saved your model as <code>burglary.hk</code>, we can use the disintegrate transformation on it by calling <code>disintegrate burglary.hk</code> in the command line. It will
+produce a conditional model represented as a new Hakaru program:</p>
+<pre><code class="nohighlight">fn x5 bool: 
+ bern = fn p prob: 
+         x &lt;~ categorical([p, real2prob((1 - prob2real(p)))])
+         return [true, false][x]
+ burglary &lt;~ bern(1/10000)
+ p = (match burglary: 
+       true: 19/20
+       false: 1/100)
+ x16 &lt;~ weight(([p, real2prob((1 - prob2real(p)))][(match x5: 
+                                                     true: 0
+                                                     false: 1)]
+                 / 
+                (summate x0 from 0 to size([p, real2prob((1 - prob2real(p)))]): 
+                  [p, real2prob((1 - prob2real(p)))][x0])),
+               return ())
+ return burglary
+</code></pre>
+
+<p><strong>Note:</strong> The output for <code>disintegrate</code> will be printed in the console. You can easily save this program to a file by redirecting the output to a file by calling 
+<code>disintegrate model1.hk &gt; model2.hk</code>. For this example, we will call our new program <code>burglary_disintegrate.hk</code>.</p>
+<p>This Hakaru program represents the mapping from our known knowledge (the alarm is sounding) and the knowledge that we want to infer from it (are we being burglarized?). As
+a result of the disintegration, our original variable <code>alarm</code> has been renamed to <code>x5</code>.</p>
+<p>An additional Hakaru transformation that can be performed at this stage is the <a href="../../transforms/hk-maple/">Hakaru-Maple <code>simplify</code> subcommand</a>. This will call Maple to 
+algebraically simplify Hakaru models. Calling <code>hk-maple burglary_disintegrate.hk</code> produces a new, simpler, model of our burglary alarm scenario:</p>
+<pre><code class="nohighlight">fn x5 bool: 
+ (match (x5 == true): 
+   true: 
+    weight(19/200000, return true) &lt;|&gt; 
+    weight(9999/1000000, return false)
+   false: 
+    weight(1/200000, return true) &lt;|&gt; 
+    weight(989901/1000000, return false))
+</code></pre>
+
+<p>Without any further work, we can already see that, when the alarm is triggered, it is most likely a false alarm. However, the <code>simplify</code> transformation will not always produce a clear
+result such as this one. Therefore, we must still perform the application step of the Hakaru workflow.</p>
+<h2 id="application">Application</h2>
+<p>Once we have transformed our original model (<code>burglary.hk</code>) into a function that is better suited to making the inference that we are interested in (<code>burglary_disintegrate_simplify.hk</code>),
+we can use the generated function to create a new Hakaru program that knows that the alarm has been triggered (<code>alarm == true</code>). In this case, the only change that needs to be
+made is to the line <code>fn x5 bool:</code>, which tells the Hakaru program what state the alarm is in. Since we are only interested in cases where <code>alarm == true</code>, we must change this program so
+that it uses the known information. The program produced by <code>disintegrate</code> is an <a href="../../lang/functions/">anonymous function</a>, which means that we can assign it to a name and use it later
+in the program:</p>
+<pre><code class="nohighlight">burglary = fn x5 bool: 
+ (match (x5 == true): 
+   true: 
+    weight(19/200000, return true) &lt;|&gt; 
+    weight(9999/1000000, return false)
+   false: 
+    weight(1/200000, return true) &lt;|&gt; 
+    weight(989901/1000000, return false))
+
+burglary(true)
+</code></pre>
+
+<p>We have finished conditioning our Hakaru program to answer our original question using the <a href="../../intro/samplegen/"><code>hakaru</code> command</a>: if the alarm is sounding, what is the likelihood that 
+the house is being burglarized? How does the <code>hakaru</code> command answer our original question? If you simply call the command <code>hakaru burglary_disintegrate_simplify.hk</code> in the command line, 
+you will create an infinite stream of samples:</p>
+<pre><code class="bash">$ hakaru burglary_disintegrate_simplify.hk
+1.0093999999999992e-2   false
+1.0093999999999992e-2   false
+1.0093999999999992e-2   false
+1.0093999999999992e-2   false
+1.0093999999999992e-2   false
+...
+</code></pre>
+
+<p>This does not quite answer our original question because there is no summary of the samples that we have generated. Instead, we should summarize the samples by their weight:</p>
+<pre><code class="bash">$ hakaru burglary_disintegrate.hk | head -n 100000 | awk '{a[$2]+=$1}END{for (i in a) print i, a[i]}'
+false 999.811
+true 9.5893
+</code></pre>
+
+<p><strong>Note:</strong> This summary is limited to 100,000 samples.</p>
+<p>This summary of information makes it much easier to determine that, even though you hear the burglary alarm, the chances of the house being burglarized is very low.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>P. Narayanan, J. Carette, W. Romano, C. Shan and R. Zinkov, &ldquo;Probabilistic Inference by Program Transformation in Hakaru (System Description)&rdquo;, Functional and Logic 
+Programming, pp. 62-79, 2016.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>J. Pearl, Probabilistic reasoning in intelligent systems: Networks of plausible inference. San Francisco: M. Kaufmann, 1988.&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script>
+        <script src="../../js/mathjaxhelper.js"></script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

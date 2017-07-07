@@ -10,7 +10,7 @@
         <link rel="shortcut icon" href="favicon.ico">
         
 
-	<title>Installing Hakaru - Hakaru</title>
+	<title>What is the Hakaru Workflow? - Hakaru</title>
 
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -58,31 +58,31 @@
             
             
             
-                <li class="dropdown active">
+                <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Introduction <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                     
                         
 <li >
-    <a href="../probprog/">What is Probabilistic Programming?</a>
-</li>
-
-                    
-                        
-<li class="active">
-    <a href="./">Installing Hakaru</a>
+    <a href="../../intro/probprog/">What is Probabilistic Programming?</a>
 </li>
 
                     
                         
 <li >
-    <a href="../samplegen/">Generating Samples from your Hakaru Program</a>
+    <a href="../../intro/installation/">Installing Hakaru</a>
 </li>
 
                     
                         
 <li >
-    <a href="../quickstart/">Quick Start: A Mixture Model Example</a>
+    <a href="../../intro/samplegen/">Generating Samples from your Hakaru Program</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../intro/quickstart/">Quick Start: A Mixture Model Example</a>
 </li>
 
                     
@@ -103,19 +103,19 @@
             
             
             
-                <li class="dropdown">
+                <li class="dropdown active">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Workflow and Examples <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                     
                         
-<li >
-    <a href="../../workflow/intro/">What is the Hakaru Workflow?</a>
+<li class="active">
+    <a href="./">What is the Hakaru Workflow?</a>
 </li>
 
                     
                         
 <li >
-    <a href="../../workflow/discrete/">Tutorial: Hakaru Workflow for Discrete Models</a>
+    <a href="../discrete/">Tutorial: Hakaru Workflow for Discrete Models</a>
 </li>
 
                     
@@ -292,12 +292,12 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="next" href="../probprog/">
+                    <a rel="next" href="../../transforms/hkc/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../samplegen/">
+                    <a rel="prev" href="../discrete/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -320,80 +320,42 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#installing-hakaru">Installing Hakaru</a></li>
-        
-            <li><a href="#extending-hakaru-with-maple">Extending Hakaru with Maple</a></li>
+        <li class="main active"><a href="#what-is-the-hakaru-workflow">What is the Hakaru Workflow?</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="installing-hakaru">Installing Hakaru</h1>
-<p>You can download Hakaru by cloning the latest version from our GitHub repository:</p>
-<pre><code class="bash">git clone git@github.com:hakaru-dev/hakaru
-</code></pre>
-
-<p>Hakaru can be installed by using either <code>stack install</code> or <code>cabal install</code> inside the <code>hakaru</code> directory. One way that you can access these tools is by installing the <a href="https://www.haskell.org/platform/">Haskell Platform</a> which supports Linux, OSX, and Windows operating systems.</p>
-<p>If you are using <code>stack install</code>, you can install and verify your installation of Hakaru by running the commands:</p>
-<pre><code class="bash">stack install
-stack test
-</code></pre>
-
-<p>You can find the output of <code>stack test</code> in the <code>.stack-work/logs/hakaru-0.4.0-test.txt</code> file.</p>
-<p>If you are using <code>cabal install</code>, you can install Hakaru by running the commands:</p>
-<pre><code class="bash">cabal update    
-cabal install -j --only-dependencies --enable-tests
-cabal configure --enable-tests
-cabal build
-cabal test
-</code></pre>
-
-<p>On Windows systems, you can use the <code>stack install</code> and <code>cabal install</code> commands by running them in a Linux shell such as <a href="https://www.cygwin.com/">Cygwin</a> or Git Bash.</p>
-<p><strong>Note:</strong> If you want to use <code>cabal install</code> and have installed the Haskell Platform, you might need to add a reference to the directory containing <code>cabal.exe</code> to the <code>PATH</code> environment variable.</p>
-<p>If you are using GHC 7.10 or earlier on a Windows system and want to use the <code>cabal install</code> command, you must install the <code>logfloat</code> dependency manually after running <code>cabal update</code> due to a
-<a href="https://ghc.haskell.org/trac/ghc/ticket/3242">GHC bug</a>:</p>
-<pre><code class="bash">cabal update    
-cabal install -j logfloat -f -useffi
-cabal install -j --only-dependencies --enable-tests
-cabal configure --enable-tests
-cabal build
-cabal test
-</code></pre>
-
-<h2 id="extending-hakaru-with-maple">Extending Hakaru with Maple</h2>
-<p>Hakaru uses <a href="http://www.maplesoft.com/products/maple/">Maple</a> to perform computer-algebra guided optimizations. You must have a licensed copy of Maple installed to access this component of the Hakaru language.</p>
-<p>On Linux systems, Hakaru can be setup to use Maple by running:</p>
-<pre><code class="bash">export LOCAL_MAPLE=&quot;`which maple`&quot;
-cd hakaru/maple
-echo 'libname := &quot;/path-to-hakaru/hakaru/maple&quot;,libname:' &gt;&gt; ~/.mapleinit
-maple update-archive.mpl
-</code></pre>
-
-<p>On Windows systems, Hakaru can be setup to use Maple by performing the following steps in Administrator mode:</p>
+<h1 id="what-is-the-hakaru-workflow">What is the Hakaru Workflow?</h1>
+<p>When you write a Hakaru program, you must follow the workflow of Bayesian inference. Bayesian inference is a method of statistical inference where Bayes&rsquo; theorem is used
+to update the probability of a statistical hypothesis as more information becomes available<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>. Bayes theorem describes the probability of an event based on knowledge of
+event-related conditions<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup>.</p>
+<p>In Hakaru, the workflow of Bayesian inference appears as <em>modelling</em>, <em>transformation</em>, and <em>application</em> stages<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup>:</p>
 <ol>
-<li>
-<p>Create a User Environment Variable <code>LOCAL_MAPLE</code> using the Windows command prompt (cmd) by running:</p>
-<p><code>SETX LOCAL_MAPLE "&lt;path to Maple bin directory&gt;\cmaple.exe"</code></p>
-<p>This variable can also be created via the Advanced System Properties.</p>
-<p><strong>Note:</strong> You might need to restart your computer for the variable to be recognized.</p>
+<li>In the <em>modelling</em> stage, you must create a probabilistic model of the environment as a prior probability distribution. This model requires you to include the known 
+information and identify what information is to be inferred. The Hakaru language contains distributions and tools which formalize the modelling stage.</li>
+<li>In the <em>transformation</em> stage, the prior distribution created in the modelling stage is transformed into a conditional distribution. During this stage, a function is 
+created which maps known knowledge to a distribution that models the information that you want to infer. To automate this stage, Hakaru includes program transformations for 
+model conditioning.</li>
+<li>In the <em>application</em> stage, the function generated in the transformation stage is applied to the known knowledge that you have provided to get the posterior distribution
+on what is to be inferred. At the end of this stage, you can use Hakaru to show the resulting distribution as both a stream of samples and as a term in the Hakaru language.</li>
+</ol>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p><a href="https://en.wikipedia.org/wiki/Bayesian_inference">Bayesian inference (Wikipedia)</a>&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
-<li>
-<p>Add the path to <code>cmaple.exe</code> to your PATH system environment variable. This can be done via the Advanced System Properties.</p>
-<p><strong>Note:</strong> You might need to restart your computer for the variable to be recognized.    </p>
+<li id="fn:2">
+<p><a href="https://en.wikipedia.org/wiki/Bayes%27_theorem">Bayes&rsquo; theorem (Wikipedia)</a>&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
-<li>
-<p>In the Windows command prompt (cmd), create a file <code>maple.ini</code> by running:</p>
-<p><code>echo libname := "C:\\&lt;path to hakaru&gt;\\hakaru\\maple",libname: &gt;&gt; "C:\&lt;path to maple&gt;\lib\maple.ini"</code></p>
-</li>
-<li>
-<p>In the Windows command prompt (cmd), Navigate to the <code>hakaru\maple</code> directory and run:</p>
-<p><code>cmaple update-archive.mpl</code></p>
+<li id="fn:3">
+<p>P. Narayanan, J. Carette, W. Romano, C. Shan and R. Zinkov, &ldquo;Probabilistic Inference by Program Transformation in Hakaru (System Description)&rdquo;, Functional and Logic 
+Programming, pp. 62-79, 2016.&#160;<a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 </ol>
-<h3 id="testing-your-maple-installation-with-hakaru">Testing Your Maple Installation with Hakaru</h3>
-<p>If you have correctly installaed Hakaru&rsquo;s Maple extension, running <code>echo "normal(0,1)" | simplify -</code> in a <code>bash</code> command line will return <code>normal(0, 1)</code>.</p>
-<p>If you have not set the <code>LOCAL_MAPLE</code> environment variable, then <code>simplify</code> command might try to locate a <code>SSH</code> file that might not exist on your machine to try and access a remote installation of Maple.</p></div>
+</div></div>
         </div>
 
         <footer class="col-md-12">

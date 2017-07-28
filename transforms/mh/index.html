@@ -121,6 +121,12 @@
                     
                         
 <li >
+    <a href="../../workflow/continuous/">Tutorial: Hakaru Workflow for Continuous Models</a>
+</li>
+
+                    
+                        
+<li >
     <a href="../../examples/">Examples</a>
 </li>
 
@@ -399,7 +405,7 @@ fn x4 real:
 <p>This can then be run using <code>hakaru</code>. Hakaru when run with two
 arguments will assume that the first file is a transition kernel,
 and the second file represents a measure to initialize from.</p>
-<pre><code class="bash">mh target.hk proposal.hk | simplify - | hakaru --transition-kernel - target.hk | head
+<pre><code class="bash">mh target.hk proposal.hk | simplify - | hakaru -w --transition-kernel - target.hk | head
 
 -0.6133542972818671
 -0.6111567543723275

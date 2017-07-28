@@ -10,7 +10,7 @@
         <link rel="shortcut icon" href="favicon.ico">
         
 
-	<title>Arrays and Plate - Hakaru</title>
+	<title>Tutorial: Hakaru Workflow for Continuous Models - Hakaru</title>
 
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -103,25 +103,25 @@
             
             
             
-                <li class="dropdown">
+                <li class="dropdown active">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Workflow and Examples <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                     
                         
 <li >
-    <a href="../../workflow/intro/">What is the Hakaru Workflow?</a>
+    <a href="../intro/">What is the Hakaru Workflow?</a>
 </li>
 
                     
                         
 <li >
-    <a href="../../workflow/discrete/">Tutorial: Hakaru Workflow for Discrete Models</a>
+    <a href="../discrete/">Tutorial: Hakaru Workflow for Discrete Models</a>
 </li>
 
                     
                         
-<li >
-    <a href="../../workflow/continuous/">Tutorial: Hakaru Workflow for Continuous Models</a>
+<li class="active">
+    <a href="./">Tutorial: Hakaru Workflow for Continuous Models</a>
 </li>
 
                     
@@ -136,55 +136,55 @@
             
             
             
-                <li class="dropdown active">
+                <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Language Guide <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                     
                         
 <li >
-    <a href="../rand/">Primitive Probability Distributions</a>
+    <a href="../../lang/rand/">Primitive Probability Distributions</a>
 </li>
 
                     
                         
 <li >
-    <a href="../letbind/">Let and Bind</a>
+    <a href="../../lang/letbind/">Let and Bind</a>
 </li>
 
                     
                         
 <li >
-    <a href="../cond/">Conditionals</a>
+    <a href="../../lang/cond/">Conditionals</a>
 </li>
 
                     
                         
 <li >
-    <a href="../functions/">Functions</a>
+    <a href="../../lang/functions/">Functions</a>
 </li>
 
                     
                         
 <li >
-    <a href="../coercions/">Types and Coercions</a>
+    <a href="../../lang/coercions/">Types and Coercions</a>
 </li>
 
                     
                         
 <li >
-    <a href="../datatypes/">Data Types and Match</a>
-</li>
-
-                    
-                        
-<li class="active">
-    <a href="./">Arrays and Plate</a>
+    <a href="../../lang/datatypes/">Data Types and Match</a>
 </li>
 
                     
                         
 <li >
-    <a href="../loops/">Loops</a>
+    <a href="../../lang/arrays/">Arrays and Plate</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../lang/loops/">Loops</a>
 </li>
 
                     
@@ -298,12 +298,12 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="next" href="../datatypes/">
+                    <a rel="next" href="../discrete/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../loops/">
+                    <a rel="prev" href="../../examples/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -326,42 +326,153 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#arrays-and-plate">Arrays and Plate</a></li>
+        <li class="main active"><a href="#tutorial-hakaru-workflow-for-a-continuous-model">Tutorial: Hakaru Workflow for a Continuous Model</a></li>
         
-            <li><a href="#arrays">Arrays</a></li>
+            <li><a href="#modelling">Modelling</a></li>
         
-            <li><a href="#plate">Plate</a></li>
+            <li><a href="#transformation">Transformation</a></li>
+        
+            <li><a href="#application">Application</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="arrays-and-plate">Arrays and Plate</h1>
-<p>Hakaru provides special syntax for arrays, which
-is distinct from the other data types.</p>
-<h2 id="arrays">Arrays</h2>
-<p>To construct arrays, we provide an index variable, size argument, and
-an expression body. This body is evaluated for each index of the
-array. For example, to construct the array <code>[0,1,2,3]</code>:</p>
-<pre><code class="nohighlight">array i of 4: i
+<h1 id="tutorial-hakaru-workflow-for-a-continuous-model">Tutorial: Hakaru Workflow for a Continuous Model</h1>
+<p>The real world is a complex and unpredictable place, so many statistical problems involve random real numbers. Hakaru is able to tackle
+these real world problems using a similar approach to the one used for discrete models. To illustrate this workflow, the calibration of
+thermometers is used<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>.</p>
+<p>In this scenario, we are building thermometers that measure the temperature of a room. A reliable thermometer here relies on two
+attributes:</p>
+<ul>
+<li>Temperature noise, or how much the room&rsquo;s temperature fluctuates over time</li>
+<li>Measurement noise, or how often the thermometer measures the wrong value due to device defects</li>
+</ul>
+<p>In order to calibrate our thermometers, we want to approximate these values as accurately as possible so that our thermometers can 
+tune its measurements based on its knowledge of temperature and measurement noise in the environment. </p>
+<h2 id="modelling">Modelling</h2>
+<p>For our thermometer model, we must first make a few assumptions about the environment. Normally this information would be collected as
+part of the problem&rsquo;s domain knowledge. For this example, we will use the following information:</p>
+<ul>
+<li>The temperature noise follows a uniform distribution on the interval <script type="math/tex">[</script>3, 8<script type="math/tex">]</script>
+</li>
+<li>The measurement noise follows a uniform distribution with a range of <script type="math/tex">[</script>1, 4<script type="math/tex">]</script>
+</li>
+<li>Temperature and measurement samples follow a normal distribution</li>
+<li>The initial temperature of the room is 21<script type="math/tex">^{\circ}</script>C</li>
+</ul>
+<p>Our model starts with the definition of the temperature and measurement noise. From our assumptions, we know that these values follow
+a uniform distribution with real number intervals. In addition to defining distributions for these values, we will also use 
+<a href="../../lang/coercions/">coercions</a> to cast the values from <code>real</code> to <code>prob</code> values:</p>
+<pre><code class="nohighlight">nT &lt;~ uniform(3,8)
+nM &lt;~ uniform(1,4)
+
+noiseT = real2prob(nT)
+noiseM = real2prob(nM)
 </code></pre>
 
-<h3 id="array-literals">Array Literals</h3>
-<p>We can also create arrays using the literal syntax a comma delimited
-list surrounded by brackets: <code>[0,1,2,3]</code></p>
-<h3 id="array-size-and-indexing">Array size and indexing</h3>
-<p>If <code>a</code> is an array, then <code>size(a)</code> is its number of elements, which is a <code>nat</code>.
-If <code>i</code> is a <code>nat</code> then <code>a[i]</code> is the element of <code>a</code> at index <code>i</code>.
-Indices start at zero, so the maximum valid value of <code>i</code> is <code>size(a)-1</code>.</p>
-<h2 id="plate">Plate</h2>
-<p>Beyond, arrays Hakaru includes special syntax for describing measures
-over arrays called <code>plate</code>. Plate using the same syntax as <code>array</code> but
-the body must have a measure type. It returns a measure over arrays.
-For example, if we wish to have a distribution over three independent
-normal distributions we would do so as follows:</p>
-<pre><code class="nohighlight">plate _ of 3: normal(0,1)
-</code></pre></div>
+<p><strong>Note:</strong> See <a href="../../lang/letbind/">Let and Bind</a> for usage differences.</p>
+<p>The values generated for <code>noiseT</code> and <code>noiseM</code> are used as the standard deviation required by the <a href="../../lang/rand/"><code>normal</code> primitive probability 
+distribution</a> when generating values for temperature (<code>t1</code>, <code>t2</code>) and measurement (<code>m1</code>, <code>m2</code>).</p>
+<p>For temperature, we need two values. The first is a temperature centered about the initial room temperature (21<script type="math/tex">^{\circ}</script>C) and the 
+second is a future room temperature centered about the the first measured temperature. Both follow a normal distribution with a 
+standard deviation of <code>noiseT</code>: </p>
+<pre><code class="nohighlight">t1 &lt;~ normal(21, noiseT)
+t2 &lt;~ normal(t1, noiseT)
+</code></pre>
+
+<p>Temperature measurements are centered about the temperature value being measured, therefore the values <code>t1</code> and <code>t2</code> are used. 
+We made the initial assumption that measurement values follow a normal distribution, and we have generated <code>noiseM</code> as the standard
+deviation:</p>
+<pre><code class="nohighlight">m1 &lt;~ normal(t1, noiseM)
+m2 &lt;~ normal(t2, noiseM)
+</code></pre>
+
+<p>Finally, we must return the information that we are interested in from our model. For measurement tuning, we are interested in the 
+values of <code>m1</code> and <code>m2</code>. We would also like to know what kind of noise was generated in our model, <code>noiseT</code> and <code>noiseM</code>. We will
+package these values together in related pairs. Instead of returning two seperate pairs of information, we will encapsulate the sets
+into a container pair:</p>
+<pre><code class="nohighlight">return ((m1, m2), (noiseT, noiseM))
+</code></pre>
+
+<p>The return statement completes our model definition. We have defined two values, <code>noiseT</code> and <code>noiseM</code>, to represent the environmental
+noise in the temperature and measurement samples. We generated two room temperatures, <code>t1</code> and <code>t2</code>, which we used to generate the 
+dependent measurement samples <code>m1</code> and <code>m2</code>. Once all the values have been generated, we return an information set containing the two
+measurement samples and the environmental noise. With our completed model, we can use Hakaru program transformations to determine 
+plausible thermometer calibration values.</p>
+<h2 id="transformation">Transformation</h2>
+<p>To calibrate our thermometers, we need to know how differences in environmental noises affect temperature measurements. For our scenario,
+this means that we want to know what the conditional distribution on environmental noise given the measurement data. Unlike the <a href="../discrete/">discrete
+model example</a>, this problem would be extremely difficult to reason about without transforming it in any way. </p>
+<p>To generate a conditional distribution for this problem, we will use Hakaru&rsquo;s <a href="../../transforms/disintegrate/">disintegrate transform</a>.
+This transformation requires that the target model have a <a href="../../lang/rand/">return statement</a> that presents information in the order of 
+known information followed by unknown information. We have already configured our model in this manner, so we can run the <code>disintegrate</code>
+transform immediately:</p>
+<pre><code class="nohighlight">fn x8 pair(real, real):
+match x8:
+(x25, x26):
+  nT &lt;~ uniform(+3/1, +8/1)
+  nM &lt;~ uniform(+1/1, +4/1)
+  noiseT = real2prob(nT)
+  noiseM = real2prob(nM)
+  t1 &lt;~ normal(+21/1, noiseT)
+  t2 &lt;~ normal(t1, noiseT)
+  x28 &lt;~ weight
+           (exp((-(x25 - t1) ^ 2) / prob2real(2/1 * noiseM ^ 2))
+            / noiseM
+            / sqrt(2/1 * pi),
+            return ())
+  x27 &lt;~ weight
+           (exp((-(x26 - t2) ^ 2) / prob2real(2/1 * noiseM ^ 2))
+            / noiseM
+            / sqrt(2/1 * pi),
+            return ())
+  return (noiseT, noiseM)
+_: reject. measure(pair(prob, prob))
+</code></pre>
+
+<p>An additional Hakaru transformation that can be performed at this stage is
+the <a href="../../transforms/hk-maple/">Hakaru-Maple <code>simplify</code> subcommand</a>. This will
+call Maple to algebraically simplify Hakaru models. The result is a more
+efficient program, sampling from two <code>uniform</code> distributions instead of four.</p>
+<pre><code class="nohighlight">fn x8 pair(real, real):
+match x8:
+(r3, r1):
+  weight
+    (1/ pi * (1/2),
+     nTd &lt;~ uniform(+3/1, +8/1)
+     nMb &lt;~ uniform(+1/1, +4/1)
+     weight
+       (exp
+          ((nMb ^ 2 * r1 ^ 2
+            + nMb ^ 2 * r3 ^ 2
+            + nTd ^ 2 * r1 ^ 2
+            + nTd ^ 2 * r1 * r3 * (-2/1)
+            + nTd ^ 2 * r3 ^ 2 * (+2/1)
+            + nMb ^ 2 * r1 * (-42/1)
+            + r3 * nMb ^ 2 * (-42/1)
+            + r3 * nTd ^ 2 * (-42/1)
+            + nMb ^ 2 * (+882/1)
+            + nTd ^ 2 * (+441/1))
+           / (nMb ^ 4 + nTd ^ 2 * nMb ^ 2 * (+3/1) + nTd ^ 4)
+           * (-1/2))
+        / sqrt(real2prob(nMb ^ 4 + nTd ^ 2 * nMb ^ 2 * (+3/1) + nTd ^ 4)),
+        return (real2prob(nTd), real2prob(nMb))))
+</code></pre>
+
+<p>The two models are equivalent, so you must decide which model that you want to use for your application. For the purposes of this tutorial, we will use the
+unsimplified version of the model (<code>thermometer_disintegrate.hk</code>).</p>
+<h2 id="application">Application</h2>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>P. Narayanan, J. Carette, W. Romano, C. Shan and R. Zinkov, &ldquo;Probabilistic Inference by Program Transformation in Hakaru (System Description)&rdquo;, Functional and Logic 
+Programming, pp. 62-79, 2016.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
         </div>
 
         <footer class="col-md-12">

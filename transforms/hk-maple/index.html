@@ -121,6 +121,12 @@
                     
                         
 <li >
+    <a href="../../workflow/continuous/">Tutorial: Hakaru Workflow for Continuous Models</a>
+</li>
+
+                    
+                        
+<li >
     <a href="../../examples/">Examples</a>
 </li>
 
@@ -641,7 +647,65 @@ reducible to a smaller program. Assuming that we named the program <code>simplif
 </code></pre>
 
 <h3 id="disintegrate_1">Disintegrate</h3>
-<p>(TODO)</p>
+<p>The following examples are simplified versions of the Borel-Kolmogorov paradox.
+Both programs choose <code>x</code> and <code>y</code> uniformly from the range <code>0..1</code> and return a
+pair consisting of a polynomial <code>P(x,y)</code> and the coordinates <code>x</code> and <code>y</code>
+themselves.</p>
+<pre><code class="nohighlight"> $ pretty examples/borel-sub.hk
+x &lt;~ uniform(nat2real(0), nat2real(1))
+y &lt;~ uniform(nat2real(0), nat2real(1))
+return (y - nat2real(2) * x, (x, y))
+</code></pre>
+
+<pre><code class="nohighlight"> $ pretty examples/borel-div.hk
+x &lt;~ uniform(nat2real(0), nat2real(1))
+y &lt;~ uniform(nat2real(0), nat2real(1))
+return (y / x, (x, y))
+</code></pre>
+
+<p>Disintegrating these two programs produces results which immediately reject
+values of <code>P(x,y)</code> which are impossible (e.g. <code>y/x</code> cannot be less than zero for
+<code>x,y</code> in <code>[0,1] x [0,1]</code>). For remaining permitted values of <code>x</code> and <code>y</code>,
+<code>y</code> is parametrized in terms of <code>x</code>; that is, the equation <code>P(x,y)=0</code> is solved
+for <code>x</code>.</p>
+<pre><code class="nohighlight"> $ hk-maple -c Disint examples/borel-sub.hk
+fn t1 real:
+if +1/1 &lt; t1 || t1 &lt; -2/1: reject. measure(pair(real, real))
+else:
+  if -2/1 &lt; t1 &amp;&amp; t1 &lt; -1/1:
+    weight
+      (real2prob(+1/1 + t1 * (+1/2)),
+       x9 &lt;~ uniform(t1 * (-1/2), +1/1)
+       return (x9, x9 * (+2/1) + t1))
+  else:
+    if -1/1 &lt; t1 &amp;&amp; t1 &lt; +0/1:
+      weight
+        (1/2,
+         x9 &lt;~ uniform(t1 * (-1/2), t1 * (-1/2) + (+1/2))
+         return (x9, x9 * (+2/1) + t1))
+    else:
+      weight
+        (real2prob(t1 * (-1/2) + (+1/2)),
+         x9 &lt;~ uniform(+0/1, t1 * (-1/2) + (+1/2))
+         return (x9, x9 * (+2/1) + t1))
+</code></pre>
+
+<pre><code class="nohighlight"> $ hk-maple -c Disint borel-div.hk
+fn t1 real:
+if t1 &lt; +0/1: reject. measure(pair(real, real))
+else:
+  if +1/1 &lt; t1:
+    weight
+      (real2prob(1/ t1),
+       x9 &lt;~ uniform(+0/1, 1/ t1)
+       weight(real2prob(x9), return (x9, x9 * t1)))
+  else:
+    weight
+      (1/2,
+       x9 &lt;~ beta(2/1, 1/1)
+       return (prob2real(x9), prob2real(x9) * t1))
+</code></pre>
+
 <h3 id="summarize_1">Summarize</h3>
 <p>These examples are given in Maple syntax as opposed to typical examples in Hakaru syntax. </p>
 <p>First &ldquo;summate i&rdquo; in offshore under gmm_gibbs.hk</p>

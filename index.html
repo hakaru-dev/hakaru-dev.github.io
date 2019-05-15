@@ -4,397 +4,263 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+        <meta name="description" content="None">
         <meta name="author" content="Hakaru Team">
         
-        <link rel="shortcut icon" href="favicon.ico">
-        
-
-	<title>Hakaru</title>
-
-        <link href="./css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="./css/font-awesome-4.0.3.css" rel="stylesheet">
-        <link rel="stylesheet" href="./css/highlight.css">
-        <link href="./css/base.css" rel="stylesheet">
-        <link href="./logo.css" rel="stylesheet">
-
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Hakaru</title>
+        <link href="css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
+        <link href="logo.css" rel="stylesheet">
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
-    <body>
+    <body class="homepage">
 
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
+            <div class="container">
 
-        <!-- Collapsed navigation -->
-        <div class="navbar-header">
-            <!-- Expander button -->
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href=".">Hakaru</a>
+                </div>
 
-            <!-- Main title -->
-            <a class="navbar-brand" href=".">Hakaru</a>
-        </div>
-
-        <!-- Expanded navigation -->
-        <div class="navbar-collapse collapse">
-            <!-- Main navigation -->
-            <ul class="nav navbar-nav">
-            
-            
-                <li class="active">
-                    <a href=".">Home</a>
-                </li>
-            
-            
-            
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Introduction <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                    
-                        
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <a href=".">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Introduction <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
 <li >
     <a href="intro/probprog/">What is Probabilistic Programming?</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="intro/installation/">Installing Hakaru</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="intro/samplegen/">Generating Samples from your Hakaru Program</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="intro/quickstart/">Quick Start: A Mixture Model Example</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="transforms/compile/">Compiling to Haskell</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="transforms/hkc/">Compiling to C</a>
 </li>
-
-                    
-                    </ul>
-                </li>
-            
-            
-            
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Workflow and Examples <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                    
-                        
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Workflow and Examples <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
 <li >
     <a href="workflow/intro/">What is the Hakaru Workflow?</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="workflow/discrete/">Tutorial: Hakaru Workflow for Discrete Models</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="workflow/continuous/">Tutorial: Hakaru Workflow for Continuous Models</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="examples/">Examples</a>
 </li>
-
-                    
-                    </ul>
-                </li>
-            
-            
-            
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Language Guide <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                    
-                        
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Language Guide <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
 <li >
     <a href="lang/rand/">Primitive Probability Distributions</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="lang/letbind/">Let and Bind</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="lang/cond/">Conditionals</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="lang/functions/">Functions</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="lang/coercions/">Types and Coercions</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="lang/datatypes/">Data Types and Match</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="lang/arrays/">Arrays and Plate</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="lang/loops/">Loops</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="transforms/expect/">Expect</a>
 </li>
-
-                    
-                    </ul>
-                </li>
-            
-            
-            
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Transformations <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                    
-                        
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Transformations <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
 <li >
     <a href="transforms/normalize/">Normalize</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="transforms/disintegrate/">Disintegrate</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="transforms/density/">Density</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="transforms/hk-maple/">Hakaru Maple</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="transforms/mh/">Metropolis Hastings</a>
 </li>
-
-                    
-                    </ul>
-                </li>
-            
-            
-            
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Internals <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                    
-                        
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Internals <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
 <li >
     <a href="internals/ast/">AST and Hakaru Datakind</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="internals/abt/">ABT</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="internals/datums/">Datums</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="internals/coercions/">Coercions</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="internals/transforms/">Transformaitons</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="internals/testing/">Testing</a>
 </li>
-
-                    
-                        
+                                    
 <li >
     <a href="internals/newfeature/">Adding a Language Feature</a>
 </li>
+                                </ul>
+                            </li>
+                        </ul>
 
-                    
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="disabled">
+                                <a rel="next" >
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="intro/probprog/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/hakaru-dev/hakaru/edit/master/docs/index.md"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
                     </ul>
-                </li>
-            
-            
-            </ul>
-
-            <!-- Search, Navigation and Repo links -->
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
-                        <i class="fa fa-search"></i> Search
-                    </a>
-                </li>
-                <li class="disabled">
-                    <a rel="next" >
-                        <i class="fa fa-arrow-left"></i> Previous
-                    </a>
-                </li>
-                <li >
-                    <a rel="prev" href="intro/probprog/">
-                        Next <i class="fa fa-arrow-right"></i>
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="https://github.com/hakaru-dev/hakaru">
-                        
-                            <i class="fa fa-github"></i>
-                        
-                        GitHub
-                    </a>
-                </li>
-                
-            </ul>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
         <div class="container">
-            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-    
         <li class="main active"><a href="#introduction">Introduction</a></li>
-        
             <li><a href="#what-is-probabilistic-programming">What is Probabilistic Programming?</a></li>
-        
             <li><a href="#installing-hakaru">Installing Hakaru</a></li>
-        
             <li><a href="#generating-samples-from-your-hakaru-program">Generating Samples from your Hakaru Program</a></li>
-        
             <li><a href="#quick-start-a-mixture-model-example">Quick Start: A Mixture Model Example</a></li>
-        
             <li><a href="#compiling-to-haskell">Compiling to Haskell</a></li>
-        
             <li><a href="#compiling-to-c">Compiling to C</a></li>
-        
-    
         <li class="main "><a href="#hakaru-workflow-and-examples">Hakaru Workflow and Examples</a></li>
-        
             <li><a href="#what-is-the-hakaru-workflow">What is the Hakaru Workflow?</a></li>
-        
             <li><a href="#tutorial-hakaru-workflow-for-discrete-models">Tutorial: Hakaru Workflow for Discrete Models</a></li>
-        
             <li><a href="#tutorial-hakaru-workflow-for-continuous-models">Tutorial: Hakaru Workflow for Continuous Models</a></li>
-        
             <li><a href="#examples">Examples</a></li>
-        
-    
         <li class="main "><a href="#language-guide">Language Guide</a></li>
-        
             <li><a href="#primitive-probability-distributions">Primitive Probability Distributions</a></li>
-        
             <li><a href="#let-and-bind">Let and Bind</a></li>
-        
             <li><a href="#conditionals">Conditionals</a></li>
-        
             <li><a href="#functions">Functions</a></li>
-        
             <li><a href="#types-and-coercions">Types and Coercions</a></li>
-        
             <li><a href="#data-types-and-match">Data Types and Match</a></li>
-        
             <li><a href="#arrays-and-plate">Arrays and Plate</a></li>
-        
             <li><a href="#loops">Loops</a></li>
-        
-    
         <li class="main "><a href="#transformations">Transformations</a></li>
-        
             <li><a href="#expect">Expect</a></li>
-        
             <li><a href="#normalize">Normalize</a></li>
-        
             <li><a href="#disintegrate">Disintegrate</a></li>
-        
             <li><a href="#density">Density</a></li>
-        
             <li><a href="#hakaru-maple">Hakaru-Maple</a></li>
-        
             <li><a href="#metropolis-hastings">Metropolis Hastings</a></li>
-        
-    
         <li class="main "><a href="#internals">Internals</a></li>
-        
-    
         <li class="main "><a href="#citing-us">Citing Us</a></li>
-        
-    
     </ul>
 </div></div>
-            <div class="col-md-9" role="main">
+                <div class="col-md-9" role="main">
 
 <h1 class="logo">Hakaru</h1>
 
@@ -412,81 +278,81 @@ details are included to help guide future Hakaru developments and extensions.</p
 <h2 id="introduction">Introduction</h2>
 <p>The Introduction presents probabilistic programming and illustrates how Hakaru can be used to solve and describe these types of problems, how to install Hakaru on your 
 machine, and some sample programs to get you started.</p>
-<h3 id="what-is-probabilistic-programming"><a href="./intro/probprog">What is Probabilistic Programming?</a></h3>
+<h3 id="what-is-probabilistic-programming"><a href="intro/probprog">What is Probabilistic Programming?</a></h3>
 <p>Probabilistic programming systems allow us to write programs which describe probability distributions, and provide mechanisms to sample and condition the distributions 
 they represent on data. In this page, we give a sense of the sorts of problems Hakaru is great at solving, and how you would describe them in Hakaru.</p>
-<h3 id="installing-hakaru"><a href="./intro/installation">Installing Hakaru</a></h3>
+<h3 id="installing-hakaru"><a href="intro/installation">Installing Hakaru</a></h3>
 <p>You can install Hakaru on Linux, OSX, and Windows and extend its functionality using MapleSoft&rsquo;s Maple. </p>
-<h3 id="generating-samples-from-your-hakaru-program"><a href="./intro/samplegen">Generating Samples from your Hakaru Program</a></h3>
+<h3 id="generating-samples-from-your-hakaru-program"><a href="intro/samplegen">Generating Samples from your Hakaru Program</a></h3>
 <p>You can use the <code>hakaru</code> command to generate samples from your probabilistic model.</p>
-<h3 id="quick-start-a-mixture-model-example"><a href="./intro/quickstart">Quick Start: A Mixture Model Example</a></h3>
+<h3 id="quick-start-a-mixture-model-example"><a href="intro/quickstart">Quick Start: A Mixture Model Example</a></h3>
 <p>This page will introduce you to Hakaru&rsquo;s basic functionality by creating a program to sample and condition a mixture model of a coin toss.</p>
-<h3 id="compiling-to-haskell"><a href="./transforms/compile">Compiling to Haskell</a></h3>
+<h3 id="compiling-to-haskell"><a href="/transforms/compile">Compiling to Haskell</a></h3>
 <p>A Hakaru program can be ported into Haskell which can then be converted into machine code for other applications.</p>
-<h3 id="compiling-to-c"><a href="./transforms/hkc">Compiling to C</a></h3>
+<h3 id="compiling-to-c"><a href="/transforms/hkc">Compiling to C</a></h3>
 <p>Depending on the scale, a Hakaru program might be resource-intensive to run. In these situations, you could port your Hakaru program to C using the <code>hkc</code> command to take
 advantage of other tools such as OpenMP for parallel processing. </p>
 <h2 id="hakaru-workflow-and-examples">Hakaru Workflow and Examples</h2>
-<h3 id="what-is-the-hakaru-workflow"><a href="workflow/intro/">What is the Hakaru Workflow?</a></h3>
+<h3 id="what-is-the-hakaru-workflow"><a href="/workflow/intro.md">What is the Hakaru Workflow?</a></h3>
 <p>Hakaru provides a language and tools to aid in each step of the Bayesian inference workflow.</p>
 <h3 id="tutorial-hakaru-workflow-for-discrete-models"><a href="workflow/discrete/">Tutorial: Hakaru Workflow for Discrete Models</a></h3>
 <p>This example of a burglary alarm demonstrates the workflow typically followed when creating Hakaru programs.</p>
 <h3 id="tutorial-hakaru-workflow-for-continuous-models"><a href="workflow/continuous/">Tutorial: Hakaru Workflow for Continuous Models</a></h3>
 <p>This example of a thermometer calibration demonstrates the workflow typically followed when creating Hakaru programs that involve
 random real numbers in their description.</p>
-<h3 id="examples"><a href="./examples">Examples</a></h3>
+<h3 id="examples"><a href="examples">Examples</a></h3>
 <p>Two examples, a Gaussian Mixture Model and a Latent Dirichlet Allocation (LDA) topic model, highlight the types of problems that Hakaru is uniquely suited to help you solve.</p>
 <h2 id="language-guide">Language Guide</h2>
 <p>The Language Guide presents an overview of Hakaru&rsquo;s language primitives and core functionality.</p>
-<h3 id="primitive-probability-distributions"><a href="./lang/rand">Primitive Probability Distributions</a></h3>
+<h3 id="primitive-probability-distributions"><a href="/lang/rand">Primitive Probability Distributions</a></h3>
 <p>Common probability distributions, such as the normal distribution, are already encoded in Hakaru and are considered to be language primitives. This page provides usage
 instructions for accessing the primitive distributions in your programs.</p>
-<h3 id="let-and-bind"><a href="./lang/letbind">Let and Bind</a></h3>
+<h3 id="let-and-bind"><a href="/lang/letbind">Let and Bind</a></h3>
 <p>Let (<code>=</code>) and Bind (<code>&lt;~</code>) enable the use of variables in Hakaru programs, which is essential for extracting a value from a probability distribution.</p>
-<h3 id="conditionals"><a href="./lang/cond">Conditionals</a></h3>
+<h3 id="conditionals"><a href="/lang/cond">Conditionals</a></h3>
 <p>Hakaru supports a restricted <code>if</code> expression for selections between two conditions.</p>
-<h3 id="functions"><a href="./lang/functions">Functions</a></h3>
+<h3 id="functions"><a href="/lang/functions">Functions</a></h3>
 <p>Hakaru supports both named and anonymous function definitions.</p>
-<h3 id="types-and-coercions"><a href="./lang/coercions">Types and Coercions</a></h3>
+<h3 id="types-and-coercions"><a href="/lang/coercions">Types and Coercions</a></h3>
 <p>Hakaru has basic types which can also be combined to make complex ones. To aid in the communication of information between Hakaru functions, coercions are defined to allow 
 conversions between compatible types.</p>
-<h3 id="data-types-and-match"><a href="./lang/datatypes">Data Types and Match</a></h3>
+<h3 id="data-types-and-match"><a href="/lang/datatypes">Data Types and Match</a></h3>
 <p>Hakaru supports some built-in data types from Haskell. The <code>match</code> function is used for deconstructing them to extract their elements and to reconstructing data back into
 these data types.</p>
-<h3 id="arrays-and-plate"><a href="./lang/arrays">Arrays and Plate</a></h3>
+<h3 id="arrays-and-plate"><a href="/lang/arrays">Arrays and Plate</a></h3>
 <p>Hakaru has special syntax for arrays, which is considered distinct from the other supported data types. A specialized array, <code>plate</code>, is used for describing measures over
 arrays.</p>
-<h3 id="loops"><a href="./lang/loops">Loops</a></h3>
+<h3 id="loops"><a href="/lang/loops">Loops</a></h3>
 <p>Hakaru loops are specialized to compute the summation or product of the elements in an array.</p>
 <h2 id="transformations">Transformations</h2>
 <p>Hakaru includes some inference algorithms that you can use to transform your probabilistic models into other forms to extract desireable information. Its inference 
 algorithms are implemented predominantly as program transformations.</p>
 <p><strong>Note:</strong> By default, Hakaru assigns a weight to each generated sample. Typically a weight of one is used, but it is possible for the weights to vary between samples. This 
 might result in differing results from the original and transformed programs when summarizing a program&rsquo;s output by counting them.</p>
-<h3 id="expect"><a href="./transforms/expect">Expect</a></h3>
+<h3 id="expect"><a href="/transforms/expect">Expect</a></h3>
 <p>The expectation feature (<code>expect</code>) computes expectation of a measure with respect to a given function. </p>
-<h3 id="normalize"><a href="./transforms/normalize">Normalize</a></h3>
+<h3 id="normalize"><a href="/transforms/normalize">Normalize</a></h3>
 <p>The normalization transformation (<code>normalize</code>) reweights a program so that it represents a normal distribution.</p>
-<h3 id="disintegrate"><a href="./transforms/disintegrate">Disintegrate</a></h3>
+<h3 id="disintegrate"><a href="/transforms/disintegrate">Disintegrate</a></h3>
 <p>The disintegration transformation (<code>disintegrate</code>) produces a program representing the conditional distribution based on a joint probability distribution. This command
 is equivalent to model conditioning in probability theory. </p>
-<h3 id="density"><a href="./transforms/density">Density</a></h3>
+<h3 id="density"><a href="/transforms/density">Density</a></h3>
 <p>The density transformation (<code>density</code>) is used to create a conditional distribution model that is used to estimate the density of the distribution at a particular point.</p>
-<h3 id="hakaru-maple"><a href="./transforms/hk-maple">Hakaru-Maple</a></h3>
+<h3 id="hakaru-maple"><a href="/transforms/hk-maple">Hakaru-Maple</a></h3>
 <p>The simplify transformation (<code>hk-maple -c Simplify</code>) is used to improve Hakaru programs by simplifying probabilistic models using computer algebra. This transformation requires the
 use of Maple. Hakaru provides two other transformations also written in Maple.</p>
-<h3 id="metropolis-hastings"><a href="./transforms/mh">Metropolis Hastings</a></h3>
+<h3 id="metropolis-hastings"><a href="/transforms/mh">Metropolis Hastings</a></h3>
 <p>The Metropolis Hastings transform (<code>mh</code>) is used to convert a Hakaru program into a Metropolis Hastings transition kernel.</p>
 <h2 id="internals">Internals</h2>
 <p>The internals section of the manual provides some insight into how Hakaru is implemented and offers guidance into how the system can be extended.</p>
 <ul>
-<li><a href="./internals/ast">AST</a></li>
-<li><a href="./internals/abt">ABT</a></li>
-<li><a href="./internals/datums">Datums</a></li>
-<li><a href="./internals/coercions">Coercions</a></li>
-<li><a href="./internals/transforms">Transformations</a></li>
-<li><a href="./internals/testing">Testing Hakaru modules</a></li>
-<li><a href="./internals/newfeature">Adding a Language Feature</a></li>
+<li><a href="/internals/ast">AST</a></li>
+<li><a href="/internals/abt">ABT</a></li>
+<li><a href="/internals/datums">Datums</a></li>
+<li><a href="/internals/coercions">Coercions</a></li>
+<li><a href="/internals/transforms">Transformations</a></li>
+<li><a href="/internals/testing">Testing Hakaru modules</a></li>
+<li><a href="/internals/newfeature">Adding a Language Feature</a></li>
 </ul>
 <h2 id="citing-us">Citing Us</h2>
 <p>When referring to Hakaru, please cite the following <a href="http://homes.soic.indiana.edu/ccshan/rational/system.pdf">academic paper</a>:</p>
@@ -507,42 +373,85 @@ Programming, pp. 62-79, 2016.</p>
 
         <footer class="col-md-12">
             <hr>
-            
-            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
-
-        <script src="./js/jquery-1.10.2.min.js"></script>
-        <script src="./js/bootstrap-3.0.3.min.js"></script>
-        <script src="./js/highlight.pack.js"></script>
-        <script>var base_url = '.';</script>
-        <script data-main="./mkdocs/js/search.js" src="./mkdocs/js/require.js"></script>
-        <script src="./js/base.js"></script>
-        <script src="./js/mathjaxhelper.js"></script>
-        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js" defer></script>
+        <script src="js/mathjaxhelper.js" defer></script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" defer></script>
+        <script src="search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
-                    <div class="modal-body">
-                        <p>
-                            From here you can search these documents. Enter
-                            your search terms below.
-                        </p>
-                        <form role="form">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
-                            </div>
-                        </form>
-                        <div id="mkdocs-search-results"></div>
-                    </div>
-                    <div class="modal-footer">
-                    </div>
-                </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
             </div>
         </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
     </body>
 </html>
+
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2019-05-15 00:03:34
+-->

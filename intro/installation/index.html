@@ -240,29 +240,31 @@
 </code></pre>
 
 <p>Hakaru can be installed by using either <code>stack install</code> or <code>cabal install</code> inside the <code>hakaru</code> directory. One way that you can access these tools is by installing the <a href="https://www.haskell.org/platform/">Haskell Platform</a> which supports Linux, OSX, and Windows operating systems.</p>
-<p>If you are using <code>stack install</code>, you can install and verify your installation of Hakaru by running the commands:</p>
+<p>If you are using <code>stack</code>, you can install and verify your installation of Hakaru by running the commands:</p>
 <pre><code class="bash">stack install
 stack test
 </code></pre>
 
 <p>You can find the output of <code>stack test</code> in the <code>.stack-work/logs/hakaru-0.4.0-test.txt</code> file.</p>
-<p>If you are using <code>cabal install</code>, you can install Hakaru by running the commands:</p>
+<p>If you are using <code>cabal</code>, you can install Hakaru by running the commands:</p>
 <pre><code class="bash">cabal update    
 cabal install -j --only-dependencies --enable-tests
 cabal configure --enable-tests
 cabal build
+cabal install
 cabal test
 </code></pre>
 
-<p>On Windows systems, you can use the <code>stack install</code> and <code>cabal install</code> commands by running them in a Linux shell such as <a href="https://www.cygwin.com/">Cygwin</a> or Git Bash.</p>
-<p><strong>Note:</strong> If you want to use <code>cabal install</code> and have installed the Haskell Platform, you might need to add a reference to the directory containing <code>cabal.exe</code> to the <code>PATH</code> environment variable.</p>
-<p>If you are using GHC 7.10 or earlier on a Windows system and want to use the <code>cabal install</code> command, you must install the <code>logfloat</code> dependency manually after running <code>cabal update</code> due to a
+<p>On Windows systems, you can use the <code>stack</code> and <code>cabal</code> commands by running them in a Linux shell such as <a href="https://www.cygwin.com/">Cygwin</a> or Git Bash.</p>
+<p><strong>Note:</strong> If you want to use <code>cabal</code> and have installed the Haskell Platform, you might need to add a reference to the directory containing <code>cabal.exe</code> to the <code>PATH</code> environment variable.</p>
+<p>If you are using GHC 7.10 or earlier on a Windows system and want to use the <code>cabal</code> command, you must install the <code>logfloat</code> dependency manually after running <code>cabal update</code> due to a
 <a href="https://ghc.haskell.org/trac/ghc/ticket/3242">GHC bug</a>:</p>
 <pre><code class="bash">cabal update    
 cabal install -j logfloat -f -useffi
 cabal install -j --only-dependencies --enable-tests
 cabal configure --enable-tests
 cabal build
+cabal install
 cabal test
 </code></pre>
 
@@ -275,6 +277,7 @@ echo 'libname := &quot;/path-to-hakaru/hakaru/maple&quot;,libname:' &gt;&gt; ~/.
 maple update-archive.mpl
 </code></pre>
 
+<p>where &ldquo;path-to-hakaru&rdquo; must be an explicit path (i.e. do not use <code>~</code> even if maple is installed in a sub-directory of your home directory).</p>
 <p>On Windows systems, Hakaru can be setup to use Maple by performing the following steps in Administrator mode:</p>
 <ol>
 <li>
@@ -297,8 +300,8 @@ maple update-archive.mpl
 </li>
 </ol>
 <h3 id="testing-your-maple-installation-with-hakaru">Testing Your Maple Installation with Hakaru</h3>
-<p>If you have correctly installaed Hakaru&rsquo;s Maple extension, running <code>echo "normal(0,1)" | simplify -</code> in a <code>bash</code> command line will return <code>normal(0, 1)</code>.</p>
-<p>If you have not set the <code>LOCAL_MAPLE</code> environment variable, then <code>simplify</code> command might try to locate a <code>SSH</code> file that might not exist on your machine to try and access a remote installation of Maple.</p></div>
+<p>If you have correctly installaed Hakaru&rsquo;s Maple extension, running <code>echo "normal(0,1)" | simplify -</code> in a <code>bash</code> command line will return <code>normal(0, 1)</code>.  If you get an error about <code>simplify</code> not being found, you may need to adjust your PATH environment variable to point to where <code>cabal</code> installed Hakaru.</p>
+<p>If you have not set the <code>LOCAL_MAPLE</code> environment variable, then the <code>simplify</code> command might try to locate a <code>SSH</code> file that might not exist on your machine to try and access a remote installation of Maple.</p></div>
         </div>
 
         <footer class="col-md-12">

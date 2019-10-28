@@ -243,7 +243,7 @@ increases. In these scenarios, a comparable distribution can be selected to draw
 by estimating an expectation for the target distribution instead. The estimated expectation is then used to generate samples. To account for the knowledge that the 
 samples were not generated from the target distribution, a weight is assigned so that each sample&rsquo;s contribution to the estimator is adjusted according to its relevance. 
 However, this method only works well if the distribution proposed by the expectation is similar to the target distribution. For more complex distributions, a 
-different approach, such as the Metropolis Hastings method should be used<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>.</p>
+different approach, such as the Metropolis Hastings method should be used<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
 <p>The <code>hakaru</code> command is used to indefinitely generate samples from a Hakaru program using importance sampling. Each sample is assigned a weight, and a sample&rsquo;s weight is 
 initialized to <code>1.0</code>. Weights are changed by Hakaru primitives and processes such as <a href="../../lang/rand/"><code>weight</code></a>.</p>
 <h2 id="usage">Usage</h2>
@@ -275,7 +275,7 @@ simplify temp.hk
 
 <p><strong>Note:</strong> The <code>&gt;</code> operator redirects the output from <code>disintegrate program.hk</code> to a new file called <code>temp.hk</code>.</p>
 <h2 id="example">Example</h2>
-<p>To demonstrate weights in Hakaru, a sample problem of a burglary alarm is adapted from Pearl&rsquo;s textbook on probabilistic reasoning (page 35)<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup>:</p>
+<p>To demonstrate weights in Hakaru, a sample problem of a burglary alarm is adapted from Pearl&rsquo;s textbook on probabilistic reasoning (page 35)<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>:</p>
 <blockquote>
 <p>Imagine being awakened one night by the shrill sound of your burglar alarm. What is your degree of belief that a burglary attempt has taken place? For illustrative 
 purposes we make the following judgements: (a) There is a 95% chance that an attempted burglary will trigger the alarm system &ndash; P(Alarm|Burglary) = 0.95; (b) based on 
@@ -338,10 +338,10 @@ kernel. For an example of the <code>hakaru</code> command usage in this context,
 <hr />
 <ol>
 <li id="fn:1">
-<p>D.J.C. MacKay, &ldquo;Introduction to Monte Carlo Methods&rdquo;, Learning in Graphical Models, vol. 89, pp. 175-204, 1998.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>D.J.C. MacKay, &ldquo;Introduction to Monte Carlo Methods&rdquo;, Learning in Graphical Models, vol. 89, pp. 175-204, 1998.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:2">
-<p>J. Pearl, Probabilistic reasoning in intelligent systems: Networks of plausible inference. San Francisco: M. Kaufmann, 1988.&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p>J. Pearl, Probabilistic reasoning in intelligent systems: Networks of plausible inference. San Francisco: M. Kaufmann, 1988.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div></div>

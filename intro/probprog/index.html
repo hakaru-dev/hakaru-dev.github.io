@@ -241,7 +241,7 @@
 <p>Probabilistic programming is a software-driven method for creating probabilistic models and then using them to make probabilistic inferences. It 
 provides a means for writing programs which describe probabilistic models such that they can be used to make probabilistic inferences. For example, the 
 Hakaru program <script type="math/tex">poisson(5)</script> represents the Poisson distribution with a rate of five. A Probabilistic Programming Language (PPL) is a computer language designed to 
-describe probabilistic models and distributions such that probabilistic inferences can be made programmatically<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>. Hakaru is an example of a PPL. </p>
+describe probabilistic models and distributions such that probabilistic inferences can be made programmatically<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. Hakaru is an example of a PPL. </p>
 <p>Why do we need a programming language for describing probability distributions? Consider a machine learning problem. A typical workflow for this type of design is, when 
 presented with a problem, to design an inference algorithm for a specific probabilistic distribution and query. The development of a distribution, query, and inference
 algorithm can be a time consuming task, even for someone that is skilled in these areas. Automating this process via a PPL allows for a broader exploration of the design
@@ -344,17 +344,17 @@ generating a new one. Instead, a Markov Chain Monte Carlo (MCMC) method should b
 state, so it does not require extensive memory for its calculations. In MCMC, a Markov chain is used to generate the next sample based on the current one, making it more 
 likely to stay in densely packed probability regions. As a model increases in dimensions, MCMC methods become essential for the generation of samples because the task of 
 finding high-value samples becomes more difficult.</p>
-<p>The Metropolis-Hastings algorithm<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup> is an MCMC method for generating a sequence of random samples from a probabilistic distribution. This is useful for approximating a 
+<p>The Metropolis-Hastings algorithm<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> is an MCMC method for generating a sequence of random samples from a probabilistic distribution. This is useful for approximating a 
 distribution that fits your existing data. The algorithm is included in Hakaru&rsquo;s transformations as the command tool <a href="../../transforms/mh/"><code>mh</code></a>. This transform converts
 your probabilistic program into a Markov Chain which can be used for sample generation.</p>
 <div class="footnote">
 <hr />
 <ol>
 <li id="fn:1">
-<p><a href="https://en.wikipedia.org/wiki/Probabilistic_programming_language">Proababilistic programming language (Wikipedia)</a>&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Probabilistic_programming_language">Proababilistic programming language (Wikipedia)</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:2">
-<p>D.J.C. MacKay, &ldquo;Introduction to Monte Carlo Methods&rdquo;, Learning in Graphical Models, vol. 89, pp. 175-204, 1998.&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p>D.J.C. MacKay, &ldquo;Introduction to Monte Carlo Methods&rdquo;, Learning in Graphical Models, vol. 89, pp. 175-204, 1998.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div></div>

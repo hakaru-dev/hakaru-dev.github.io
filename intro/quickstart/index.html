@@ -241,7 +241,7 @@
 coin flip can be represented using a Bernoulli distribution. After we have created the Bernoulli model, we will use it to create a mixture model and condition the model
 to estimate what the original coin toss experiment looked like based on the resulting mixture model samples.</p>
 <h2 id="modeling-a-bernoulli-experiment">Modeling a Bernoulli Experiment</h2>
-<p>We will use the <code>categorical</code> Hakaru <a href="../../lang/rand/">Random Primitive</a> to write a Bernoulli distribution<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> for our model. The <code>categorical</code> primitive requires an 
+<p>We will use the <code>categorical</code> Hakaru <a href="../../lang/rand/">Random Primitive</a> to write a Bernoulli distribution<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> for our model. The <code>categorical</code> primitive requires an 
 <a href="../../lang/arrays/">array</a> representing the probability of achieving each category in the experiement. Let&rsquo;s start with a fair experiment and state that each side of the 
 coin has an equal chance of being picked. The result of the coin toss is stored in the variable <code>b</code> using Hakaru&rsquo;s notation for <a href="../lang/letbind">bind</a>:</p>
 <pre><code class="nohighlight">b &lt;~ categorical([0.5, 0.5])
@@ -296,7 +296,7 @@ true
 <p>Now that we have set up our Bernoulli experiment, let&rsquo;s use it to create a mixture model.</p>
 <h2 id="creating-a-mixture-model">Creating a Mixture Model</h2>
 <p>Let&rsquo;s use our coin flip experiment to create a mixture model by drawing a sample from a normal distribution when the coin is Heads (<code>true</code>) and from a uniform distribution
-when it is Tails (<code>false</code>). This is called a <em>mixture model</em><sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup> because we are selecting samples from different distributions. Let&rsquo;s start by saving a copy of your 
+when it is Tails (<code>false</code>). This is called a <em>mixture model</em><sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> because we are selecting samples from different distributions. Let&rsquo;s start by saving a copy of your 
 Bernoulli function into a new program so that we can use it in our new model. For this example, we will call it <code>twomixture.hk</code>.</p>
 <p>Let&rsquo;s start by binding the return value of our <code>bern</code> function to a variable called <code>coin</code> to represent the outcome of an experiment:</p>
 <pre><code class="nohighlight">coin &lt;~ bern(0.5)
@@ -430,10 +430,10 @@ experiements might have been. For more Hakaru examples, see the <a href="../exam
 <hr />
 <ol>
 <li id="fn:1">
-<p><a href="https://en.wikipedia.org/wiki/Bernoulli_distribution">Bernoulli distribution (Wikipedia)</a>&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Bernoulli_distribution">Bernoulli distribution (Wikipedia)</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:2">
-<p><a href="https://en.wikipedia.org/wiki/Mixture_model">Mixture Model (Wikipedia)</a>&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Mixture_model">Mixture Model (Wikipedia)</a>&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div></div>

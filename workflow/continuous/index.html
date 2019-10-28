@@ -240,7 +240,7 @@
 <h1 id="tutorial-hakaru-workflow-for-a-continuous-model">Tutorial: Hakaru Workflow for a Continuous Model</h1>
 <p>The real world is a complex and unpredictable place, so many statistical problems involve random real numbers. Hakaru is able to tackle
 these real world problems using a similar approach to the one used for discrete models. To illustrate this workflow, the calibration of
-thermometers is used<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>.</p>
+thermometers is used<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
 <p>In this scenario, we are building thermometers that measure the temperature of a room. A reliable thermometer here relies on two
 attributes:</p>
 <ul>
@@ -591,7 +591,7 @@ thermometer((29,26))
 ...
 </code></pre>
 
-<p>In the Hakaru system definition paper<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>, a graph is generated from the data by collecting every fifth sample from 20,000 generated 
+<p>In the Hakaru system definition paper<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, a graph is generated from the data by collecting every fifth sample from 20,000 generated 
 samples. You can create a file with this information by using an <code>awk</code> script, which can then be imported into a graphing software
 package such as Maple:</p>
 <pre><code class="bash">$ hakaru --transition-kernel thermometer_mcmc_processed.hk thermometer_disintegrate_simplify.hk | head -n 20000 | awk 'BEGIN{i = 0}{if (i % 5 == 0) a[i/5] = $0; i = i + 1}END{for (j in a) print a[j]}' &gt; thermometer_output.txt
@@ -641,7 +641,7 @@ mixed-usage example when evaluated using <code>hk-maple</code>.</p>
 <ol>
 <li id="fn:1">
 <p>P. Narayanan, J. Carette, W. Romano, C. Shan and R. Zinkov, &ldquo;Probabilistic Inference by Program Transformation in Hakaru (System Description)&rdquo;, Functional and Logic 
-Programming, pp. 62-79, 2016.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+Programming, pp. 62-79, 2016.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div></div>

@@ -14,11 +14,6 @@
         <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
         <link href="../../logo.css" rel="stylesheet">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
         <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
@@ -239,7 +234,7 @@ program representing any measure and reweights it into a program
 representing a probability distribution.</p>
 <p>For example in a slightly contrived example, we can weight a normal
 distribution by two. Normalizing it will then remove this weight.</p>
-<pre><code>&gt; echo &quot;weight(2, normal(0,1))&quot; | normalize | simplify -
+<pre><code>&gt; echo &quot;weight(2, normal(0,1))&quot; | normalize | hk-maple -c Simplify -
 normal(0, 1)
 </code></pre></div>
         </div>

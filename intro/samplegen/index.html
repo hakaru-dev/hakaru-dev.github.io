@@ -14,11 +14,6 @@
         <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
         <link href="../../logo.css" rel="stylesheet">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
         <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
@@ -264,13 +259,13 @@ from <code>transition.hk</code> are passed back into itself to generate further 
 <p>You might encounter some scenarios where you wish to run a Hakaru command or transformation on a program and then send the resulting output to another command or transform. 
 In these cases, you can take advantage of the dash (<code>-</code>) command-line notation.</p>
 <p>The dash notation is a shortcut used to pass standard inputs and outputs to another command in the same line of script. For example, if you wanted to run the <code>disintegrate</code>
-Hakaru command followed by the <code>simplify</code> command, you would enter:</p>
-<pre><code class="bash">disintegrate program.hk | simplify -
+Hakaru command followed by the <code>hk-maple -c Simplify</code> command, you would enter:</p>
+<pre><code class="bash">disintegrate program.hk | hk-maple -c Simplify -
 </code></pre>
 
 <p>This command is equivalent to entering:</p>
 <pre><code class="bash">disintegrate program.hk &gt; temp.hk
-simplify temp.hk
+hk-maple -c Simplify temp.hk
 </code></pre>
 
 <p><strong>Note:</strong> The <code>&gt;</code> operator redirects the output from <code>disintegrate program.hk</code> to a new file called <code>temp.hk</code>.</p>

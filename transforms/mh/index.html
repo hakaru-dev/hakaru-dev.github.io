@@ -14,11 +14,6 @@
         <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
         <link href="../../logo.css" rel="stylesheet">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
         <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
@@ -287,7 +282,7 @@ fn x4 real:
 </code></pre>
 
 <p>This can then be simplified.</p>
-<pre><code class="bash">mh target.hk proposal.hk | simplify -
+<pre><code class="bash">mh target.hk proposal.hk | hk-maple -c Simplify -
 
 fn x4 real: 
  x03 &lt;~ normal(x4, (1/25))
@@ -304,7 +299,7 @@ fn x4 real:
 <p>This can then be run using <code>hakaru</code>. Hakaru when run with two
 arguments will assume that the first file is a transition kernel,
 and the second file represents a measure to initialize from.</p>
-<pre><code class="bash">mh target.hk proposal.hk | simplify - | hakaru -w --transition-kernel - target.hk | head
+<pre><code class="bash">mh target.hk proposal.hk | hk-maple -c Simplify - | hakaru -w --transition-kernel - target.hk | head
 
 -0.6133542972818671
 -0.6111567543723275

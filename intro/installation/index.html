@@ -14,11 +14,6 @@
         <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
         <link href="../../logo.css" rel="stylesheet">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         <script src="../../js/jquery-1.10.2.min.js" defer></script>
         <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
@@ -300,8 +295,8 @@ maple update-archive.mpl
 </li>
 </ol>
 <h3 id="testing-your-maple-installation-with-hakaru">Testing Your Maple Installation with Hakaru</h3>
-<p>If you have correctly installaed Hakaru&rsquo;s Maple extension, running <code>echo "normal(0,1)" | simplify -</code> in a <code>bash</code> command line will return <code>normal(0, 1)</code>.  If you get an error about <code>simplify</code> not being found, you may need to adjust your PATH environment variable to point to where <code>cabal</code> installed Hakaru.</p>
-<p>If you have not set the <code>LOCAL_MAPLE</code> environment variable, then the <code>simplify</code> command might try to locate a <code>SSH</code> file that might not exist on your machine to try and access a remote installation of Maple.</p></div>
+<p>If you have correctly installaed Hakaru&rsquo;s Maple extension, running <code>echo "normal(0,1)" | hk-maple -c Simplify -</code> in a <code>bash</code> command line will return <code>normal(0, 1)</code>.  If you get an error about <code>hk-maple</code> not being found, you may need to adjust your PATH environment variable to point to where <code>cabal</code> installed Hakaru.</p>
+<p>If you have not set the <code>LOCAL_MAPLE</code> environment variable, then the <code>hk-maple</code> command might try to locate a <code>SSH</code> file that might not exist on your machine to try and access a remote installation of Maple.</p></div>
         </div>
 
         <footer class="col-md-12">

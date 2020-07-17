@@ -251,8 +251,8 @@ you will test different values for your unknown variable.</p>
 <h2 id="example">Example</h2>
 <p>Let&rsquo;s condition a joint probability distribution of two independent random variables that are each drawn from a normal distribution. You can define this model in Hakaru using
 a program such as:</p>
-<pre><code class="nohighlight">y &lt;~ normal(0,1)
-x &lt;~ normal(y,1)
+<pre><code class="nohighlight">x &lt;~ normal(0,1)
+y &lt;~ normal(x,1)
 return (y,x)
 </code></pre>
 
